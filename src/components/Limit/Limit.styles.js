@@ -6,18 +6,18 @@ export const StyledLimit = styled.div`
   padding: 10px 32px 10px 37px;
   border: 3px solid #f4600c;
   border-radius: 20px;
+`;
 
-  & svg {
-    position: absolute;
-    content: '';
-    top: -33px;
-    right: -10px;
-  }
+export const StyledIcon = styled.svg`
+  position: absolute;
+  content: '';
+  top: -33px;
+  right: -10px;
+`;
 
-  & p {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 22px;
-    color: #f4600c;
-  }
+export const StyledText = styled.p`
+  font-weight: 600;
+  -size: 14px;
+  lne-height: 22px;
+  color: #f4600c;
 `;

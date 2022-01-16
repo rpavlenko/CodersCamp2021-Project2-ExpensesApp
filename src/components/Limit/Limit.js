@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unknown-property */
-import { StyledLimit } from './Limit.styles';
+import { StyledLimit, StyledIcon, StyledText } from './Limit.styles';
 
 export default function Limit() {
   return (
     <StyledLimit>
-      <p>Przekroczyłeś limit wydatków w kategorii Remont</p>
-      <svg
+      <StyledText>Przekroczyłeś limit wydatków w kategorii Remont</StyledText>
+      <StyledIcon
         width="30"
         height="30"
         viewBox="0 0 30 30"
@@ -23,7 +23,7 @@ export default function Limit() {
             <rect width="30" height="30" fill="white" />
           </clipPath>
         </defs>
-      </svg>
+      </StyledIcon>
     </StyledLimit>
   );
 }
