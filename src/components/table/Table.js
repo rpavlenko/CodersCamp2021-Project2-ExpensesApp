@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledTable } from './Table.styled';
+import { StyledTable } from './Table.styles';
 
 export default function Table({ expenses, incomes }) {
   const calculateBalance = (expenses, incomes) => {
