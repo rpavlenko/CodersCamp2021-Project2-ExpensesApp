@@ -1,10 +1,10 @@
-import { StyledAlert } from './Alert.styles';
+import { StyledAlert, StyledTitle, StyledText } from './Alert.styles';
 
 export default function Alert() {
   return (
     <StyledAlert>
-      <h2>ALERT</h2>
-      <p>Przekroczyłeś limit wydatków w kategorii remont.</p>
+      <StyledTitle>ALERT</StyledTitle>
+      <StyledText>Przekroczyłeś limit wydatków w kategorii remont.</StyledText>
 
       {/* place for button */}
     </StyledAlert>
