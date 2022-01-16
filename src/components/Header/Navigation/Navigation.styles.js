@@ -22,7 +22,7 @@ export const StyledList = styled.ul`
   flex-direction: column;
 `;
 
-export const StyledItem = styled.div`
+export const StyledItem = styled.li`
   display: flex;
   padding: 14px;
   align-items: center;
