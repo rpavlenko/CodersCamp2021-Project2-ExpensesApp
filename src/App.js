@@ -1,7 +1,7 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Container } from './components/styles/Container.styled';
-import Table from './components/table/Table';
+import Table from './components/Table/Table';
 
 function App() {
   return (
