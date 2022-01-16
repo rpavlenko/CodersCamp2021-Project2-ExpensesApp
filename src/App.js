@@ -1,8 +1,8 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Container } from './components/styles/Container.styled';
-import Alert from './components/alert/Alert';
-import Limit from './components/limit/Limit';
+import Alert from './components/Alert/Alert';
+import Limit from './components/Limit/Limit';
 
 function App() {
   return (
