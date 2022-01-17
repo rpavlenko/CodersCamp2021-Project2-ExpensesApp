@@ -1,4 +1,4 @@
-import StyledButton from './../Button/Button.styles';
+import { StyledButton, StyledIconButton } from './../Button/Button.styles';
 import PropTypes from 'prop-types';
 
 /* props text to wyświetlany tekst; props isActive jesli false jest wyszarzony; props primary może być użyty do stylowania innych buttonów niż standardowe*/
@@ -26,4 +26,22 @@ Button.propTypes = {
 Button.defaultProps = {
   primary: true,
   isActive: true,
+};
+
+export const IconButton = (props) => {
+  return (
+    <button>
+      <StyledIconButton src={props.imageName} alt="" isSmall={props.isSmall} />
+    </button>
+  );
+};
+
+IconButton.propTypes = {
+  imageName: PropTypes.string,
+  alt: PropTypes.string,
+  isSmall: PropTypes.bool,
+};
+
+IconButton.defaultProps = {
+  isSmall: false,
 };

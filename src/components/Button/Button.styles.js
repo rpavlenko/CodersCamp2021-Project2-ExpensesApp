@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   position: absolute;
   padding: 12px 10px;
   width: 271px;
@@ -14,4 +14,8 @@ const StyledButton = styled.button`
   font-size: 26px;
 `;
 
-export default StyledButton;
+export const StyledIconButton = styled.img`
+  height: ${(props) => (props.isSmall ? '25px' : '44px')};
+  width: ${(props) => (props.isSmall ? '25px' : '44px')};
+  color: #6a5f5f;
+`;

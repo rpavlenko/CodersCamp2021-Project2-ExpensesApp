@@ -1,7 +1,8 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Container } from './components/styles/Container.styled';
-import { Button } from './components/Button/Button';
+import { IconButton } from './components/Button/Button';
+import Add from './assets/dodaj.png';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <GlobalStyles />
       <Container>
         <h1 className="text-6xl font-bold p-2">Expenses App</h1>
-        <Button className="primary" text="Logowanie" />
+        <IconButton imageName={Add} />
       </Container>
     </>
   );
