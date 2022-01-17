@@ -1,4 +1,4 @@
-import StyledButton from './../styles/Button.styles';
+import StyledButton from './../Button/Button.styles';
 import PropTypes from 'prop-types';
 
 /* props text to wyświetlany tekst; props isActive jesli false jest wyszarzony; props primary może być użyty do stylowania innych buttonów niż standardowe*/
@@ -27,5 +27,3 @@ Button.defaultProps = {
   primary: true,
   isActive: true,
 };
-
-export default Button;

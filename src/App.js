@@ -9,7 +9,7 @@ function App() {
       <GlobalStyles />
       <Container>
         <h1 className="text-6xl font-bold p-2">Expenses App</h1>
-        <Button className="primary" text="Logowanie"></Button>
+        <Button className="primary" text="Logowanie" />
       </Container>
     </>
   );
