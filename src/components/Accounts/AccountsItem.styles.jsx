@@ -45,7 +45,7 @@ export const StyledTitle = styled.p`
     color: #6A5F5F;
 `;
 export const StyledAmount = styled.p`
-    display: flex
+    display: flex;
     font-size: 15px;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600; 
