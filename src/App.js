@@ -8,6 +8,11 @@ import {
   ButtonWydatki,
 } from './components/Button/Button';
 import Attach from './assets/attach.png';
+import CategoryList from './components/CategoryList/CategoryList';
+import Alert from './components/Alert/Alert';
+import Limit from './components/Limit/Limit';
+import Table from './components/Table/Table';
+import Chart from './components/Chart/Chart';
 
 function App() {
   return (
@@ -23,6 +28,12 @@ function App() {
           text="Przychody"
           isActive={false}
         />
+        <h1>Expenses App</h1>
+        <CategoryList />
+        <Alert category={'remont'} />
+        <Limit category={'remont'} />
+        <Table expenses={300} incomes={800} />
+        <Chart />
       </Container>
     </>
   );
