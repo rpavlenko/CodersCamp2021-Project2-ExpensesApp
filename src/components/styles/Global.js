@@ -9,9 +9,10 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     min-height: 100vh;
-    font-family: sans-serif;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 600;
+    color: #6A5F5F;
     background-color: #fff;
-    color: #000;
   }
 
   h1,
