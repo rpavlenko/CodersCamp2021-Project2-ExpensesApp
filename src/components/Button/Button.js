@@ -1,30 +1,76 @@
-import { StyledButton, StyledIconButton } from './../Button/Button.styles';
+import {
+  PrimaryStyledButton,
+  StyledIconButton,
+  WydatkiStyledButton,
+  PrzychodyStyledButton,
+} from './../Button/Button.styles';
 import PropTypes from 'prop-types';
 
 /* props text to wyświetlany tekst; props isActive jesli false jest wyszarzony; props primary może być użyty do stylowania innych buttonów niż standardowe*/
 
-export const Button = (props) => {
+export const PrimaryButton = (props) => {
   return (
-    <StyledButton
+    <PrimaryStyledButton
       className={props.className}
-      primary={props.primary}
       text={props.text}
       isActive={props.isActive}
     >
       {props.text}
-    </StyledButton>
+    </PrimaryStyledButton>
   );
 };
 
-Button.propTypes = {
+PrimaryButton.propTypes = {
   className: PropTypes.string.isRequired,
-  primary: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
 };
 
-Button.defaultProps = {
-  primary: true,
+PrimaryButton.defaultProps = {
+  isActive: true,
+};
+
+export const ButtonWydatki = (props) => {
+  return (
+    <WydatkiStyledButton
+      className={props.className}
+      text={props.text}
+      isActive={props.isActive}
+    >
+      {props.text}
+    </WydatkiStyledButton>
+  );
+};
+
+ButtonWydatki.propTypes = {
+  className: PropTypes.oneOf(['Wydatki']),
+  text: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+};
+
+ButtonWydatki.defaultProps = {
+  isActive: true,
+};
+
+export const ButtonPrzychody = (props) => {
+  return (
+    <PrzychodyStyledButton
+      className={props.className}
+      text={props.text}
+      isActive={props.isActive}
+    >
+      {props.text}
+    </PrzychodyStyledButton>
+  );
+};
+
+ButtonPrzychody.propTypes = {
+  className: PropTypes.oneOf(['Przychody']),
+  text: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+};
+
+ButtonPrzychody.defaultProps = {
   isActive: true,
 };
 
