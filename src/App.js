@@ -11,8 +11,8 @@ function App() {
       <Container>
         <h1 className="text-6xl font-bold p-2">Expenses App</h1>
         <h1>Expenses App</h1>
-        <Alert />
-        <Limit />
+        <Alert category={'remont'} />
+        <Limit category={'remont'} />
       </Container>
     </>
   );

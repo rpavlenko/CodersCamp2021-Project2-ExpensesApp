@@ -1,10 +1,12 @@
-/* eslint-disable react/no-unknown-property */
+import PropTypes from 'prop-types';
 import { StyledLimit, StyledIcon, StyledText } from './Limit.styles';
 
-export default function Limit() {
+export default function Limit({ category }) {
   return (
     <StyledLimit>
-      <StyledText>Przekroczyłeś limit wydatków w kategorii Remont</StyledText>
+      <StyledText>
+        Przekroczyłeś limit wydatków w kategorii {category}
+      </StyledText>
       <StyledIcon
         width="30"
         height="30"
@@ -27,3 +29,7 @@ export default function Limit() {
     </StyledLimit>
   );
 }
+
+Limit.propTypes = {
+  category: PropTypes.string.isRequired,
+};
