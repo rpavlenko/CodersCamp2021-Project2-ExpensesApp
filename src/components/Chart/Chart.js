@@ -16,7 +16,6 @@ export default function Chart({ expenses, incomes, balance }) {
         ]}
         animate
       />
-      ;
     </StyledChart>
   );
 }
