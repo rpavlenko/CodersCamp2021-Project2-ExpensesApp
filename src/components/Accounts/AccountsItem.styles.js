@@ -4,7 +4,6 @@ export const ItemBox = styled.div`
     display: flex;
     justify-content: space-around; 
     width: 100%;
-    max-width: 400px;
     height: 43px;
     margin-top: 10px; 
     margin-bottom: 10px;
@@ -37,7 +36,7 @@ export const StyledText = styled.p`
     align-self: flex-start; 
     font-size: 13px;
     font-family: 'Baloo 2', sans-serif;
-    font-weight: 600; 
+    font-weight: 800; 
     color: #6A5F5F; 
     padding-left: 20px;
 `;
@@ -47,7 +46,7 @@ export const StyledText2 = styled.p`
     align-self: center;
     font-size: 13px;
     font-family: 'Baloo 2', sans-serif;
-    font-weight: 600; 
+    font-weight: 800; 
     color: #6A5F5F;
 `;
 export const StyledTitle = styled.p`

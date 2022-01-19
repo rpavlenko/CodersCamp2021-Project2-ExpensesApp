@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const DetailContainer = styled.div`
-    max-width: 400px;
     min-width: 260px;
     margin-top: 35px;
     margin-bottom: 100px;
@@ -26,7 +25,7 @@ export const ColumnContainer = styled.div`
 
 export const BoldText = styled.p`
     font-size: 16px;
-    font-weight: 600; 
+    font-weight: 800; 
     line-height: 2; 
 `;
 
