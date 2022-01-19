@@ -1,7 +1,16 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Container } from './components/styles/Container.styled';
+import {
+  IconButton,
+  PrimaryButton,
+  ButtonPrzychody,
+  ButtonWydatki,
+} from './components/Button/Button';
+import Attach from './assets/attach.png';
+=======
 import Header from './components/Header/Header';
+
 import CategoryList from './components/CategoryList/CategoryList';
 import Alert from './components/Alert/Alert';
 import Limit from './components/Limit/Limit';
@@ -14,6 +23,15 @@ function App() {
       <GlobalStyles />
       <Header />
       <Container>
+        <h1 className="text-6xl font-bold p-2">Expenses App</h1>
+        <IconButton imageName={Attach} />
+        <PrimaryButton className="xxx" text="Logowanie" isActive={true} />
+        <ButtonWydatki className="Wydatki" text="Wydatki" isActive={true} />
+        <ButtonPrzychody
+          className="Przychody"
+          text="Przychody"
+          isActive={false}
+        />
         <h1>Expenses App</h1>
         <CategoryList />
         <Alert category={'remont'} />
