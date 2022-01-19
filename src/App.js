@@ -1,6 +1,7 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Container } from './components/styles/Container.styled';
+import { AccountsList } from './components/Accounts/AccountsList';
 import {
   IconButton,
   PrimaryButton,
@@ -9,7 +10,6 @@ import {
 } from './components/Button/Button';
 import Attach from './assets/attach.png';
 import Header from './components/Header/Header';
-
 import CategoryList from './components/CategoryList/CategoryList';
 import Alert from './components/Alert/Alert';
 import Limit from './components/Limit/Limit';
@@ -32,6 +32,7 @@ function App() {
           isActive={false}
         />
         <h1>Expenses App</h1>
+        <AccountsList/>
         <CategoryList />
         <Alert category={'remont'} />
         <Limit category={'remont'} />
