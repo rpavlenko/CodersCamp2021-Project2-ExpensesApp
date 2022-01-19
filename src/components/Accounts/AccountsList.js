@@ -1,3 +1,4 @@
+import { AccountDetail } from "../AccountDetail/AccountDetail";
 import { AccountsItem } from "./AccountsItem";
 
 const listOfAccounts = [
@@ -8,16 +9,16 @@ const listOfAccounts = [
         title: "Farby i kleje",
         date: "03-01-2022",
         attachment: null,
-        type: 1,
+        type: "Wydatek",
     },
     {
         id: 2,
         amount: 10,
         category: "Prezent",
-        title: "klejehdjhgdfjhsdgjfhgsjhfghgjjhggjhgkuy7uyurtyrtererw",
+        title: "Prezent urodzinowy z okazji czterdziestych urodzin w restautacji",
         date: "03-01-2022",
         attachment: null,
-        type: 2,
+        type: "Przychód",
     },
     {
         id: 3,
@@ -26,7 +27,7 @@ const listOfAccounts = [
         title: "Farby i kleje",
         date: "03-01-2022",
         attachment: null,
-        type: 1,
+        type: "Wydatek",
     },
     {
         id: 4,
@@ -35,7 +36,7 @@ const listOfAccounts = [
         title: "klejehdjhgdfjhsdgjfhgsjhfghgjjhggjhgkuy7uyurtyrtererw",
         date: "03-01-2022",
         attachment: null,
-        type: 2,
+        type: "Przychód",
     },
     {
         id: 5,
@@ -44,7 +45,7 @@ const listOfAccounts = [
         title: "Farby i kleje",
         date: "03-01-2022",
         attachment: null,
-        type: 1,
+        type: "Wydatek",
     },
     {
         id: 6,
@@ -53,13 +54,13 @@ const listOfAccounts = [
         title: "lastone",
         date: "03-01-2022",
         attachment: null,
-        type: 2,
+        type: "Przychód",
     }
 ];
 
 export const AccountsList = () => {
     const lastFive = listOfAccounts.slice(Math.max(listOfAccounts.length - 5, 0)).reverse();
-
+    const detailedAccount = listOfAccounts[1];
     return (
         <div> 
             {lastFive.map((item) => 
@@ -70,6 +71,11 @@ export const AccountsList = () => {
                     onEditClick={() => console.log('edit')}
                 />
             )}
+            <AccountDetail  
+                item={detailedAccount} 
+                odDeleteClick={() => console.log('delete')} 
+                onEditClick={() => console.log('edit')}
+            />
         </div>
     );
 };

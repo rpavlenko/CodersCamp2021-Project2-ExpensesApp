@@ -20,7 +20,7 @@ export const AccountsItem = (props) => {
             </FirstColumn>
             <SecondColumn>
                 <StyledText>Kwota: </StyledText>
-                <StyledAmount isExpense={type === 1}>{amount} zł</StyledAmount>
+                <StyledAmount isExpense={type === "Wydatek"}>{amount} zł</StyledAmount>
             </SecondColumn>
             <ThirdColumn>
                 <StyledIcon src={pen} onClick={onEditClick}/>
