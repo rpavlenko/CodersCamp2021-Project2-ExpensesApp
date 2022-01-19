@@ -13,7 +13,7 @@ const Header = () => {
     <StyledHeader>
       <StyledIcon src={icon} />
       <StyledName>Scrooge</StyledName>
-      <Hamburger onShowNav={showNav} />
+      <Hamburger onShowNav={showNav} menuActive={active} />
       { active ? <Navigation /> : null }
     </StyledHeader>
   );

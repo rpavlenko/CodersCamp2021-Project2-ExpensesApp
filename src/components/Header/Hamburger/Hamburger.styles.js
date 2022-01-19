@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledBurger = styled.div`
   display: flex;
@@ -8,6 +8,20 @@ export const StyledBurger = styled.div`
   width: 46px;
   height: 32px;
   cursor: pointer;
+
+  ${(props) => props.active && css`
+    position: relative;
+    & > div {
+      position: absolute;
+      /* width: 90%; */
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) rotate(45deg);
+      &:last-child {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+  `}
 `;
 
 export const StyledLine = styled.div`
