@@ -8,6 +8,9 @@ import {
   ButtonWydatki,
 } from './components/Button/Button';
 import Attach from './assets/attach.png';
+=======
+import Header from './components/Header/Header';
+
 import CategoryList from './components/CategoryList/CategoryList';
 import Alert from './components/Alert/Alert';
 import Limit from './components/Limit/Limit';
@@ -18,6 +21,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <Header />
       <Container>
         <h1 className="text-6xl font-bold p-2">Expenses App</h1>
         <IconButton imageName={Attach} />
