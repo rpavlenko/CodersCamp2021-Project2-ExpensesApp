@@ -15,7 +15,7 @@ export const ItemBox = styled.div`
 export const FirstColumn = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 55%;
 `;
@@ -24,6 +24,7 @@ export const SecondColumn = styled.div`
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
+    padding-right: 10px;
 `;
 export const ThirdColumn = styled.div`
     display: flex;
@@ -33,7 +34,17 @@ export const ThirdColumn = styled.div`
 `;
 export const StyledText = styled.p`
     display: flex;
-    align-self: center; 
+    align-self: flex-start; 
+    font-size: 13px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600; 
+    color: #6A5F5F; 
+    padding-left: 20px;
+`;
+export const StyledText2 = styled.p`
+    display: flex;
+    align-self: flex-start; 
+    align-self: center;
     font-size: 13px;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 600; 
@@ -43,6 +54,12 @@ export const StyledTitle = styled.p`
     font-size: 13px;
     font-family: 'Baloo 2', sans-serif;
     color: #6A5F5F;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 90%;
+    padding-left: 20px;
 `;
 export const StyledAmount = styled.p`
     display: flex;

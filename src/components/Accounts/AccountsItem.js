@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ItemBox, StyledText, StyledTitle, StyledAmount, FirstColumn, SecondColumn, ThirdColumn, StyledIcon  } from './AccountsItem.styles';
+import { ItemBox, StyledText, StyledText2, StyledTitle, StyledAmount, FirstColumn, SecondColumn, ThirdColumn, StyledIcon  } from './AccountsItem.styles';
 import pen from './pen.png';
 import trash from './trash.png';
 
@@ -12,14 +12,10 @@ export const AccountsItem = (props) => {
         <ItemBox>
             <FirstColumn> 
                 <StyledText>{date}</StyledText> 
-                <StyledTitle>
-                   {title.length > 30 ?
-                    `${title.substring(0, 30)}...` : title
-                    }
-                </StyledTitle>
+                <StyledTitle>{title}</StyledTitle>
             </FirstColumn>
             <SecondColumn>
-                <StyledText>Kwota: </StyledText>
+                <StyledText2>Kwota: </StyledText2>
                 <StyledAmount isExpense={type === "Wydatek"}>{amount} zł</StyledAmount>
             </SecondColumn>
             <ThirdColumn>
