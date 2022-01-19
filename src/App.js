@@ -1,6 +1,7 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Container } from './components/styles/Container.styled';
+import Header from './components/Header/Header';
 import CategoryList from './components/CategoryList/CategoryList';
 import Alert from './components/Alert/Alert';
 import Limit from './components/Limit/Limit';
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <Header />
       <Container>
         <h1>Expenses App</h1>
         <CategoryList />
