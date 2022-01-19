@@ -1,5 +1,6 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
+import { Routes, Route } from 'react-router-dom';
 import { Container } from './components/styles/Container.styled';
 import {
   IconButton,
@@ -8,7 +9,6 @@ import {
   ButtonWydatki,
 } from './components/Button/Button';
 import Attach from './assets/attach.png';
-=======
 import Header from './components/Header/Header';
 
 import CategoryList from './components/CategoryList/CategoryList';
@@ -16,6 +16,7 @@ import Alert from './components/Alert/Alert';
 import Limit from './components/Limit/Limit';
 import Table from './components/Table/Table';
 import Chart from './components/Chart/Chart';
+import NotFound from './views/NotFound';
 
 function App() {
   return (
@@ -23,7 +24,15 @@ function App() {
       <GlobalStyles />
       <Header />
       <Container>
-        <h1 className="text-6xl font-bold p-2">Expenses App</h1>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+
+          <Route
+            path="/"
+            element={<h1 className="text-6xl font-bold p-2">Expenses App</h1>}
+          />
+        </Routes>
+
         <IconButton imageName={Attach} />
         <PrimaryButton className="xxx" text="Logowanie" isActive={true} />
         <ButtonWydatki className="Wydatki" text="Wydatki" isActive={true} />
