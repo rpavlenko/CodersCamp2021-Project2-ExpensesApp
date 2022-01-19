@@ -8,7 +8,6 @@ import {
   ButtonWydatki,
 } from './components/Button/Button';
 import Attach from './assets/attach.png';
-=======
 import Header from './components/Header/Header';
 
 import CategoryList from './components/CategoryList/CategoryList';
