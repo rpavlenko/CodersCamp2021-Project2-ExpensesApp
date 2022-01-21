@@ -33,23 +33,18 @@ function App() {
           isActive={false}
         />
         <h1>Expenses App</h1>
-        <AccountsList/>
+        <AccountsList />
         <CategoryList />
         <Alert category={'remont'} />
         <Limit category={'remont'} />
         <Table expenses={300} incomes={800} />
         <Chart />
-        <Input type="text" placeholder="" inputLabel="e-mail:" />
-        <Input type="password" placeholder="" inputLabel="hasło:" />
-        <Input type="password" placeholder="" inputLabel="powtórz hasło:" />
-        <Input
-          type="search"
-          placeholder="Wyszukaj"
-          inputLabel="powtórz hasło:"
-          icon={'glass'}
-        />
-        <Input type="text" placeholder="" inputLabel="Kwota:" />
-        <Input type="date" placeholder="" />
+        <Input type="text" inputLabel="e-mail:" />
+        <Input type="password" inputLabel="hasło:" />
+        <Input type="password" inputLabel="powtórz hasło:" />
+        <Input type="search" placeholder="Wyszukaj" icon={'glass'} />
+        <Input type="text" inputLabel="Kwota:" />
+        <Input type="date" />
       </Container>
     </>
   );
