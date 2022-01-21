@@ -17,6 +17,8 @@ import Limit from './components/Limit/Limit';
 import Table from './components/Table/Table';
 import Chart from './components/Chart/Chart';
 import NotFound from './views/NotFound';
+import {AccountDetailView} from './views/AccountDetailView';
+
 
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="*" element={<NotFound />} />
-
+          <Route path="/detail/:id" element={<AccountDetailView/>} />
           <Route
             path="/"
             element={<h1 className="text-6xl font-bold p-2">Expenses App</h1>}

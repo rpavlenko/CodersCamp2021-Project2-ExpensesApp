@@ -4,12 +4,12 @@ import pen from './pen.png';
 import trash from './trash.png';
 
 export const AccountsItem = (props) => {
-    const {onEditClick, odDeleteClick, item } = props;
+    const {onEditClick, odDeleteClick, item, onClick } = props;
     const { date, title, amount, type } = item;
 
     return ( 
         <>
-        <ItemBox>
+        <ItemBox onClick={onClick}>
             <FirstColumn> 
                 <StyledText>{date}</StyledText> 
                 <StyledTitle>{title}</StyledTitle>
@@ -38,4 +38,5 @@ AccountsItem.propTypes = {
     }),
     onEditClick: PropTypes.func,
     odDeleteClick: PropTypes.func,
+    onClick: PropTypes.func,
   };
