@@ -28,14 +28,14 @@ export const AccountsItem = (props) => {
 };
 
 AccountsItem.propTypes = {
-    item: {
+    item: PropTypes.shape({
         id: PropTypes.number,
         date: PropTypes.string,
         title: PropTypes.string,
         category: PropTypes.string,
-        type: PropTypes.number,
+        type: PropTypes.string,
         amount: PropTypes.number,
-    },
+    }),
     onEditClick: PropTypes.func,
     odDeleteClick: PropTypes.func,
   };
