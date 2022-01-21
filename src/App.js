@@ -9,7 +9,17 @@ function App() {
       <GlobalStyles />
       <Container>
         <h1 className="text-6xl font-bold p-2">Expenses App</h1>
-        <Input type="text" placeholder="search" />
+        <Input type="text" placeholder="" inputLabel="e-mail:" />
+        <Input type="password" placeholder="" inputLabel="hasło:" />
+        <Input type="password" placeholder="" inputLabel="powtórz hasło:" />
+        <Input
+          type="search"
+          placeholder="Wyszukaj"
+          inputLabel="powtórz hasło:"
+          icon={'glass'}
+        />
+        <Input type="text" placeholder="" inputLabel="Kwota:" />
+        <Input type="date" placeholder="" />
       </Container>
     </>
   );

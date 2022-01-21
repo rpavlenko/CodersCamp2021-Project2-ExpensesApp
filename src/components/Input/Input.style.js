@@ -1,17 +1,56 @@
-
-import styled, { css } from "styled-components";
+import styled from 'styled-components';
+import glass from '../../assets/magnifying-glass.png';
 
 export const StyledInput = styled.input`
-${(props) =>( props.type === "text" || props.type === "password" || props.type === "email" || props.type === "date") && css`
-width: 400px;
-height: 47px;
-border: 3px solid #6a5f5f;
-fill: #ffffff;
-  `}
+  width: 100%;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  color: #6a5f5f;
 
-${(props) => props.type === "date" && css`
-width: 267px;
-height: 47px;
-border: 2px solid #6a5f5f;
-fill: #ffffff;
-  `}`;
+  ${({ type }) =>
+    type === 'search' &&
+    `
+      display: flex;
+      width: 95%;
+      font-size: 18px;
+      
+      &::placeholder {
+      color: #6A5F5F;
+      }
+    `}
+`;
+
+export const StyledLabel = styled.label`
+  display: block;
+  margin-bottom: 2px;
+  margin-left: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: #6a5f5f;
+`;
+
+export const StyledInputGroup = styled.div`
+  min-width: 267px;
+  min-height: 47px;
+  padding: 5px 10px;
+  border: 2px solid #6a5f5f;
+  border-radius: 15px;
+
+  ${({ icon }) =>
+    icon &&
+    `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+
+    & > button {
+      background-image: url('${glass}');
+      width: 22px;
+      height: 22px;
+    }
+  `};
+`;
