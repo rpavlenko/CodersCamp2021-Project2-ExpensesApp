@@ -1,66 +1,13 @@
 import { AccountDetail } from "../AccountDetail/AccountDetail";
 import { AccountsItem } from "./AccountsItem";
-
-const listOfAccounts = [
-    {
-        id: 1,
-        amount: 120,
-        category: "Remont",
-        title: "Farby i kleje",
-        date: "03-01-2022",
-        attachment: null,
-        type: "Wydatek",
-    },
-    {
-        id: 2,
-        amount: 10,
-        category: "Prezent",
-        title: "Prezent urodzinowy z okazji czterdziestych urodzin w restautacji",
-        date: "03-01-2022",
-        attachment: null,
-        type: "Przychód",
-    },
-    {
-        id: 3,
-        amount: 120,
-        category: "Remont",
-        title: "Farby i kleje",
-        date: "03-01-2022",
-        attachment: null,
-        type: "Wydatek",
-    },
-    {
-        id: 4,
-        amount: 10,
-        category: "Prezent",
-        title: "klejehdjhgdfjhsdgjfhgsjhfghgjjhggjhgkuy7uyurtyrtererw",
-        date: "03-01-2022",
-        attachment: null,
-        type: "Przychód",
-    },
-    {
-        id: 5,
-        amount: 120,
-        category: "Remont",
-        title: "Farby i kleje",
-        date: "03-01-2022",
-        attachment: null,
-        type: "Wydatek",
-    },
-    {
-        id: 6,
-        amount: 10,
-        category: "Prezent",
-        title: "lastone",
-        date: "03-01-2022",
-        attachment: null,
-        type: "Przychód",
-    }
-];
+import { AccountsContext } from "../../reducers/accounts.reducer";
+import { useContext } from "react";
 
 export const AccountsList = () => {
-    const lastFive = listOfAccounts.slice(Math.max(listOfAccounts.length - 5, 0)).reverse();
-    const detailedAccount = listOfAccounts[1];
+    const [list] = useContext(AccountsContext);
+    const arrayList = Object.values(list);
+    const lastFive = arrayList.slice(Math.max(arrayList.length - 5, 0)).reverse();
+    const detailedAccount = list[1];
     return (
         <div> 
             {lastFive.map((item) => 

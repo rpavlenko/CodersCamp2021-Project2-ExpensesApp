@@ -1,6 +1,7 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Routes, Route } from 'react-router-dom';
+import { useReducer } from 'react';
 import { Container } from './components/styles/Container.styled';
 import { AccountsList } from './components/Accounts/AccountsList';
 import {
@@ -17,10 +18,14 @@ import Limit from './components/Limit/Limit';
 import Table from './components/Table/Table';
 import Chart from './components/Chart/Chart';
 import NotFound from './views/NotFound';
+import { AccountsContext, accountsReducer, initialData} from './reducers/accounts.reducer';
+
 
 function App() {
+const accountsState = useReducer(accountsReducer, initialData);
+
   return (
-    <>
+    <AccountsContext.Provider value={accountsState}>
       <GlobalStyles />
       <Header />
       <Container>
@@ -49,7 +54,7 @@ function App() {
         <Table expenses={300} incomes={800} />
         <Chart />
       </Container>
-    </>
+    </AccountsContext.Provider>
   );
 }
 
