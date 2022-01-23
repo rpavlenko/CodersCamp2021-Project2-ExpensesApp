@@ -17,7 +17,7 @@ export const StyledInput = styled.input`
       font-size: 18px;
       
       &::placeholder {
-      color: #6A5F5F;
+        color: #6A5F5F;
       }
     `}
 `;
