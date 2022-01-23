@@ -8,7 +8,6 @@ export const StyledInput = styled.input`
   font-weight: 600;
   line-height: 28px;
   color: #6a5f5f;
-  outline: none;
 
   ${({ type }) =>
     type === 'search' &&
@@ -21,6 +20,10 @@ export const StyledInput = styled.input`
       color: #6A5F5F;
       }
     `}
+
+  &::-webkit-calendar-picker-indicator{
+    margin: 0;
+  };
 `;
 
 export const StyledLabel = styled.label`
