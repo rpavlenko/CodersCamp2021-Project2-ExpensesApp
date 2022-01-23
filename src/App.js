@@ -1,6 +1,7 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
-import Homepage from './views/Homepage/Homepage';
+import LoginPage from './views/Login/LoginPage/LoginPage';
+import RegisterPage from './views/Login/RegisterPage/RegisterPage';
 import { Routes, Route } from 'react-router-dom';
 import { Container } from './components/styles/Container.styled';
 import Header from './components/Header/Header';
@@ -15,7 +16,8 @@ function App() {
         <Routes>
           <Route path="*" element={<NotFound />} />
 
-          <Route path="/" element={<Homepage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Container>
     </>
