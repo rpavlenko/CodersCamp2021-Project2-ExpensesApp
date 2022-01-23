@@ -2,22 +2,9 @@ import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Routes, Route } from 'react-router-dom';
 import { Container } from './components/styles/Container.styled';
-import { AccountsList } from './components/Accounts/AccountsList';
-import {
-  IconButton,
-  PrimaryButton,
-  ButtonIncome,
-  ButtonExpenses,
-} from './components/Button/Button';
-import Attach from './assets/attach.png';
 import Header from './components/Header/Header';
-import CategoryList from './components/CategoryList/CategoryList';
-import Alert from './components/Alert/Alert';
-import Limit from './components/Limit/Limit';
-import Table from './components/Table/Table';
-import Chart from './components/Chart/Chart';
-import Input from './components/Input/Input';
-import NotFound from './views/NotFound';
+// import NotFound from './views/NotFound';
+import NewPosition from './views/NewPosition/NewPosition';
 
 function App() {
   return (
@@ -26,31 +13,14 @@ function App() {
       <Header />
       <Container>
         <Routes>
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} />
 
           <Route
             path="/"
             element={<h1 className="text-6xl font-bold p-2">Expenses App</h1>}
-          />
+          /> */}
+          <Route path="*" element={<NewPosition />} />
         </Routes>
-
-        <IconButton imageName={Attach} />
-        <PrimaryButton className="xxx" text="Logowanie" isActive={true} />
-        <ButtonExpenses className="Wydatki" text="Wydatki" isActive={true} />
-        <ButtonIncome className="Przychody" text="Przychody" isActive={false} />
-        <h1>Expenses App</h1>
-        <AccountsList />
-        <CategoryList />
-        <Alert category={'remont'} />
-        <Limit category={'remont'} />
-        <Table expenses={300} incomes={800} />
-        <Chart />
-        <Input type="text" inputLabel="e-mail:" />
-        <Input type="password" inputLabel="hasło:" />
-        <Input type="password" inputLabel="powtórz hasło:" />
-        <Input type="search" placeholder="Wyszukaj" icon={'glass'} />
-        <Input type="text" inputLabel="Kwota:" />
-        <Input type="date" />
       </Container>
     </>
   );

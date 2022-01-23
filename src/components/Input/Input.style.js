@@ -33,8 +33,9 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInputGroup = styled.div`
-  min-width: 267px;
-  min-height: 47px;
+  ${'' /* min-width: 267px;
+  min-height: 47px; */}
+  min-width: 158px;
   padding: 5px 10px;
   border: 2px solid #6a5f5f;
   border-radius: 15px;

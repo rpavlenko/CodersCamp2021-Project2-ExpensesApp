@@ -46,6 +46,7 @@ ButtonExpenses.propTypes = {
   className: PropTypes.oneOf(['Wydatki']),
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
 };
 
 ButtonExpenses.defaultProps = {
