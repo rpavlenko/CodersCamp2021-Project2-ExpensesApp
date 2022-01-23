@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledHomepage = styled.div`
+export const StyledHomepage = styled.main`
   min-height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ export const StyledIcon = styled.img`
   width: 55px;
 `;
 
-export const StyledTitle = styled.h1`
+export const StyledTitle = styled.h2`
   display: inline;
   font-family: Fredoka One;
   font-style: normal;
