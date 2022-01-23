@@ -6,8 +6,8 @@ import { AccountsList } from './components/Accounts/AccountsList';
 import {
   IconButton,
   PrimaryButton,
-  ButtonPrzychody,
-  ButtonWydatki,
+  ButtonIncome,
+  ButtonExpenses,
 } from './components/Button/Button';
 import Attach from './assets/attach.png';
 import Header from './components/Header/Header';
@@ -36,12 +36,8 @@ function App() {
 
         <IconButton imageName={Attach} />
         <PrimaryButton className="xxx" text="Logowanie" isActive={true} />
-        <ButtonWydatki className="Wydatki" text="Wydatki" isActive={true} />
-        <ButtonPrzychody
-          className="Przychody"
-          text="Przychody"
-          isActive={false}
-        />
+        <ButtonExpenses className="Wydatki" text="Wydatki" isActive={true} />
+        <ButtonIncome className="Przychody" text="Przychody" isActive={false} />
         <h1>Expenses App</h1>
         <AccountsList />
         <CategoryList />

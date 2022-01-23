@@ -14,7 +14,7 @@ export const PrimaryStyledButton = styled.button`
   font-size: 26px;
 `;
 
-export const WydatkiStyledButton = styled.button.attrs((props) => ({
+export const ExpensesStyledButton = styled.button.attrs((props) => ({
   text: props.className,
 }))`
   background-color: ${(props) => (props.isActive ? '#F4600C' : '#FFFFFF')};
@@ -29,7 +29,7 @@ export const WydatkiStyledButton = styled.button.attrs((props) => ({
   font-size: 15px;
 `;
 
-export const PrzychodyStyledButton = styled(WydatkiStyledButton).attrs({
+export const IncomeStyledButton = styled(ExpensesStyledButton).attrs({
   text: 'Przychody',
 })`
   background-color: ${(props) => (props.isActive ? '#638E2B' : '#FFFFFF')};
