@@ -22,7 +22,11 @@ import { AccountsContext, accountsReducer, initialData} from './reducers/account
 
 
 function App() {
-const accountsState = useReducer(accountsReducer, initialData);
+const initialList = localStorage.getItem("accountsList") 
+  ? JSON.parse(localStorage.getItem("accountsList")) 
+  : initialData;
+ 
+const accountsState = useReducer(accountsReducer, initialList);
 
   return (
     <AccountsContext.Provider value={accountsState}>

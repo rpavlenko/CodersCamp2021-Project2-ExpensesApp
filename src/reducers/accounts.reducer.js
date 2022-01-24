@@ -62,7 +62,10 @@ export const initialData = [
   export const accountsReducer = (state, action) => {
     switch (action.type) {
       case 'addNewAccount':
-        return [...state, ...action.payload];
+          const newValue = [...state, ...action.payload];
+        //   In order to save the data between the sessions, we save it temporary in LocalStorage.
+          localStorage.setItem("accountsList", JSON.stringify(newValue)); 
+        return newValue;
       // case 'edit':
       //   return {};
       // case 'delete':
@@ -71,4 +74,3 @@ export const initialData = [
         return state;
     }
   };
-  
