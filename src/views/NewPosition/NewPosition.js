@@ -11,11 +11,12 @@ import {
   InputGroupStyled,
   ArrowButtonStyled,
 } from '../../views/NewPosition/NewPosition.styles';
-import Input from '../../components/Input/Input';
+import {
+  Input,
+  InputCategory,
+  InputAttachment,
+} from '../../components/Input/Input';
 import Arrow from '../../assets/arrow.png';
-// import ArrowDown from '../../assets/arrowd.png';
-import Attach from '../../assets/attach.png';
-// import { Attach } from '../../assets/attach.png';
 
 export default function NewPosition() {
   return (
@@ -32,12 +33,19 @@ export default function NewPosition() {
           <ButtonIncome text="Przychody" isActive={false}></ButtonIncome>
         </ExpIncBtnGroup>
         <InputGroupStyled>
-          <Input type="search" inputLabel="Kategoria"></Input>
+          <InputCategory
+            type="search"
+            inputLabel="Kategoria"
+            icon={'ArrowD'}
+          ></InputCategory>
           <Input type="text" inputLabel="Nazwa"></Input>
           <Input type="text" inputLabel="Kwota"></Input>
-          <Input type="text" inputLabel="Załącz plik">
-            {Attach}
-          </Input>
+          <InputAttachment
+            type="file"
+            inputLabel="Załącz plik"
+            icon={'Attach'}
+            style="visibility:hidden"
+          ></InputAttachment>
         </InputGroupStyled>
         <PrimaryButton
           className="xxx"

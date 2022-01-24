@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import glass from '../../assets/magnifying-glass.png';
+import ArrowD from '../../assets/arrowd.png';
+import Attach from '../../assets/attach.png';
 
 export const StyledInput = styled.input`
   width: 100%;
@@ -23,7 +25,7 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledLabel = styled.label`
-  display: block;
+  ${'' /* display: block; */}
   margin-bottom: 2px;
   margin-left: 10px;
   font-family: inherit;
@@ -52,6 +54,64 @@ export const StyledInputGroup = styled.div`
       background-image: url('${glass}');
       width: 22px;
       height: 22px;
+    }
+  `};
+`;
+
+export const StyledInputGroupCategory = styled.div`
+  min-width: 158px;
+  padding: 2px 10px;
+  border: 2px solid #6a5f5f;
+  border-radius: 15px;
+
+  ${({ icon }) =>
+    icon &&
+    `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+
+    & > button {
+      background-image: url('${ArrowD}');
+      width: 33px;
+      height: 33px;
+    }
+  `};
+`;
+
+export const StyledInputAttachment = styled.input`
+  width: 100%;
+  color: #6a5f5f;
+
+  ${({ type }) =>
+    type === 'file' &&
+    `
+      visibility: hidden;
+    
+    `}
+`;
+export const StyledInputGroupAttachment = styled.div`
+  min-width: 158px;
+  padding: 15px 16px;
+  border: 2px solid #6a5f5f;
+  border-radius: 15px;
+  background-color: #e5e5e5;
+
+  ${({ icon }) =>
+    icon &&
+    `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+    & > button {
+      background-image: url('${Attach}');
+      width: 44px;
+      height: 44px;
+      margin: -13px;
+
     }
   `};
 `;
