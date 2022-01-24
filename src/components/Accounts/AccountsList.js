@@ -5,8 +5,7 @@ import { useContext } from "react";
 
 export const AccountsList = () => {
     const [list] = useContext(AccountsContext);
-    const arrayList = Object.values(list);
-    const lastFive = arrayList.slice(Math.max(arrayList.length - 5, 0)).reverse();
+    const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
     const detailedAccount = list[1];
     return (
         <div> 

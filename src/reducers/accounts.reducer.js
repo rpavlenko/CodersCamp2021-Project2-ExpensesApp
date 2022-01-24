@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
-export const initialData = {
-    1: {
+export const initialData = [
+    {
         id: 1,
         amount: 120,
         category: "Remont",
@@ -10,7 +10,7 @@ export const initialData = {
         attachment: null,
         type: "Wydatek",
     },
-    2: {
+    {
         id: 2,
         amount: 10,
         category: "Prezent",
@@ -19,7 +19,7 @@ export const initialData = {
         attachment: null,
         type: "Przychód",
     },
-    3: {
+    {
         id: 3,
         amount: 120,
         category: "Remont",
@@ -28,7 +28,7 @@ export const initialData = {
         attachment: null,
         type: "Wydatek",
     },
-    4: {
+    {
         id: 4,
         amount: 10,
         category: "Prezent",
@@ -37,7 +37,7 @@ export const initialData = {
         attachment: null,
         type: "Przychód",
     },
-    5: {
+    {
         id: 5,
         amount: 120,
         category: "Remont",
@@ -46,7 +46,7 @@ export const initialData = {
         attachment: null,
         type: "Wydatek",
     },
-    6: {
+    {
         id: 6,
         amount: 10,
         category: "Prezent",
@@ -55,14 +55,14 @@ export const initialData = {
         attachment: null,
         type: "Przychód",
     }
-  };
+];
   
   export const AccountsContext = createContext();
   
   export const accountsReducer = (state, action) => {
     switch (action.type) {
       case 'addNewAccount':
-        return {...state, ...action.payload};
+        return [...state, ...action.payload];
       // case 'edit':
       //   return {};
       // case 'delete':
