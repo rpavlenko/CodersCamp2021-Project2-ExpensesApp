@@ -25,7 +25,7 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledLabel = styled.label`
-  ${'' /* display: block; */}
+  display: block;
   margin-bottom: 2px;
   margin-left: 10px;
   font-family: inherit;
@@ -83,6 +83,7 @@ export const StyledInputGroupCategory = styled.div`
 export const StyledInputAttachment = styled.input`
   width: 100%;
   color: #6a5f5f;
+  padding: 10px -50px;
 
   ${({ type }) =>
     type === 'file' &&
@@ -93,7 +94,7 @@ export const StyledInputAttachment = styled.input`
 `;
 export const StyledInputGroupAttachment = styled.div`
   min-width: 158px;
-  padding: 15px 16px;
+  min-height: 44px;
   border: 2px solid #6a5f5f;
   border-radius: 15px;
   background-color: #e5e5e5;
@@ -101,17 +102,10 @@ export const StyledInputGroupAttachment = styled.div`
   ${({ icon }) =>
     icon &&
     `
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     margin-bottom: 20px;
-
-    & > button {
-      background-image: url('${Attach}');
-      width: 44px;
-      height: 44px;
-      margin: -13px;
-
-    }
+    background-image: url('${Attach}');
+    background-repeat: no-repeat;
+    background-position:center;
   `};
 `;
