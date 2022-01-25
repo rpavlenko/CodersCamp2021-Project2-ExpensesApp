@@ -9,21 +9,17 @@ import {
   ExpIncBtnGroup,
   InputDateStyled,
   InputGroupStyled,
-  ArrowButtonStyled,
 } from '../../views/NewPosition/NewPosition.styles';
 import {
   Input,
   InputCategory,
   InputAttachment,
 } from '../../components/Input/Input';
-import Arrow from '../../assets/arrow.png';
 
 export default function NewPosition() {
   return (
     <>
-      <ArrowButtonStyled>
-        <IconButton imageName={Arrow}></IconButton>
-      </ArrowButtonStyled>
+      <IconButton type="arrow"></IconButton>
       <StyledNewPosition>
         <InputDateStyled>
           <Input Input type="date" inputLabel="Data"></Input>
