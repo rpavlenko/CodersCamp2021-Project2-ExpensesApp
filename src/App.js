@@ -1,6 +1,7 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Routes, Route } from 'react-router-dom';
+import { useReducer } from 'react';
 import { Container } from './components/styles/Container.styled';
 import { AccountsList } from './components/Accounts/AccountsList';
 import {
@@ -18,10 +19,18 @@ import Table from './components/Table/Table';
 import Chart from './components/Chart/Chart';
 import Input from './components/Input/Input';
 import NotFound from './views/NotFound';
+import { AccountsContext, accountsReducer, initialData} from './reducers/accounts.reducer';
+
 
 function App() {
+const initialList = localStorage.getItem("accountsList") 
+  ? JSON.parse(localStorage.getItem("accountsList")) 
+  : initialData;
+ 
+const accountsState = useReducer(accountsReducer, initialList);
+
   return (
-    <>
+    <AccountsContext.Provider value={accountsState}>
       <GlobalStyles />
       <Header />
       <Container>
@@ -56,7 +65,7 @@ function App() {
         <Input type="text" inputLabel="Kwota:" />
         <Input type="date" />
       </Container>
-    </>
+    </AccountsContext.Provider>
   );
 }
 
