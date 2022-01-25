@@ -6,6 +6,7 @@ import trashBig from './trashBig.png';
 
 export const AccountDetail = (props) => {
     const {onEditClick, odDeleteClick, item } = props;
+    console.log({item});
     const { date, title, amount, type, category } = item;
 
     return (

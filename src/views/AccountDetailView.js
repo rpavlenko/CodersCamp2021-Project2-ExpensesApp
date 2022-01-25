@@ -1,24 +1,17 @@
 import {AccountDetail} from '../components/AccountDetail/AccountDetail';
 import {useParams } from "react-router-dom";
+import { AccountsContext } from "../reducers/accounts.reducer";
+import { useContext } from "react";
 
 export const AccountDetailView = () => {
     const {id} = useParams();
-
-    const temporaryAccount = {
-        id: 6,
-        amount: 10,
-        category: "Prezent",
-        title: "lastone",
-        date: "03-01-2022",
-        attachment: null,
-        type: "Przychód",
-    };
-
+    const [list] = useContext(AccountsContext);
+    const account = list.find(item => item.id == id);
+    
     return (
         <>
-        <h1>We are on detail page of id: {id}</h1>
-         <AccountDetail  
-            item={temporaryAccount} 
+        <AccountDetail  
+            item={account} 
             odDeleteClick={() => console.log('delete')} 
             onEditClick={() => console.log('edit')}
         />

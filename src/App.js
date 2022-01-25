@@ -1,6 +1,7 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
 import { Routes, Route } from 'react-router-dom';
+import { useReducer } from 'react';
 import { Container } from './components/styles/Container.styled';
 import { AccountsList } from './components/Accounts/AccountsList';
 import {
@@ -16,13 +17,20 @@ import Alert from './components/Alert/Alert';
 import Limit from './components/Limit/Limit';
 import Table from './components/Table/Table';
 import Chart from './components/Chart/Chart';
+import Input from './components/Input/Input';
 import NotFound from './views/NotFound';
 import {AccountDetailView} from './views/AccountDetailView';
-
+import { AccountsContext, accountsReducer, initialData} from './reducers/accounts.reducer';
 
 function App() {
+const initialList = localStorage.getItem("accountsList") 
+  ? JSON.parse(localStorage.getItem("accountsList")) 
+  : initialData;
+ 
+const accountsState = useReducer(accountsReducer, initialList);
+
   return (
-    <>
+    <AccountsContext.Provider value={accountsState}>
       <GlobalStyles />
       <Header />
       <Container>
@@ -44,14 +52,20 @@ function App() {
           isActive={false}
         />
         <h1>Expenses App</h1>
-        <AccountsList/>
+        <AccountsList />
         <CategoryList />
         <Alert category={'remont'} />
         <Limit category={'remont'} />
         <Table expenses={300} incomes={800} />
         <Chart />
+        <Input type="text" inputLabel="e-mail:" />
+        <Input type="password" inputLabel="hasło:" />
+        <Input type="password" inputLabel="powtórz hasło:" />
+        <Input type="search" placeholder="Wyszukaj" icon={'glass'} />
+        <Input type="text" inputLabel="Kwota:" />
+        <Input type="date" />
       </Container>
-    </>
+    </AccountsContext.Provider>
   );
 }
 
