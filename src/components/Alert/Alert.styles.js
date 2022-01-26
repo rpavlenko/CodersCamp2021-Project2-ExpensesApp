@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const StyledAlert = styled.div`
+  position: absolute;
+  top: 76px;
+  left: 25px;
+  right: 25px;
   min-width: 260px;
   margin-top: 23px;
   margin-bottom: 13px;
@@ -8,6 +12,8 @@ export const StyledAlert = styled.div`
   text-align: center;
   border: 3px solid #6a5f5f;
   border-radius: 20px;
+  background-color: #fff;
+  z-index: 2;
 `;
 
 export const StyledTitle = styled.h2`
