@@ -1,5 +1,6 @@
 import 'normalize.css';
 import GlobalStyles from './components/styles/Global';
+import Homepage from './views/Homepage/Homepage';
 import { Routes, Route } from 'react-router-dom';
 import { useReducer } from 'react';
 import { Container } from './components/styles/Container.styled';
@@ -23,10 +24,7 @@ const accountsState = useReducer(accountsReducer, initialList);
         <Routes>
           <Route path="*" element={<NotFound />} />
 
-          <Route
-            path="/"
-            element={<h1 className="text-6xl font-bold p-2">Expenses App</h1>}
-          />
+          <Route path="/" element={<Homepage />} />
           <Route path="/main" element={<MainPage />} />
         </Routes>
       </Container>
