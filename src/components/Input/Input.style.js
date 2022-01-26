@@ -20,6 +20,10 @@ export const StyledInput = styled.input`
       color: #6A5F5F;
       }
     `}
+
+  &::-webkit-calendar-picker-indicator{
+    margin: 0;
+  };
 `;
 
 export const StyledLabel = styled.label`
@@ -33,7 +37,7 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInputGroup = styled.div`
-  min-width: 267px;
+  //min-width: 267px;
   min-height: 47px;
   padding: 5px 10px;
   border: 2px solid #6a5f5f;
