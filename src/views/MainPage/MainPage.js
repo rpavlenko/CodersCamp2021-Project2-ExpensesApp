@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Table from '../../components/Table/Table';
-import Input from '../../components/Input/Input';
+import { Input } from '../../components/Input/Input';
 import Alert from '../../components/Alert/Alert';
 import Limit from '../../components/Limit/Limit';
 import CategoryList from '../../components/CategoryList/CategoryList';
@@ -17,7 +17,9 @@ const MainPage = () => {
     <>
       <Table expenses={300} incomes={800} />
       {showAlert ? null : <Limit category={'remont'} />}
-      {showAlert ? <Alert category={'remont'} onSetShowAlert={onSetShowAlert}/> : null}
+      {showAlert ? (
+        <Alert category={'remont'} onSetShowAlert={onSetShowAlert} />
+      ) : null}
       <AddButton text="Dodaj" imageName={Add} />
       <Input type="search" placeholder="Wyszukaj" icon={'glass'} />
       <StyledDateWrap>
