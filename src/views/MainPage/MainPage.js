@@ -21,13 +21,13 @@ const MainPage = () => {
         <Alert category={'remont'} onSetShowAlert={onSetShowAlert} />
       ) : null}
       <AddButton text="Dodaj" imageName={Add} />
-      <Input type="search" placeholder="Wyszukaj" icon={'glass'} />
+      <Input type="search" placeholder="Wyszukaj" icon={'glass'} inputLabel="nazwa pozycji" />
       <StyledDateWrap>
         <StyledDate>
-          <Input type="date" />
+          <Input type="date" inputLabel="początek zakresu" />
         </StyledDate>
         <StyledDate onClick={() => setShowAlert(false)}>
-          <Input type="date" />
+          <Input type="date" inputLabel="koniec zakresu" />
         </StyledDate>
       </StyledDateWrap>
       <CategoryList />
