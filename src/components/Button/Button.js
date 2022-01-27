@@ -3,6 +3,8 @@ import {
   StyledIconButton,
   ExpensesStyledButton,
   IncomeStyledButton,
+  StyledIconButtonWrap,
+  StyledIconButtonText,
 } from './../Button/Button.styles';
 import PropTypes from 'prop-types';
 
@@ -81,4 +83,24 @@ export const IconButton = (props) => {
 
 IconButton.propTypes = {
   type: PropTypes.oneOf(['arrow', 'arrowd', 'add', 'glass', 'edit', 'delete']),
+};
+
+export const AddButton = (props) => {
+  return (
+    <StyledIconButtonWrap>
+      <StyledIconButtonText>{props.text}</StyledIconButtonText>
+      <StyledIconButton src={props.imageName} alt="" isSmall={props.isSmall} />
+    </StyledIconButtonWrap>
+  );
+};
+
+AddButton.propTypes = {
+  text: PropTypes.string,
+  imageName: PropTypes.string,
+  alt: PropTypes.string,
+  isSmall: PropTypes.bool,
+};
+
+IconButton.defaultProps = {
+  isSmall: false,
 };

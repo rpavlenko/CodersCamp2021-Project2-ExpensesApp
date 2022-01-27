@@ -7,6 +7,7 @@ export const StyledNav = styled.nav`
   width: 100%;
   padding: 0 36px;
   background-color: #F8D478;
+  z-index: 6;
 `;
 
 export const StyledLine = styled.div`

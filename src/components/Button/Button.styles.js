@@ -91,3 +91,17 @@ export const StyledIconButton = styled.button`
         background-repeat: no-repeat;
   `}
 `;
+
+export const StyledIconButtonWrap = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 30px;
+`;
+
+export const StyledIconButtonText = styled.p`
+  margin-right: 10px;
+  font-size: 30px;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600;
+`;
