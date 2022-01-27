@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { PrimaryButton } from '../Button/Button';
 import { StyledAlert, StyledTitle, StyledText } from './Alert.styles';
 
-export default function Alert({ category }) {
+export default function Alert({ category, onSetShowAlert }) {
   return (
     <StyledAlert>
       <StyledTitle>ALERT</StyledTitle>
@@ -9,11 +10,15 @@ export default function Alert({ category }) {
         Przekroczyłeś limit wydatków w kategorii {category}.
       </StyledText>
 
-      {/* place for button */}
+      <div onClick={onSetShowAlert}>
+        <PrimaryButton className='xxx' text="Potwierdź" isActive={true} />
+      </div>
+      
     </StyledAlert>
   );
 }
 
 Alert.propTypes = {
   category: PropTypes.string.isRequired,
+  onSetShowAlert: PropTypes.func,
 };
