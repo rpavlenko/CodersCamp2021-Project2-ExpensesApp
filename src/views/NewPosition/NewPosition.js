@@ -16,6 +16,7 @@ import {
   InputAttachment,
 } from '../../components/Input/Input';
 
+
 export default function NewPosition() {
   return (
     <>

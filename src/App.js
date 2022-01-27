@@ -35,7 +35,7 @@ function App() {
           <Route
             path="/"
             element={<h1 className="text-6xl font-bold p-2">Expenses App</h1>}
-          /> */}
+          />
           <Route path="/new" element={<NewPosition />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
