@@ -1,5 +1,5 @@
 import { PrimaryButton } from '../../../components/Button/Button';
-import Input from '../../../components/Input/Input';
+import { Input } from '../../../components/Input/Input';
 import {
   StyledLoginPage,
   StyledLogo,

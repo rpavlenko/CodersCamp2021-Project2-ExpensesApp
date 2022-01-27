@@ -5,10 +5,14 @@ export const StyledLimitPage = styled.div`
   flex-direction: column;
   color: #6a5f5f;
 
-  & > button {
+  & button {
     margin-top: 49px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  & button[type='arrow'] {
+    margin-left: 0;
   }
 `;
 

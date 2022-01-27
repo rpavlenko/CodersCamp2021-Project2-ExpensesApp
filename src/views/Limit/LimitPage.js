@@ -1,5 +1,5 @@
 import CategoryList from '../../components/CategoryList/CategoryList';
-import Input from '../../components/Input/Input';
+import { Input } from '../../components/Input/Input';
 import { PrimaryButton, IconButton } from '../../components/Button/Button';
 
 import {
