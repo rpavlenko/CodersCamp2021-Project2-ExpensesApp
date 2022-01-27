@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const PrimaryStyledButton = styled.button`
   ${'' /* position: absolute; */}
   padding: 12px 10px;
+  margin: 10px 20px 10px 20px;
   min-width: 271px;
   min-height: 64px;
   background-color: ${(props) => (props.isActive ? '#638e2b' : '#8B8484')};
