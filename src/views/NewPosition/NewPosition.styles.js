@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 export const StyledNewPosition = styled.section`
-  padding: 10px 30px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 10 % 20% 40% 30%;
