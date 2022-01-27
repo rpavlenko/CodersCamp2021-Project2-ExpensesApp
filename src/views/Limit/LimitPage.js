@@ -1,6 +1,6 @@
 import CategoryList from '../../components/CategoryList/CategoryList';
 import Input from '../../components/Input/Input';
-import { PrimaryButton } from '../../components/Button/Button';
+import { PrimaryButton, IconButton } from '../../components/Button/Button';
 
 import {
   StyledLimitPage,
@@ -12,6 +12,7 @@ import {
 export default function LimitPage() {
   return (
     <StyledLimitPage>
+      <IconButton type="arrow"></IconButton>
       <StyledLimitTitle>Ustaw limit miesięczny</StyledLimitTitle>
       <StyledLimitGroup>
         <StyledLimitText>Kategoria:</StyledLimitText>
