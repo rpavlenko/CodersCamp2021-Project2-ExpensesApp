@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import {DetailContainer, NameOfExpense, ColumnContainer, BoldText, StyledAmountColor, PropsRow, IconsContainer, AmountContainer, ConfirmationStyle } from './AccountDetail.styles.js';
+import {DetailContainer, NameOfExpense, ColumnContainer, BoldText, StyledAmountColor, PropsRow, IconsContainer, ConfirmationStyle } from './AccountDetail.styles.js';
 import penBig from './penBig.png';
 import trashBig from './trashBig.png';
 
@@ -21,12 +21,8 @@ export const AccountDetail = (props) => {
                 <PropsRow> {category} </PropsRow>
                 <BoldText>Nazwa: </BoldText>
                 <PropsRow> {title} </PropsRow>
-                <AmountContainer>
-                    <BoldText>Kwota: </BoldText>
-                    <StyledAmountColor isExpense={type === "Wydatek"}>
-                        {amount} zł
-                    </StyledAmountColor>
-                </AmountContainer>
+                <BoldText>Kwota: </BoldText>
+                <StyledAmountColor isExpense={type === "Wydatek"}> {amount} zł </StyledAmountColor>
                 <BoldText>Potwierdzenie:</BoldText>
                 <ConfirmationStyle>Potwierdzenie.jpg</ConfirmationStyle>
             </ColumnContainer>
