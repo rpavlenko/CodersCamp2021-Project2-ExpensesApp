@@ -6,6 +6,7 @@ import { useReducer } from 'react';
 import { Container } from './components/styles/Container.styled';
 import Header from './components/Header/Header';
 import NotFound from './views/NotFound';
+import NewPosition from './views/NewPosition/NewPosition';
 import Homepage from './views/Homepage/Homepage';
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import MainPage from './views/MainPage/MainPage';
@@ -14,6 +15,7 @@ import {
   accountsReducer,
   initialData,
 } from './reducers/accounts.reducer';
+
 
 function App() {
   const initialList = localStorage.getItem('accountsList')
@@ -30,6 +32,12 @@ function App() {
         <Routes>
           <Route path="*" element={<NotFound />} />
 
+
+          <Route
+            path="/"
+            element={<h1 className="text-6xl font-bold p-2">Expenses App</h1>}
+          />
+          <Route path="/new" element={<NewPosition />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Homepage />} />

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const PrimaryStyledButton = styled.button`
   ${'' /* position: absolute; */}
   padding: 12px 10px;
-  width: 271px;
-  height: 64px;
+  min-width: 271px;
+  min-height: 64px;
   background-color: ${(props) => (props.isActive ? '#638e2b' : '#8B8484')};
   color: #ffffff;
   border: none;
@@ -14,14 +14,14 @@ export const PrimaryStyledButton = styled.button`
   font-size: 26px;
 `;
 
-export const WydatkiStyledButton = styled.button.attrs((props) => ({
+export const ExpensesStyledButton = styled.button.attrs((props) => ({
   text: props.className,
 }))`
   background-color: ${(props) => (props.isActive ? '#F4600C' : '#FFFFFF')};
   color: ${(props) => (props.isActive ? '#FFFFFF' : '#F4600C')};
   border: ${(props) => (props.isActive ? 'none' : '3px solid #8B8484')};
   padding: 5px 10px;
-  width: 122px;
+  min-width: 122px;
   height: 36px;
   border-radius: 30px;
   font-family: 'Baloo 2', sans-serif;
@@ -29,7 +29,7 @@ export const WydatkiStyledButton = styled.button.attrs((props) => ({
   font-size: 15px;
 `;
 
-export const PrzychodyStyledButton = styled(WydatkiStyledButton).attrs({
+export const IncomeStyledButton = styled(ExpensesStyledButton).attrs({
   text: 'Przychody',
 })`
   background-color: ${(props) => (props.isActive ? '#638E2B' : '#FFFFFF')};
