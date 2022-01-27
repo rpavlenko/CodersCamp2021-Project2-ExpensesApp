@@ -2,6 +2,7 @@ import {AccountDetail} from '../components/AccountDetail/AccountDetail';
 import {useParams } from "react-router-dom";
 import { AccountsContext } from "../reducers/accounts.reducer";
 import { useContext } from "react";
+import { IconButton } from '../components/Button/Button';
 
 export const AccountDetailView = () => {
     const {id} = useParams();
@@ -10,6 +11,7 @@ export const AccountDetailView = () => {
     
     return (
         <>
+        <IconButton type="arrow"></IconButton>
         <AccountDetail  
             item={account} 
             odDeleteClick={() => console.log('delete')} 
