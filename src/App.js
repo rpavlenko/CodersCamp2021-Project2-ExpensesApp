@@ -7,6 +7,7 @@ import { Container } from './components/styles/Container.styled';
 import Header from './components/Header/Header';
 import NotFound from './views/NotFound';
 import NewPosition from './views/NewPosition/NewPosition';
+import NotFound from './views/NotFound';
 import Homepage from './views/Homepage/Homepage';
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import MainPage from './views/MainPage/MainPage';
@@ -31,8 +32,6 @@ function App() {
       <Container>
         <Routes>
           <Route path="*" element={<NotFound />} />
-
-
           <Route
             path="/"
             element={<h1 className="text-6xl font-bold p-2">Expenses App</h1>}
@@ -42,6 +41,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/main" element={<MainPage />} />
+
         </Routes>
       </Container>
     </AccountsContext.Provider>

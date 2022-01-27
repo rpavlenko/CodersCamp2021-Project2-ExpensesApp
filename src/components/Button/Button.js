@@ -78,21 +78,11 @@ ButtonIncome.defaultProps = {
 };
 
 export const IconButton = (props) => {
-  return (
-    <button>
-      <StyledIconButton src={props.imageName} alt="" isSmall={props.isSmall} />
-    </button>
-  );
+  return <StyledIconButton type={props.type}></StyledIconButton>;
 };
 
 IconButton.propTypes = {
-  imageName: PropTypes.string,
-  alt: PropTypes.string,
-  isSmall: PropTypes.bool,
-};
-
-IconButton.defaultProps = {
-  isSmall: false,
+  type: PropTypes.oneOf(['arrow', 'arrowd', 'add', 'glass', 'edit', 'delete']),
 };
 
 export const AddButton = (props) => {
