@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import glass from '../../assets/magnifying-glass.png';
+import ArrowD from '../../assets/arrowd.png';
+import Attach from '../../assets/attach.png';
 
 export const StyledInput = styled.input`
   width: 100%;
@@ -20,6 +22,10 @@ export const StyledInput = styled.input`
         color: #6A5F5F;
       }
     `}
+
+  &::-webkit-calendar-picker-indicator{
+    margin: 0;
+  };
 `;
 
 export const StyledLabel = styled.label`
@@ -33,8 +39,7 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInputGroup = styled.div`
-  min-width: 267px;
-  min-height: 47px;
+  min-width: 158px;
   padding: 5px 10px;
   border: 2px solid #6a5f5f;
   border-radius: 15px;
@@ -52,5 +57,61 @@ export const StyledInputGroup = styled.div`
       width: 22px;
       height: 22px;
     }
+  `};
+
+  &:last-of-type {
+    margin-bottom: 45px;
+  }
+`;
+
+export const StyledInputGroupCategory = styled.div`
+  min-width: 158px;
+  padding: 2px 10px;
+  border: 2px solid #6a5f5f;
+  border-radius: 15px;
+
+  ${({ icon }) =>
+    icon &&
+    `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+
+    & > button {
+      background-image: url('${ArrowD}');
+      width: 33px;
+      height: 33px;
+    }
+  `};
+`;
+
+export const StyledInputAttachment = styled.input`
+  width: 100%;
+  color: #6a5f5f;
+  padding: 10px -50px;
+
+  ${({ type }) =>
+    type === 'file' &&
+    `
+      visibility: hidden;
+    
+    `}
+`;
+export const StyledInputGroupAttachment = styled.div`
+  min-width: 158px;
+  min-height: 44px;
+  border: 2px solid #6a5f5f;
+  border-radius: 15px;
+  background-color: #e5e5e5;
+
+  ${({ icon }) =>
+    icon &&
+    `
+    position: relative;
+    margin-bottom: 20px;
+    background-image: url('${Attach}');
+    background-repeat: no-repeat;
+    background-position:center;
   `};
 `;
