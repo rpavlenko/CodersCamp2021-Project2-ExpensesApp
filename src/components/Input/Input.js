@@ -1,7 +1,14 @@
 import PropTypes from 'prop-types';
-import { StyledInput, StyledLabel, StyledInputGroup } from './Input.style';
+import {
+  StyledInput,
+  StyledLabel,
+  StyledInputGroup,
+  StyledInputGroupCategory,
+  StyledInputGroupAttachment,
+  StyledInputAttachment,
+} from './Input.style';
 
-const Input = ({ type, placeholder, inputLabel, icon }) => {
+export const Input = ({ type, placeholder, inputLabel, icon }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
@@ -16,9 +23,56 @@ const Input = ({ type, placeholder, inputLabel, icon }) => {
     </>
   );
 };
-export default Input;
 
 Input.propTypes = {
+  inputLabel: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  icon: PropTypes.string,
+};
+
+export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
+  return (
+    <>
+      <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
+      <StyledInputGroupCategory icon>
+        <StyledInput
+          type={type}
+          placeholder={placeholder ? placeholder : ''}
+          id={inputLabel}
+        />
+        {icon ? <button></button> : ''}
+      </StyledInputGroupCategory>
+    </>
+  );
+};
+
+InputCategory.propTypes = {
+  inputLabel: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  icon: PropTypes.string,
+};
+
+export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {
+  return (
+    <>
+      <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
+      <label>
+        <StyledInputGroupAttachment icon>
+          <StyledInputAttachment
+            type={type}
+            placeholder={placeholder ? placeholder : ''}
+            id={inputLabel}
+          />
+          {icon ? <button></button> : ''}
+        </StyledInputGroupAttachment>
+      </label>
+    </>
+  );
+};
+
+InputAttachment.propTypes = {
   inputLabel: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,

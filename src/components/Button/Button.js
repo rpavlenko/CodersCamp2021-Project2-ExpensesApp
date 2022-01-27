@@ -1,8 +1,10 @@
 import {
   PrimaryStyledButton,
   StyledIconButton,
-  WydatkiStyledButton,
-  PrzychodyStyledButton,
+  ExpensesStyledButton,
+  IncomeStyledButton,
+  StyledIconButtonWrap,
+  StyledIconButtonText,
 } from './../Button/Button.styles';
 import PropTypes from 'prop-types';
 
@@ -30,59 +32,70 @@ PrimaryButton.defaultProps = {
   isActive: true,
 };
 
-export const ButtonWydatki = (props) => {
+export const ButtonExpenses = (props) => {
   return (
-    <WydatkiStyledButton
+    <ExpensesStyledButton
       className={props.className}
       text={props.text}
       isActive={props.isActive}
     >
       {props.text}
-    </WydatkiStyledButton>
+    </ExpensesStyledButton>
   );
 };
 
-ButtonWydatki.propTypes = {
+ButtonExpenses.propTypes = {
   className: PropTypes.oneOf(['Wydatki']),
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
 };
 
-ButtonWydatki.defaultProps = {
+ButtonExpenses.defaultProps = {
   isActive: true,
 };
 
-export const ButtonPrzychody = (props) => {
+export const ButtonIncome = (props) => {
   return (
-    <PrzychodyStyledButton
+    <IncomeStyledButton
       className={props.className}
       text={props.text}
       isActive={props.isActive}
     >
       {props.text}
-    </PrzychodyStyledButton>
+    </IncomeStyledButton>
   );
 };
 
-ButtonPrzychody.propTypes = {
+ButtonIncome.propTypes = {
   className: PropTypes.oneOf(['Przychody']),
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
 };
 
-ButtonPrzychody.defaultProps = {
+ButtonIncome.defaultProps = {
   isActive: true,
 };
 
 export const IconButton = (props) => {
-  return (
-    <button>
-      <StyledIconButton src={props.imageName} alt="" isSmall={props.isSmall} />
-    </button>
-  );
+  return <StyledIconButton type={props.type}></StyledIconButton>;
 };
 
 IconButton.propTypes = {
+  type: PropTypes.oneOf(['arrow', 'arrowd', 'add', 'glass', 'edit', 'delete']),
+};
+
+export const AddButton = (props) => {
+  return (
+    <StyledIconButtonWrap>
+      <StyledIconButtonText>{props.text}</StyledIconButtonText>
+      <StyledIconButton src={props.imageName} alt="" isSmall={props.isSmall} />
+    </StyledIconButtonWrap>
+  );
+};
+
+AddButton.propTypes = {
+  text: PropTypes.string,
   imageName: PropTypes.string,
   alt: PropTypes.string,
   isSmall: PropTypes.bool,

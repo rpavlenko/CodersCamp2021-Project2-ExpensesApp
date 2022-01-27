@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import {
   PrimaryButton,
-  ButtonWydatki,
-  ButtonPrzychody,
+  ButtonExpenses,
+  ButtonIncome,
   IconButton,
 } from './Button';
 
 describe('button', () => {
   test('if renders properly in the document', () => {
-    render(<PrimaryButton />);
+    render(<PrimaryButton text="button" className="class" />);
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
   });
@@ -16,7 +16,7 @@ describe('button', () => {
 
 describe('button', () => {
   test('if renders properly in the document', () => {
-    render(<ButtonWydatki />);
+    render(<ButtonExpenses text="Wydatki" />);
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
   });
@@ -24,7 +24,7 @@ describe('button', () => {
 
 describe('button', () => {
   test('if renders properly in the document', () => {
-    render(<ButtonPrzychody />);
+    render(<ButtonIncome text="Przychody" />);
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
   });
