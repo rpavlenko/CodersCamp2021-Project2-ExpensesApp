@@ -14,8 +14,14 @@ export const AccountsList = () => {
                 <AccountsItem 
                     key={item.id} 
                     item={item} 
-                    odDeleteClick={() => console.log('delete')} 
-                    onEditClick={() => console.log('edit')} 
+                    odDeleteClick={(e) => {
+                        console.log('delete');
+                        e.stopPropagation();
+                    }} 
+                    onEditClick={(e) => {
+                        console.log('edit');
+                        e.stopPropagation();
+                    }} 
                     onClick={() => navigate(`/detail/${item.id}`)}
                 />
             )}
