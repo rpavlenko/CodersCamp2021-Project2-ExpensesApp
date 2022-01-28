@@ -4,7 +4,7 @@ import { AccountsContext } from "../../reducers/accounts.reducer";
 import { useContext } from "react";
 
 export const AccountsList = () => {
-    const [list] = useContext(AccountsContext);
+    const [list, dispatch] = useContext(AccountsContext);
     const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
     const navigate = useNavigate();
 
@@ -14,8 +14,14 @@ export const AccountsList = () => {
                 <AccountsItem 
                     key={item.id} 
                     item={item} 
-                    odDeleteClick={() => console.log('delete')} 
-                    onEditClick={() => console.log('edit')} 
+                    odDeleteClick={(e) => {
+                        dispatch({type: "deleteAccount", payload: {id: item.id}});
+                        e.stopPropagation();
+                    }}
+                    onEditClick={(e) => {
+                        console.log('edit');
+                        e.stopPropagation();
+                    }}
                     onClick={() => navigate(`/detail/${item.id}`)}
                 />
             )}

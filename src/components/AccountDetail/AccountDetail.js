@@ -26,9 +26,9 @@ export const AccountDetail = (props) => {
                 <BoldText>Potwierdzenie:</BoldText>
                 <ConfirmationStyle>Potwierdzenie.jpg</ConfirmationStyle>
             </ColumnContainer>
-            <IconsContainer>  
-                <img src={trashBig} onClick={odDeleteClick}/>
+            <IconsContainer>      
                 <img src={penBig} onClick={onEditClick}/>
+                <img src={trashBig} onClick={odDeleteClick}/>
             </IconsContainer>
         </DetailContainer>
     );
@@ -36,7 +36,7 @@ export const AccountDetail = (props) => {
 
 AccountDetail.propTypes = {
     item: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         date: PropTypes.string,
         title: PropTypes.string,
         category: PropTypes.string,
