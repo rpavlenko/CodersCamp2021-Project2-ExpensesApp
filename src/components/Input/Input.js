@@ -8,7 +8,7 @@ import {
   StyledInputAttachment,
 } from './Input.style';
 
-export const Input = ({ type, placeholder, inputLabel, icon }) => {
+export const Input = ({ type, placeholder, inputLabel, icon, innerRef }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
@@ -17,6 +17,7 @@ export const Input = ({ type, placeholder, inputLabel, icon }) => {
           type={type}
           placeholder={placeholder ? placeholder : ''}
           id={inputLabel}
+          ref={innerRef}
         />
         {icon ? <button></button> : ''}
       </StyledInputGroup>
@@ -29,6 +30,7 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
+  innerRef: PropTypes.string.isRequired,
 };
 
 export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
