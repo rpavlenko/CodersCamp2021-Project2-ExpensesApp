@@ -5,7 +5,9 @@ export const StyledLoginPage = styled.main`
   flex-direction: column;
 
   & button {
-    margin: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 45px;
   }
 `;
 
@@ -36,4 +38,24 @@ export const StyledText = styled.h3`
   font-weight: 600;
   font-size: 30px;
   color: #6a5f5f;
+`;
+
+export const StyledMessage = styled.span`
+  position: absolute;
+  bottom: -20px;
+  font-size: 16px;
+  color: tomato;
+`;
+
+export const StyledValidation = styled.div`
+  position: relative;
+`;
+
+export const StyledForm = styled.form``;
+
+export const StyledUserNotExists = styled.span`
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: -25px;
+  color: tomato;
 `;

@@ -1,7 +1,7 @@
 import { PrimaryButton } from '../../../components/Button/Button';
 import { Input } from '../../../components/Input/Input';
 import {
-  StyledLoginPage,
+  StyledRegisterPage,
   StyledLogo,
   StyledIcon,
   StyledTitle,
@@ -11,7 +11,7 @@ import icon from '../../../assets/Icon.png';
 
 export default function LoginPage() {
   return (
-    <StyledLoginPage>
+    <StyledRegisterPage>
       <StyledLogo>
         <StyledIcon src={icon} />
         <StyledTitle>crooge</StyledTitle>
@@ -21,6 +21,6 @@ export default function LoginPage() {
       <Input type="password" inputLabel="hasło:" />
       <Input type="password" inputLabel="powtórz hasło:" />
       <PrimaryButton className="xxx" text="Rejestracja" isActive={true} />
-    </StyledLoginPage>
+    </StyledRegisterPage>
   );
 }

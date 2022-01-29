@@ -23,9 +23,9 @@ export const StyledInput = styled.input`
       }
     `}
 
-  &::-webkit-calendar-picker-indicator{
+  &::-webkit-calendar-picker-indicator {
     margin: 0;
-  };
+  } ;
 `;
 
 export const StyledLabel = styled.label`
@@ -58,10 +58,6 @@ export const StyledInputGroup = styled.div`
       height: 22px;
     }
   `};
-
-  &:last-of-type {
-    margin-bottom: 45px;
-  }
 `;
 
 export const StyledInputGroupCategory = styled.div`

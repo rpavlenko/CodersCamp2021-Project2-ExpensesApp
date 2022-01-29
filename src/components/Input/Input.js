@@ -1,3 +1,4 @@
+/*eslint no-unused-vars:*/
 import PropTypes from 'prop-types';
 import {
   StyledInput,
@@ -7,30 +8,36 @@ import {
   StyledInputGroupAttachment,
   StyledInputAttachment,
 } from './Input.style';
+import { forwardRef } from 'react';
 
-export const Input = ({ type, placeholder, inputLabel, icon, innerRef }) => {
-  return (
-    <>
-      <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-      <StyledInputGroup icon>
-        <StyledInput
-          type={type}
-          placeholder={placeholder ? placeholder : ''}
-          id={inputLabel}
-          ref={innerRef}
-        />
-        {icon ? <button></button> : ''}
-      </StyledInputGroup>
-    </>
-  );
-};
+// eslint-disable-next-line
+export const Input = forwardRef(
+  ({ type, placeholder, inputLabel, name, icon, ...rest }, ref) => {
+    return (
+      <>
+        <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
+        <StyledInputGroup icon>
+          <StyledInput
+            name={name}
+            placeholder={placeholder ? placeholder : ''}
+            type={type}
+            id={inputLabel}
+            ref={ref}
+            {...rest}
+          />
+          {icon ? <button></button> : ''}
+        </StyledInputGroup>
+      </>
+    );
+  },
+);
 
 Input.propTypes = {
   inputLabel: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
-  innerRef: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 
 export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
@@ -60,16 +67,14 @@ export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-      <label>
-        <StyledInputGroupAttachment icon>
-          <StyledInputAttachment
-            type={type}
-            placeholder={placeholder ? placeholder : ''}
-            id={inputLabel}
-          />
-          {icon ? <button></button> : ''}
-        </StyledInputGroupAttachment>
-      </label>
+      <StyledInputGroupAttachment icon>
+        <StyledInputAttachment
+          type={type}
+          placeholder={placeholder ? placeholder : ''}
+          id={inputLabel}
+        />
+        {icon ? <button></button> : ''}
+      </StyledInputGroupAttachment>
     </>
   );
 };
