@@ -51,8 +51,6 @@ export const StyledValidation = styled.div`
   position: relative;
 `;
 
-export const StyledForm = styled.form``;
-
 export const StyledUserNotExists = styled.span`
   text-align: center;
   margin-top: 50px;

@@ -1,13 +1,10 @@
-// eslint no-unused-vars
-// eslint-disable-next-line no-unused-vars
-/* eslint-disable */
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { PrimaryButton } from '../../../components/Button/Button';
+import { useForm } from 'react-hook-form';
+import { AccountsContext } from '../../../reducers/accounts.reducer';
+import { EMAIL_VERIFICATION_REGEX } from '../../../utils/helpers/validation.helpers';
 import { Input } from '../../../components/Input/Input';
-
+import { PrimaryButton } from '../../../components/Button/Button';
 import {
   StyledLoginPage,
   StyledLogo,
@@ -15,25 +12,16 @@ import {
   StyledTitle,
   StyledText,
   StyledMessage,
-  StyledForm,
   StyledValidation,
   StyledUserNotExists,
 } from './LoginPage.styles';
-import { EMAIL_VERIFICATION_REGEX } from '../../../utils/helpers/validation.helpers';
 import icon from '../../../assets/Icon.png';
 
-const users = [
-  {
-    id: 1,
-    email: 'admin@gmail.com',
-    password: 'test1234',
-  },
-];
-
 export default function LoginPage() {
+  const { users } = useContext(AccountsContext);
+  const navigate = useNavigate();
   const [userMessage, setUserMessage] = useState('');
 
-  let navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -41,10 +29,9 @@ export default function LoginPage() {
   } = useForm({
     defaultValues: {
       email: 'admin@gmail.com',
-      password: 'test1234',
+      password: 'AwD,H6s\\cWFJ73?f',
     },
   });
-  console.log(errors);
 
   const onSubmit = (data, event) => {
     const form = event.target;
@@ -59,7 +46,7 @@ export default function LoginPage() {
       navigate('/main');
     }
 
-    setUserMessage("User doesn't exists, please sign up");
+    setUserMessage('Użytkownik nie istnieje');
     form.reset();
   };
 
@@ -70,15 +57,18 @@ export default function LoginPage() {
         <StyledTitle>crooge</StyledTitle>
       </StyledLogo>
       <StyledText>Logowanie:</StyledText>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <StyledValidation>
           <Input
             type="e-mail"
             name="email"
             inputLabel="e-mail:"
             {...register('email', {
-              required: 'Wpisz poprawny e-mail',
-              pattern: EMAIL_VERIFICATION_REGEX,
+              required: 'Adres e-mail jest wymagany',
+              pattern: {
+                value: EMAIL_VERIFICATION_REGEX,
+                message: 'Adres e-mail jest wymagany',
+              },
             })}
           />
           <StyledMessage>{errors.email?.message}</StyledMessage>
@@ -104,7 +94,7 @@ export default function LoginPage() {
           isActive={true}
           type="submit"
         />
-      </StyledForm>
+      </form>
       {userMessage && (
         <>
           <StyledUserNotExists>{userMessage}</StyledUserNotExists>
