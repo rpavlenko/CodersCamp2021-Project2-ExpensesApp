@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 import {
   StyledInput,
   StyledLabel,
@@ -8,7 +8,7 @@ import {
   StyledInputAttachment,
 } from './Input.style';
 
-export const Input = ({ type, placeholder, inputLabel, icon }) => {
+export const Input = ({ type, placeholder, inputLabel, icon, value, onChange }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
@@ -17,6 +17,8 @@ export const Input = ({ type, placeholder, inputLabel, icon }) => {
           type={type}
           placeholder={placeholder ? placeholder : ''}
           id={inputLabel}
+          value={value}
+          onChange={onChange}
         />
         {icon ? <button></button> : ''}
       </StyledInputGroup>
@@ -29,9 +31,11 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
+  value: PropTypes.string|number,
+  onChange: PropTypes.func,
 };
 
-export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
+export const InputCategory = ({ type, placeholder, inputLabel, icon, value, onChange }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
@@ -40,6 +44,8 @@ export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
           type={type}
           placeholder={placeholder ? placeholder : ''}
           id={inputLabel}
+          value={value}
+          onChange={onChange}
         />
         {icon ? <button></button> : ''}
       </StyledInputGroupCategory>
@@ -52,6 +58,8 @@ InputCategory.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {

@@ -8,7 +8,7 @@ import Header from './components/Header/Header';
 import LimitPage from './views/Limit/LimitPage';
 import NotFound from './views/NotFound';
 import {AccountDetailView} from './views/AccountDetailView';
-import NewPosition from './views/NewPosition/NewPosition';
+import { NewPosition } from './views/NewPosition/NewPosition';
 import Homepage from './views/Homepage/Homepage';
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import MainPage from './views/MainPage/MainPage';

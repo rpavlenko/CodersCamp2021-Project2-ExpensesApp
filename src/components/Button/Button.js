@@ -16,6 +16,7 @@ export const PrimaryButton = (props) => {
       className={props.className}
       text={props.text}
       isActive={props.isActive}
+      onClick={props.onClick}
     >
       {props.text}
     </PrimaryStyledButton>
@@ -26,6 +27,7 @@ PrimaryButton.propTypes = {
   className: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
 };
 
 PrimaryButton.defaultProps = {
@@ -38,6 +40,7 @@ export const ButtonExpenses = (props) => {
       className={props.className}
       text={props.text}
       isActive={props.isActive}
+      onClick={props.onClick}
     >
       {props.text}
     </ExpensesStyledButton>
@@ -61,6 +64,7 @@ export const ButtonIncome = (props) => {
       className={props.className}
       text={props.text}
       isActive={props.isActive}
+      onClick={props.onClick}
     >
       {props.text}
     </IncomeStyledButton>
@@ -71,6 +75,7 @@ ButtonIncome.propTypes = {
   className: PropTypes.oneOf(['Przychody']),
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
 };
 
 ButtonIncome.defaultProps = {

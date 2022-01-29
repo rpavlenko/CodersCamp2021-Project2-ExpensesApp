@@ -63,7 +63,7 @@ export const accountsReducer = (state, action) => {
   switch (action.type) {
     case 'addNewAccount':
       // eslint-disable-next-line no-case-declarations
-      const newValue = [...state, ...action.payload];
+      const newValue = [...state, action.payload];
       //   In order to save the data between the sessions, we save it temporary in LocalStorage.
       localStorage.setItem('accountsList', JSON.stringify(newValue));
       return newValue;
