@@ -24,13 +24,13 @@ export default function Table() {
     setBalance(() => incomes - expenses);
   };
 
+  localStorage.setItem(
+    'accountBalance',
+    JSON.stringify({ balance, expenses, incomes }),
+  );
+
   useEffect(() => {
     calculateBalance(list);
-
-    localStorage.setItem(
-      'accountBalance',
-      JSON.stringify({ balance, expenses, incomes }),
-    );
   }, [list]);
 
   return (
