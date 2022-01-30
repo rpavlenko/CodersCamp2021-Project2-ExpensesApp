@@ -10,7 +10,9 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 export const AccountForm = (props) => {
-  const [date, setDate] = useState('');
+  const today = new Date().toISOString().slice(0, 10);
+
+  const [date, setDate] = useState(today);
   const [type, setType] = useState('Wydatki');
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');

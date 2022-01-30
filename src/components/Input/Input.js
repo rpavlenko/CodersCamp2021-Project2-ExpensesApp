@@ -8,7 +8,15 @@ import {
   StyledInputAttachment,
 } from './Input.style';
 
-export const Input = ({ type, placeholder, inputLabel, icon, value, onChange }) => {
+export const Input = ({
+  type,
+  placeholder,
+  inputLabel,
+  icon,
+  value,
+  onChange,
+  defaultValue,
+}) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
@@ -19,6 +27,7 @@ export const Input = ({ type, placeholder, inputLabel, icon, value, onChange }) 
           id={inputLabel}
           value={value}
           onChange={onChange}
+          defaultValue={defaultValue}
         />
         {icon ? <button></button> : ''}
       </StyledInputGroup>
@@ -31,11 +40,19 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
-  value: PropTypes.string|number,
+  value: PropTypes.string | number | null,
   onChange: PropTypes.func,
+  defaultValue: PropTypes.string,
 };
 
-export const InputCategory = ({ type, placeholder, inputLabel, icon, value, onChange }) => {
+export const InputCategory = ({
+  type,
+  placeholder,
+  inputLabel,
+  icon,
+  value,
+  onChange,
+}) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
