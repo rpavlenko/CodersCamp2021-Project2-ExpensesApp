@@ -15,7 +15,6 @@ export const Input = ({
   icon,
   value,
   onChange,
-  defaultValue,
 }) => {
   return (
     <>
@@ -27,7 +26,6 @@ export const Input = ({
           id={inputLabel}
           value={value}
           onChange={onChange}
-          defaultValue={defaultValue}
         />
         {icon ? <button></button> : ''}
       </StyledInputGroup>
@@ -42,7 +40,6 @@ Input.propTypes = {
   icon: PropTypes.string,
   value: PropTypes.string | number | null,
   onChange: PropTypes.func,
-  defaultValue: PropTypes.string,
 };
 
 export const InputCategory = ({
