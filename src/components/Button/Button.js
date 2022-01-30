@@ -83,11 +83,12 @@ ButtonIncome.defaultProps = {
 };
 
 export const IconButton = (props) => {
-  return <StyledIconButton type={props.type}></StyledIconButton>;
+  return <StyledIconButton type={props.type} onClick={props.onClick} />;
 };
 
 IconButton.propTypes = {
   type: PropTypes.oneOf(['arrow', 'arrowd', 'add', 'glass', 'edit', 'delete']),
+  onClick: PropTypes.func,
 };
 
 export const AddButton = (props) => {
