@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import glass from '../../assets/magnifying-glass.png';
 import ArrowD from '../../assets/arrowd.png';
 import Attach from '../../assets/attach.png';
+import ReactSelect from 'react-select';
 
 export const StyledInput = styled.input`
   width: 100%;
@@ -23,9 +24,9 @@ export const StyledInput = styled.input`
       }
     `}
 
-  &::-webkit-calendar-picker-indicator{
+  &::-webkit-calendar-picker-indicator {
     margin: 0;
-  };
+  } ;
 `;
 
 export const StyledLabel = styled.label`
@@ -114,4 +115,11 @@ export const StyledInputGroupAttachment = styled.div`
     background-repeat: no-repeat;
     background-position:center;
   `};
+`;
+
+export const StyledInputSelect = styled(ReactSelect)`
+  min-width: 158px;
+  padding: 5px 10px;
+  border: 2px solid #6a5f5f;
+  border-radius: 15px;
 `;

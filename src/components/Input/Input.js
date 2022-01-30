@@ -3,9 +3,9 @@ import {
   StyledInput,
   StyledLabel,
   StyledInputGroup,
-  StyledInputGroupCategory,
   StyledInputGroupAttachment,
   StyledInputAttachment,
+  StyledInputSelect,
 } from './Input.style';
 
 export const Input = ({
@@ -42,38 +42,33 @@ Input.propTypes = {
   onChange: PropTypes.func,
 };
 
-export const InputCategory = ({
-  type,
+export const InputSelect = ({
   placeholder,
   inputLabel,
-  icon,
   value,
   onChange,
+  options,
 }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-      <StyledInputGroupCategory icon>
-        <StyledInput
-          type={type}
-          placeholder={placeholder ? placeholder : ''}
-          id={inputLabel}
-          value={value}
-          onChange={onChange}
-        />
-        {icon ? <button></button> : ''}
-      </StyledInputGroupCategory>
+      <StyledInputSelect
+        placeholder={placeholder ? placeholder : ''}
+        id={inputLabel}
+        value={value}
+        onChange={onChange}
+        options={options}
+      />
     </>
   );
 };
 
-InputCategory.propTypes = {
+InputSelect.propTypes = {
   inputLabel: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  icon: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  options: PropTypes.array,
 };
 
 export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {

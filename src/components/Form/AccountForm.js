@@ -5,7 +5,7 @@ import {
   InputDateStyled,
   InputGroupStyled,
 } from '../../views/NewPosition/NewPosition.styles';
-import { Input, InputCategory, InputAttachment } from '../Input/Input';
+import { Input, InputSelect, InputAttachment } from '../Input/Input';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,10 +14,18 @@ export const AccountForm = (props) => {
 
   const [date, setDate] = useState(today);
   const [type, setType] = useState('Wydatki');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState({ label: '', value: '' });
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(null);
   // const [attachment, setAttachment] = useState(null);
+
+  // temporary solution for category options
+  const options = [
+    { value: 'remont', label: 'Remont' },
+    { value: 'prezent', label: 'Prezent' },
+    { value: 'ubrania', label: 'Ubrania' },
+    { value: 'leczenie', label: 'Leczenie' },
+  ];
 
   const handleSubmit = () => {
     const data = {
@@ -54,12 +62,11 @@ export const AccountForm = (props) => {
           />
         </ExpIncBtnGroup>
         <InputGroupStyled>
-          <InputCategory
-            type="search"
+          <InputSelect
             inputLabel="Kategoria"
-            icon={'ArrowD'}
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            options={options}
+            onChange={(option) => setCategory(option)}
           />
           <Input
             type="text"

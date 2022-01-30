@@ -9,11 +9,10 @@ export const NewPosition = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (data) => {
-    console.log(data);
     const id = 'id' + new Date().getTime();
     dispatch({
       type: 'addNewAccount',
-      payload: { ...data, id },
+      payload: { ...data, category: data.category.label, id },
     });
     navigate(`/detail/${id}`);
   };
