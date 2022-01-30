@@ -1,10 +1,8 @@
+import PropTypes from 'prop-types';
 import { AccountsItem } from "./AccountsItem";
 import { useNavigate } from "react-router-dom";
-import { AccountsContext } from "../../reducers/accounts.reducer";
-import { useContext } from "react";
 
-export const AccountsList = () => {
-    const [list] = useContext(AccountsContext);
+export const AccountsList = ({ list }) => {
     const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
     const navigate = useNavigate();
 
@@ -27,4 +25,8 @@ export const AccountsList = () => {
             )}
         </div>
     );
+};
+
+AccountsList.propTypes = {
+  list: PropTypes.array.isRequired,
 };
