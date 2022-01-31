@@ -10,7 +10,7 @@ export default function Table() {
   const [incomes, setIncomes] = useState(0);
   const [balance, setBalance] = useState(0);
 
-  const calculateBalance = (list) => {
+  useEffect(() => {
     const expenses = list
       .filter((item) => item.type === 'Wydatek')
       .reduce((acc, item) => (acc += item.amount), 0);
@@ -22,16 +22,14 @@ export default function Table() {
     setIncomes((prevState) => prevState + incomes);
 
     setBalance(() => incomes - expenses);
-  };
-
-  localStorage.setItem(
-    'accountBalance',
-    JSON.stringify({ balance, expenses, incomes }),
-  );
+  }, [list]);
 
   useEffect(() => {
-    calculateBalance(list);
-  }, [list]);
+    localStorage.setItem(
+      'accountBalance',
+      JSON.stringify({ balance, expenses, incomes }),
+    );
+  }, [balance, expenses, incomes]);
 
   return (
     <StyledTable>
