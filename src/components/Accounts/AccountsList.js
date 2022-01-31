@@ -8,6 +8,10 @@ export const AccountsList = () => {
     const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
     const navigate = useNavigate();
 
+    const onEditClick = () => {
+        navigate('/new');
+    };
+
     return (
         <div> 
             {lastFive.map((item) => 
@@ -19,7 +23,7 @@ export const AccountsList = () => {
                         e.stopPropagation();
                     }} 
                     onEditClick={(e) => {
-                        console.log('edit');
+                        onEditClick();
                         e.stopPropagation();
                     }} 
                     onClick={() => navigate(`/detail/${item.id}`)}
