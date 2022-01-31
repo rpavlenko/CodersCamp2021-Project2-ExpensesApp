@@ -6,8 +6,15 @@ import {
   InputGroupStyled,
 } from '../../views/NewPosition/NewPosition.styles';
 import { Input, InputSelect, InputAttachment } from '../Input/Input';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+
+const initialData = [
+  { value: 'remont', label: 'Remont' },
+  { value: 'prezent', label: 'Prezent' },
+  { value: 'ubrania', label: 'Ubrania' },
+  { value: 'leczenie', label: 'Leczenie' },
+];
 
 export const AccountForm = (props) => {
   const today = new Date().toISOString().slice(0, 10);
@@ -16,16 +23,25 @@ export const AccountForm = (props) => {
   const [type, setType] = useState('Wydatki');
   const [category, setCategory] = useState({ label: '', value: '' });
   const [title, setTitle] = useState('');
+  // TODO think how to remove console warning
   const [amount, setAmount] = useState(null);
   // const [attachment, setAttachment] = useState(null);
 
-  // temporary solution for category options
-  const options = [
-    { value: 'remont', label: 'Remont' },
-    { value: 'prezent', label: 'Prezent' },
-    { value: 'ubrania', label: 'Ubrania' },
-    { value: 'leczenie', label: 'Leczenie' },
-  ];
+  const initialCategories = localStorage.getItem('categories')
+    ? JSON.parse(localStorage.getItem('categories'))
+    : initialData;
+  const [categoryOptions, setCategoryOptions] = useState(initialCategories);
+
+  const handleCreate = useCallback(
+    (inputValue) => {
+      const newValue = { value: inputValue.toLowerCase(), label: inputValue };
+      const newCategories = [...categoryOptions, newValue];
+      setCategoryOptions(newCategories);
+      setCategory(newValue);
+      localStorage.setItem('categories', JSON.stringify(newCategories));
+    },
+    [categoryOptions],
+  );
 
   const handleSubmit = () => {
     const data = {
@@ -63,10 +79,12 @@ export const AccountForm = (props) => {
         </ExpIncBtnGroup>
         <InputGroupStyled>
           <InputSelect
+            isClearable
             inputLabel="Kategoria"
             value={category}
-            options={options}
+            options={categoryOptions}
             onChange={(option) => setCategory(option)}
+            onCreateOption={handleCreate}
           />
           <Input
             type="text"

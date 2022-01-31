@@ -1,4 +1,4 @@
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   StyledInput,
   StyledLabel,
@@ -38,7 +38,7 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
-  value: PropTypes.string | number | null,
+  value: PropTypes.string,
   onChange: PropTypes.func,
 };
 
@@ -48,6 +48,8 @@ export const InputSelect = ({
   value,
   onChange,
   options,
+  isClearable,
+  onCreateOption,
 }) => {
   return (
     <>
@@ -58,6 +60,8 @@ export const InputSelect = ({
         value={value}
         onChange={onChange}
         options={options}
+        isClearable={isClearable}
+        onCreateOption={onCreateOption}
       />
     </>
   );
@@ -66,9 +70,11 @@ export const InputSelect = ({
 InputSelect.propTypes = {
   inputLabel: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.object,
   onChange: PropTypes.func,
   options: PropTypes.array,
+  isClearable: PropTypes.bool,
+  onCreateOption: PropTypes.func,
 };
 
 export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {
