@@ -2,7 +2,7 @@ import { StyledList } from './CategoryList.styles';
 import ListItem from './ListItem/ListItem';
 import PropTypes from 'prop-types';
 
-const CategoryList = ({ handleClick, filter, setFilter }) => {
+const CategoryList = ({ handleClick, setFilter }) => {
   const categories = [
     {
       id: 0,
@@ -32,8 +32,8 @@ const CategoryList = ({ handleClick, filter, setFilter }) => {
   ];
 
   handleClick = (e) => {
-    e.target.value = 'category';
-    console.log(e.target.value);
+    // let val = e.target.value;
+    console.log(e.target.innerText);
   };
 
   return (
@@ -43,7 +43,7 @@ const CategoryList = ({ handleClick, filter, setFilter }) => {
           key={category.id}
           item={category}
           handleClick={handleClick}
-          value={filter}
+          value={(e) => e.target.innerText}
           onChange={(e) => setFilter(e.target.value)}
         />
       ))}
