@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const AccountDetailView = () => {
   const { id } = useParams();
-  const [list, dispatch] = useContext(AccountsContext);
+  const { accountsState } = useContext(AccountsContext);
+  const [list, dispatch] = accountsState;
   const account = list.find((item) => item.id == id);
   const navigate = useNavigate();
 
