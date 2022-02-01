@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import Table from '../../components/Table/Table';
 import { Input } from '../../components/Input/Input';
@@ -19,13 +19,18 @@ const MainPage = () => {
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
 
-  const [list] = useContext(AccountsContext);
+  const [list, dispatch] = useContext(AccountsContext);
   const [listToShow, setListToShow] = useState(list);
-
+  useEffect(() => {
+    setListToShow(list);
+  }, [list]);
   let filteredList;
 
   const filterList = () => {
-    if (name) filteredList = list.filter((item) => item.title.toLowerCase().includes(name.toLowerCase().trim()));
+    if (name)
+      filteredList = list.filter((item) =>
+        item.title.toLowerCase().includes(name.toLowerCase().trim()),
+      );
     if (dateStart)
       filteredList = filteredList
         ? filteredList.filter(
@@ -39,7 +44,7 @@ const MainPage = () => {
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
 
-    if(filteredList) setListToShow(filteredList);
+    if (filteredList) setListToShow(filteredList);
   };
 
   return (
@@ -78,7 +83,7 @@ const MainPage = () => {
         </StyledDate>
       </StyledDateWrap>
       <CategoryList />
-      <AccountsList list={listToShow} />
+      <AccountsList list={listToShow} dispatch={dispatch} />
     </>
   );
 };
