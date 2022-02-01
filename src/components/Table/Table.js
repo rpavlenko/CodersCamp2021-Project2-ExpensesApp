@@ -6,12 +6,17 @@ import { StyledTable } from './Table.styles';
 export default function Table() {
   const { accountsState } = useContext(AccountsContext);
   const [list] = accountsState;
+  console.log(list);
 
   const [expenses, setExpenses] = useState(0);
   const [incomes, setIncomes] = useState(0);
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
+    setExpenses(0);
+    setIncomes(0);
+    setBalance(0);
+
     const expenses = list
       .filter((item) => item.type === 'Wydatek')
       .reduce((acc, item) => (acc += item.amount), 0);
