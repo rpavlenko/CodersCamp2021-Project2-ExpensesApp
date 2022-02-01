@@ -60,9 +60,9 @@ const MainPage = () => {
         placeholder="Wyszukaj"
         icon={'glass'}
         inputLabel="nazwa pozycji"
-        filter={name}
-        setFilter={setName}
-        filterList={filterList}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        onSearchClick={filterList}
       />
       <StyledDateWrap>
         <StyledDate>
