@@ -5,7 +5,8 @@ import { AccountsContext } from '../../reducers/accounts.reducer';
 import { useNavigate } from 'react-router-dom';
 
 export const NewPosition = () => {
-  const [, dispatch] = useContext(AccountsContext);
+  const { accountsState } = useContext(AccountsContext);
+  const [, dispatch] = accountsState;
   const navigate = useNavigate();
 
   const handleSubmit = (data) => {

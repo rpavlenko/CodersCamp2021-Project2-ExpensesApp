@@ -19,7 +19,9 @@ const MainPage = () => {
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
 
-  const [list, dispatch] = useContext(AccountsContext);
+  const { accountsState } = useContext(AccountsContext);
+
+  const [list, dispatch] = accountsState;
   const [listToShow, setListToShow] = useState(list);
   useEffect(() => {
     setListToShow(list);

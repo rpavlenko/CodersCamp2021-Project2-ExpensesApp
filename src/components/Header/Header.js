@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import icon from '../../assets/Icon.png';
 import Hamburger from './Hamburger/Hamburger';
-import { StyledHeader, StyledIcon, StyledName } from './Header.styles';
+import {
+  StyledHeader,
+  StyledIcon,
+  StyledName,
+  StyledLogo,
+} from './Header.styles';
 import Navigation from './Navigation/Navigation';
 
 const Header = () => {
@@ -16,14 +21,16 @@ const Header = () => {
   }, [location]);
 
   return (
-    <Link to={'/'}>
-      <StyledHeader>
-        <StyledIcon src={icon} />
-        <StyledName>Scrooge</StyledName>
-        <Hamburger onShowNav={showNav} menuActive={active} />
-        {active ? <Navigation /> : null}
-      </StyledHeader>
-    </Link>
+    <StyledHeader>
+      <Link to={'/'}>
+        <StyledLogo>
+          <StyledIcon src={icon} />
+          <StyledName>Scrooge</StyledName>
+        </StyledLogo>
+      </Link>
+      <Hamburger onShowNav={showNav} menuActive={active} />
+      {active ? <Navigation /> : null}
+    </StyledHeader>
   );
 };
 

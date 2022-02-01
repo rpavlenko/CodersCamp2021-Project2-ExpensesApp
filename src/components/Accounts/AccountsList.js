@@ -1,8 +1,5 @@
-import { AccountDetail } from '../AccountDetail/AccountDetail';
 import { AccountsItem } from './AccountsItem';
 import { useNavigate } from 'react-router-dom';
-import { AccountsContext } from '../../reducers/accounts.reducer';
-import { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 export const AccountsList = ({ list, dispatch }) => {

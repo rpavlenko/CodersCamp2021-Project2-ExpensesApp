@@ -11,7 +11,7 @@ import Homepage from './views/Homepage/Homepage';
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import RegisterPage from './views/Login/RegisterPage/RegisterPage';
 import MainPage from './views/MainPage/MainPage';
-import NewPosition from './views/NewPosition/NewPosition';
+import { NewPosition } from './views/NewPosition/NewPosition';
 import {
   AccountsContext,
   accountsReducer,

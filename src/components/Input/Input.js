@@ -10,44 +10,50 @@ import {
 } from './Input.style';
 import { forwardRef } from 'react';
 
-export const Input = forwardRef({
-  name,
-  type,
-  placeholder,
-  inputLabel,
-  icon,
-  value,
-  onChange,
-  onSearchClick,
-  ...rest
-}, ref) => {
-  return (
-    <>
-      <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-      <StyledInputGroup icon>
-        <StyledInput
-          name={name}
-          type={type}
-          placeholder={placeholder ? placeholder : ''}
-          id={inputLabel}
-          value={value}
-          onChange={onChange}
-          ref={ref}
-          {...rest}
-        />
-        {icon ? (
-          type === 'search' ? (
-            <button onClick={onSearchClick}></button>
+// eslint-disable-next-line react/display-name
+export const Input = forwardRef(
+  (
+    {
+      name,
+      type,
+      placeholder,
+      inputLabel,
+      icon,
+      value,
+      onChange,
+      onSearchClick,
+      ...rest
+    },
+    ref,
+  ) => {
+    return (
+      <>
+        <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
+        <StyledInputGroup icon>
+          <StyledInput
+            name={name}
+            type={type}
+            placeholder={placeholder ? placeholder : ''}
+            id={inputLabel}
+            value={value}
+            onChange={onChange}
+            ref={ref}
+            {...rest}
+          />
+          {icon ? (
+            type === 'search' ? (
+              <button onClick={onSearchClick}></button>
+            ) : (
+              <button></button>
+            )
           ) : (
-            <button></button>
-          )
-        ) : (
-          ''
-        )}
-      </StyledInputGroup>
-    </>
-  );
-};
+            ''
+          )}
+        </StyledInputGroup>
+      </>
+    );
+  },
+);
 
 Input.propTypes = {
   inputLabel: PropTypes.string.isRequired,
@@ -58,7 +64,6 @@ Input.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   onSearchClick: PropTypes.func,
-
 };
 
 export const InputSelect = ({
