@@ -18,14 +18,20 @@ const MainPage = () => {
   const [name, setName] = useState('');
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
+  const [chosenCategory, setchosenCategory] = useState('');
 
   const [list] = useContext(AccountsContext);
   const [listToShow, setListToShow] = useState(list);
 
   let filteredList;
 
+  let filteredCategory;
+
   const filterList = () => {
-    if (name) filteredList = list.filter((item) => item.title.toLowerCase().includes(name.toLowerCase().trim()));
+    if (name)
+      filteredList = list.filter((item) =>
+        item.title.toLowerCase().includes(name.toLowerCase().trim()),
+      );
     if (dateStart)
       filteredList = filteredList
         ? filteredList.filter(
@@ -39,9 +45,19 @@ const MainPage = () => {
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
 
-    if(filteredList) setListToShow(filteredList);
+    if (filteredList) setListToShow(filteredList);
   };
+  const filterByCat = () => {
+    console.log(list);
+    if (chosenCategory) console.log(chosenCategory);
+    chosenCategory !== 'Wszystkie'
+      ? filteredCategory.filter((item) =>
+          item.category.includes(chosenCategory),
+        )
+      : (filteredCategory = list);
 
+    if (filteredList) setListToShow(filteredList);
+  };
   return (
     <>
       <Table expenses={300} incomes={800} />
@@ -77,7 +93,11 @@ const MainPage = () => {
           />
         </StyledDate>
       </StyledDateWrap>
-      <CategoryList />
+      <CategoryList
+        filter={chosenCategory}
+        setFilter={setchosenCategory}
+        handleClick={filterByCat}
+      />
       <AccountsList list={listToShow} />
     </>
   );
