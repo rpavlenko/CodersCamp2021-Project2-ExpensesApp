@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { StyledTable } from './Table.styles';
 
 export default function Table() {
-  const [list] = useContext(AccountsContext);
+  const { accountsState } = useContext(AccountsContext);
+  const [list] = accountsState;
 
   const [expenses, setExpenses] = useState(0);
   const [incomes, setIncomes] = useState(0);
