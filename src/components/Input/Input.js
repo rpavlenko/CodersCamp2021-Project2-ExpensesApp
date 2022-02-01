@@ -3,12 +3,20 @@ import {
   StyledInput,
   StyledLabel,
   StyledInputGroup,
-  StyledInputGroupCategory,
   StyledInputGroupAttachment,
   StyledInputAttachment,
+  StyledInputSelect,
 } from './Input.style';
 
-export const Input = ({ type, placeholder, inputLabel, icon, filter, setFilter, filterList }) => {
+export const Input = ({
+  type,
+  placeholder,
+  inputLabel,
+  icon,
+  value,
+  onChange,
+  onSearchClick,
+}) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
@@ -17,10 +25,18 @@ export const Input = ({ type, placeholder, inputLabel, icon, filter, setFilter, 
           type={type}
           placeholder={placeholder ? placeholder : ''}
           id={inputLabel}
-          value={filter}
-          onChange={(event) => setFilter(event.target.value)}
+          value={value}
+          onChange={onChange}
         />
-        {icon ? type === 'search' ? <button onClick={filterList}></button> : <button></button> : ''}
+        {icon ? (
+          type === 'search' ? (
+            <button onClick={onSearchClick}></button>
+          ) : (
+            <button></button>
+          )
+        ) : (
+          ''
+        )}
       </StyledInputGroup>
     </>
   );
@@ -31,32 +47,44 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
-  filter: PropTypes.string,
-  setFilter: PropTypes.func,
-  filterList: PropTypes.func,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onSearchClick: PropTypes.func,
 };
 
-export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
+export const InputSelect = ({
+  placeholder,
+  inputLabel,
+  value,
+  onChange,
+  options,
+  isClearable,
+  onCreateOption,
+}) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-      <StyledInputGroupCategory icon>
-        <StyledInput
-          type={type}
-          placeholder={placeholder ? placeholder : ''}
-          id={inputLabel}
-        />
-        {icon ? <button></button> : ''}
-      </StyledInputGroupCategory>
+      <StyledInputSelect
+        placeholder={placeholder ? placeholder : ''}
+        id={inputLabel}
+        value={value}
+        onChange={onChange}
+        options={options}
+        isClearable={isClearable}
+        onCreateOption={onCreateOption}
+      />
     </>
   );
 };
 
-InputCategory.propTypes = {
+InputSelect.propTypes = {
   inputLabel: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  icon: PropTypes.string,
+  value: PropTypes.object,
+  onChange: PropTypes.func,
+  options: PropTypes.array,
+  isClearable: PropTypes.bool,
+  onCreateOption: PropTypes.func,
 };
 
 export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {
