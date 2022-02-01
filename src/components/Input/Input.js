@@ -15,6 +15,7 @@ export const Input = ({
   icon,
   value,
   onChange,
+  onSearchClick,
 }) => {
   return (
     <>
@@ -27,7 +28,15 @@ export const Input = ({
           value={value}
           onChange={onChange}
         />
-        {icon ? <button></button> : ''}
+        {icon ? (
+          type === 'search' ? (
+            <button onClick={onSearchClick}></button>
+          ) : (
+            <button></button>
+          )
+        ) : (
+          ''
+        )}
       </StyledInputGroup>
     </>
   );
@@ -40,6 +49,7 @@ Input.propTypes = {
   icon: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  onSearchClick: PropTypes.func,
 };
 
 export const InputSelect = ({

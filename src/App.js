@@ -9,6 +9,8 @@ import LimitPage from './views/Limit/LimitPage';
 import NotFound from './views/NotFound';
 import { AccountDetailView } from './views/AccountDetailView';
 import { NewPosition } from './views/NewPosition/NewPosition';
+import ChartView from './views/ChartView/ChartView';
+
 import Homepage from './views/Homepage/Homepage';
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import MainPage from './views/MainPage/MainPage';
@@ -32,6 +34,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="*" element={<NotFound />} />
+          <Route path="/chart" element={<ChartView />} />
           <Route path="/detail/:id" element={<AccountDetailView />} />
           <Route path="/limit" element={<LimitPage />} />
           <Route path="/new" element={<NewPosition />} />

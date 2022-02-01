@@ -1,30 +1,33 @@
-import { AccountsItem } from "./AccountsItem";
-import { useNavigate } from "react-router-dom";
-import { AccountsContext } from "../../reducers/accounts.reducer";
-import { useContext } from "react";
+import PropTypes from 'prop-types';
+import { AccountsItem } from './AccountsItem';
+import { useNavigate } from 'react-router-dom';
 
-export const AccountsList = () => {
-    const [list] = useContext(AccountsContext);
-    const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
-    const navigate = useNavigate();
+export const AccountsList = ({ list, dispatch }) => {
+  const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
+  const navigate = useNavigate();
 
-    return (
-        <div> 
-            {lastFive.map((item) => 
-                <AccountsItem 
-                    key={item.id} 
-                    item={item} 
-                    odDeleteClick={(e) => {
-                        console.log('delete');
-                        e.stopPropagation();
-                    }} 
-                    onEditClick={(e) => {
-                        console.log('edit');
-                        e.stopPropagation();
-                    }} 
-                    onClick={() => navigate(`/detail/${item.id}`)}
-                />
-            )}
-        </div>
-    );
+  return (
+    <div>
+      {lastFive.map((item) => (
+        <AccountsItem
+          key={item.id}
+          item={item}
+          odDeleteClick={(e) => {
+            dispatch({ type: 'deleteAccount', payload: { id: item.id } });
+            e.stopPropagation();
+          }}
+          onEditClick={(e) => {
+            console.log('edit');
+            e.stopPropagation();
+          }}
+          onClick={() => navigate(`/detail/${item.id}`)}
+        />
+      ))}
+    </div>
+  );
+};
+
+AccountsList.propTypes = {
+  list: PropTypes.array.isRequired,
+  dispatch: PropTypes.func,
 };
