@@ -17,7 +17,7 @@ export const InputDateStyled = styled.div`
   width: 60%;
 `;
 export const InputGroupStyled = styled.div`
-  margin: 30px auto 30px;
+  margin: 25px auto 25px;
   width: 100%;
 `;
 

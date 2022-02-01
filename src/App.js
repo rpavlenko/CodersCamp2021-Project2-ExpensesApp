@@ -4,11 +4,13 @@ import { Routes, Route } from 'react-router-dom';
 import GlobalStyles from './components/styles/Global';
 import Header from './components/Header/Header';
 import LimitPage from './views/Limit/LimitPage';
+import NotFound from './views/NotFound';
+import { AccountDetailView } from './views/AccountDetailView';
+import ChartView from './views/ChartView/ChartView';
 import Homepage from './views/Homepage/Homepage';
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import RegisterPage from './views/Login/RegisterPage/RegisterPage';
 import MainPage from './views/MainPage/MainPage';
-import NotFound from './views/NotFound';
 import NewPosition from './views/NewPosition/NewPosition';
 import {
   AccountsContext,
@@ -32,6 +34,8 @@ function App() {
       <Container>
         <Routes>
           <Route path="*" element={<NotFound />} />
+          <Route path="/chart" element={<ChartView />} />
+          <Route path="/detail/:id" element={<AccountDetailView />} />
           <Route path="/limit" element={<LimitPage />} />
           <Route path="/new" element={<NewPosition />} />
           <Route path="/register" element={<RegisterPage />} />

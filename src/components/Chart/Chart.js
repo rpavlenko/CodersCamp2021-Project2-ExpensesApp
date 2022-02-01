@@ -1,5 +1,5 @@
 import { PieChart } from 'react-minimal-pie-chart';
-import { StyledChart, StyledTitle } from './Chart.styles';
+import { StyledChart } from './Chart.styles';
 
 const categories = [
   {
@@ -37,7 +37,6 @@ const categories = [
 export default function Chart() {
   return (
     <StyledChart data-testid="chart">
-      <StyledTitle>Wykres</StyledTitle>
       {/* placeholder for date inputs */}
       {/* placeholder for buttons */}
       <PieChart data={categories} animate />

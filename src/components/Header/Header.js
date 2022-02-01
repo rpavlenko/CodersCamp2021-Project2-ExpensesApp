@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import icon from '../../assets/Icon.png';
 import Hamburger from './Hamburger/Hamburger';
 import { StyledHeader, StyledIcon, StyledName } from './Header.styles';
@@ -9,6 +9,11 @@ const Header = () => {
   const [active, setActive] = useState(false);
 
   const showNav = () => setActive((active) => !active);
+  const location = useLocation();
+
+  useEffect(() => {
+    setActive(false);
+  }, [location]);
 
   return (
     <Link to={'/'}>

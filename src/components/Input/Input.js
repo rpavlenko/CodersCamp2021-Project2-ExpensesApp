@@ -4,33 +4,50 @@ import {
   StyledInput,
   StyledLabel,
   StyledInputGroup,
-  StyledInputGroupCategory,
   StyledInputGroupAttachment,
   StyledInputAttachment,
+  StyledInputSelect,
 } from './Input.style';
 import { forwardRef } from 'react';
 
-// eslint-disable-next-line
-export const Input = forwardRef(
-  ({ type, placeholder, inputLabel, name, icon, ...rest }, ref) => {
-    return (
-      <>
-        <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-        <StyledInputGroup icon>
-          <StyledInput
-            name={name}
-            placeholder={placeholder ? placeholder : ''}
-            type={type}
-            id={inputLabel}
-            ref={ref}
-            {...rest}
-          />
-          {icon ? <button></button> : ''}
-        </StyledInputGroup>
-      </>
-    );
-  },
-);
+export const Input = forwardRef({
+  name,
+  type,
+  placeholder,
+  inputLabel,
+  icon,
+  value,
+  onChange,
+  onSearchClick,
+  ...rest
+}, ref) => {
+  return (
+    <>
+      <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
+      <StyledInputGroup icon>
+        <StyledInput
+          name={name}
+          type={type}
+          placeholder={placeholder ? placeholder : ''}
+          id={inputLabel}
+          value={value}
+          onChange={onChange}
+          ref={ref}
+          {...rest}
+        />
+        {icon ? (
+          type === 'search' ? (
+            <button onClick={onSearchClick}></button>
+          ) : (
+            <button></button>
+          )
+        ) : (
+          ''
+        )}
+      </StyledInputGroup>
+    </>
+  );
+};
 
 Input.propTypes = {
   inputLabel: PropTypes.string.isRequired,
@@ -38,29 +55,45 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   icon: PropTypes.string,
   name: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onSearchClick: PropTypes.func,
+
 };
 
-export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
+export const InputSelect = ({
+  placeholder,
+  inputLabel,
+  value,
+  onChange,
+  options,
+  isClearable,
+  onCreateOption,
+}) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-      <StyledInputGroupCategory icon>
-        <StyledInput
-          type={type}
-          placeholder={placeholder ? placeholder : ''}
-          id={inputLabel}
-        />
-        {icon ? <button></button> : ''}
-      </StyledInputGroupCategory>
+      <StyledInputSelect
+        placeholder={placeholder ? placeholder : ''}
+        id={inputLabel}
+        value={value}
+        onChange={onChange}
+        options={options}
+        isClearable={isClearable}
+        onCreateOption={onCreateOption}
+      />
     </>
   );
 };
 
-InputCategory.propTypes = {
+InputSelect.propTypes = {
   inputLabel: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  icon: PropTypes.string,
+  value: PropTypes.object,
+  onChange: PropTypes.func,
+  options: PropTypes.array,
+  isClearable: PropTypes.bool,
+  onCreateOption: PropTypes.func,
 };
 
 export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {

@@ -1,29 +1,36 @@
 import { AccountDetail } from '../AccountDetail/AccountDetail';
 import { AccountsItem } from './AccountsItem';
+import { useNavigate } from 'react-router-dom';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 import { useContext } from 'react';
+import PropTypes from 'prop-types';
 
-export const AccountsList = () => {
-  const { accountsState } = useContext(AccountsContext);
-  const [list] = accountsState;
-
+export const AccountsList = ({ list, dispatch }) => {
   const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
-  const detailedAccount = list[1];
+  const navigate = useNavigate();
+
   return (
     <div>
       {lastFive.map((item) => (
         <AccountsItem
           key={item.id}
           item={item}
-          odDeleteClick={() => console.log('delete')}
-          onEditClick={() => console.log('edit')}
+          odDeleteClick={(e) => {
+            dispatch({ type: 'deleteAccount', payload: { id: item.id } });
+            e.stopPropagation();
+          }}
+          onEditClick={(e) => {
+            console.log('edit');
+            e.stopPropagation();
+          }}
+          onClick={() => navigate(`/detail/${item.id}`)}
         />
       ))}
-      <AccountDetail
-        item={detailedAccount}
-        odDeleteClick={() => console.log('delete')}
-        onEditClick={() => console.log('edit')}
-      />
     </div>
   );
+};
+
+AccountsList.propTypes = {
+  list: PropTypes.array.isRequired,
+  dispatch: PropTypes.func,
 };
