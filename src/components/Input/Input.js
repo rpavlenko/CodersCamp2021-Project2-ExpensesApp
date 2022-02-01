@@ -1,3 +1,4 @@
+/*eslint no-unused-vars:*/
 import PropTypes from 'prop-types';
 import {
   StyledInput,
@@ -7,8 +8,10 @@ import {
   StyledInputAttachment,
   StyledInputSelect,
 } from './Input.style';
+import { forwardRef } from 'react';
 
-export const Input = ({
+export const Input = forwardRef({
+  name,
   type,
   placeholder,
   inputLabel,
@@ -16,17 +19,21 @@ export const Input = ({
   value,
   onChange,
   onSearchClick,
-}) => {
+  ...rest
+}, ref) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
       <StyledInputGroup icon>
         <StyledInput
+          name={name}
           type={type}
           placeholder={placeholder ? placeholder : ''}
           id={inputLabel}
           value={value}
           onChange={onChange}
+          ref={ref}
+          {...rest}
         />
         {icon ? (
           type === 'search' ? (
@@ -47,9 +54,11 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
+  name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
   onSearchClick: PropTypes.func,
+
 };
 
 export const InputSelect = ({
@@ -91,16 +100,14 @@ export const InputAttachment = ({ type, placeholder, inputLabel, icon }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
-      <label>
-        <StyledInputGroupAttachment icon>
-          <StyledInputAttachment
-            type={type}
-            placeholder={placeholder ? placeholder : ''}
-            id={inputLabel}
-          />
-          {icon ? <button></button> : ''}
-        </StyledInputGroupAttachment>
-      </label>
+      <StyledInputGroupAttachment icon>
+        <StyledInputAttachment
+          type={type}
+          placeholder={placeholder ? placeholder : ''}
+          id={inputLabel}
+        />
+        {icon ? <button></button> : ''}
+      </StyledInputGroupAttachment>
     </>
   );
 };

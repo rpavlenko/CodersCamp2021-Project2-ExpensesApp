@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { PrimaryButton } from '../../components/Button/Button';
 import {
   StyledHomepage,
@@ -23,9 +24,14 @@ export default function Homepage() {
       </StyledHeader>
 
       <ButtonsGroup>
-        <PrimaryButton className="xxx" text="Rejestracja" isActive={true} />
+        <Link to="/register">
+          <PrimaryButton className="xxx" text="Rejestracja" isActive={true} />
+        </Link>
+
         <p>lub</p>
-        <PrimaryButton className="xxx" text="Logowanie" isActive={true} />
+        <Link to="/login">
+          <PrimaryButton className="xxx" text="Logowanie" isActive={true} />
+        </Link>
       </ButtonsGroup>
     </StyledHomepage>
   );

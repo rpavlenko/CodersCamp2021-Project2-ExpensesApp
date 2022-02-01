@@ -60,10 +60,6 @@ export const StyledInputGroup = styled.div`
       height: 22px;
     }
   `};
-
-  &:last-of-type {
-    margin-bottom: 22px;
-  }
 `;
 
 export const StyledInputGroupCategory = styled.div`
