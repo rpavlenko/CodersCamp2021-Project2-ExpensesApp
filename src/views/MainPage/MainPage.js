@@ -20,11 +20,14 @@ const MainPage = () => {
   const [dateEnd, setDateEnd] = useState('');
 
   const [list, dispatch] = useContext(AccountsContext);
-  const [listToShow, setListToShow] = useState(list);
-  useEffect(() => {
-    setListToShow(list);
-  }, [list]);
   let filteredList;
+
+  useEffect(() => {
+    if (!list.length) {
+      dispatch({ type: 'resetAccounts' });
+      setName('');
+    }
+  }, [list]);
 
   const filterList = () => {
     if (name)
@@ -44,7 +47,9 @@ const MainPage = () => {
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
 
-    if (filteredList) setListToShow(filteredList);
+    if (filteredList) {
+      dispatch({ type: 'filterAccounts', payload: filteredList });
+    }
   };
 
   return (
@@ -61,7 +66,12 @@ const MainPage = () => {
         icon={'glass'}
         inputLabel="nazwa pozycji"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {
+          setName(e.target.value);
+          if (e.target.value === '') {
+            dispatch({ type: 'resetAccounts' });
+          }
+        }}
         onSearchClick={filterList}
       />
       <StyledDateWrap>
@@ -83,7 +93,7 @@ const MainPage = () => {
         </StyledDate>
       </StyledDateWrap>
       <CategoryList />
-      <AccountsList list={listToShow} dispatch={dispatch} />
+      <AccountsList list={list} dispatch={dispatch} />
     </>
   );
 };
