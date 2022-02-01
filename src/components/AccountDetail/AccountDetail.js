@@ -6,7 +6,6 @@ import trashBig from './trashBig.png';
 
 export const AccountDetail = (props) => {
     const {onEditClick, odDeleteClick, item } = props;
-    console.log({item});
     const { date, title, amount, type, category } = item;
 
     return (
@@ -36,7 +35,7 @@ export const AccountDetail = (props) => {
 
 AccountDetail.propTypes = {
     item: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         date: PropTypes.string,
         title: PropTypes.string,
         category: PropTypes.string,
