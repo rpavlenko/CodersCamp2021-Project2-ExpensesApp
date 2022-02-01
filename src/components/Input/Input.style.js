@@ -19,9 +19,13 @@ export const StyledInput = styled.input`
       font-size: 18px;
       
       &::placeholder {
-      color: #6A5F5F;
+        color: #6A5F5F;
       }
     `}
+
+  &::-webkit-calendar-picker-indicator{
+    margin: 0;
+  };
 `;
 
 export const StyledLabel = styled.label`
@@ -35,8 +39,6 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInputGroup = styled.div`
-  ${'' /* min-width: 267px;
-  min-height: 47px; */}
   min-width: 158px;
   padding: 5px 10px;
   border: 2px solid #6a5f5f;
@@ -56,6 +58,10 @@ export const StyledInputGroup = styled.div`
       height: 22px;
     }
   `};
+
+  &:last-of-type {
+    margin-bottom: 45px;
+  }
 `;
 
 export const StyledInputGroupCategory = styled.div`

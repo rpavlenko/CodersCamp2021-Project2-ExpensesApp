@@ -4,12 +4,12 @@ import pen from './pen.png';
 import trash from './trash.png';
 
 export const AccountsItem = (props) => {
-    const {onEditClick, odDeleteClick, item } = props;
+    const {onEditClick, odDeleteClick, item, onClick } = props;
     const { date, title, amount, type } = item;
 
     return ( 
         <>
-        <ItemBox>
+        <ItemBox onClick={onClick}>
             <FirstColumn> 
                 <StyledText>{date}</StyledText> 
                 <StyledTitle>{title}</StyledTitle>
@@ -28,14 +28,15 @@ export const AccountsItem = (props) => {
 };
 
 AccountsItem.propTypes = {
-    item: {
+    item: PropTypes.shape({
         id: PropTypes.number,
         date: PropTypes.string,
         title: PropTypes.string,
         category: PropTypes.string,
-        type: PropTypes.number,
+        type: PropTypes.string,
         amount: PropTypes.number,
-    },
+    }),
     onEditClick: PropTypes.func,
     odDeleteClick: PropTypes.func,
+    onClick: PropTypes.func,
   };

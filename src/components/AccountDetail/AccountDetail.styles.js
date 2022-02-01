@@ -33,17 +33,10 @@ export const PropsRow = styled.p`
     font-size: 18px;
 `;
 
-export const AmountContainer = styled.div`
-    display: flex; 
-    justify-content: flex-start;
-    align-items: center;
-`;
-
 export const StyledAmountColor = styled.p` 
     color: ${(props) => (props.isExpense ? '#F4600C' : '#05510D')};
     font-weight: 600; 
     font-size: 20px;
-    padding-left: 10px;
 `;
 
 export const ConfirmationStyle = styled.div`

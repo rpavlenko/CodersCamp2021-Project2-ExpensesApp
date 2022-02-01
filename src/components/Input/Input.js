@@ -8,7 +8,7 @@ import {
   StyledInputAttachment,
 } from './Input.style';
 
-export const Input = ({ type, placeholder, inputLabel, icon }) => {
+export const Input = ({ type, placeholder, inputLabel, icon, filter, setFilter, filterList }) => {
   return (
     <>
       <StyledLabel htmlFor={inputLabel}>{inputLabel}</StyledLabel>
@@ -17,8 +17,10 @@ export const Input = ({ type, placeholder, inputLabel, icon }) => {
           type={type}
           placeholder={placeholder ? placeholder : ''}
           id={inputLabel}
+          value={filter}
+          onChange={(event) => setFilter(event.target.value)}
         />
-        {icon ? <button></button> : ''}
+        {icon ? type === 'search' ? <button onClick={filterList}></button> : <button></button> : ''}
       </StyledInputGroup>
     </>
   );
@@ -29,6 +31,9 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
+  filter: PropTypes.string,
+  setFilter: PropTypes.func,
+  filterList: PropTypes.func,
 };
 
 export const InputCategory = ({ type, placeholder, inputLabel, icon }) => {
