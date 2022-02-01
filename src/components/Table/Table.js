@@ -1,27 +1,42 @@
+import { useContext, useEffect, useState } from 'react';
+import { AccountsContext } from '../../reducers/accounts.reducer';
 import PropTypes from 'prop-types';
 import { StyledTable } from './Table.styles';
 
-export default function Table({ expenses, incomes }) {
-  const calculateBalance = (expenses, incomes) => {
-    if (expenses <= 0 && incomes <= 0) {
-      return 0;
-    }
+export default function Table() {
+  const [list] = useContext(AccountsContext);
 
-    if (expenses < 0 || incomes < 0) {
-      return incomes + expenses;
-    }
+  const [expenses, setExpenses] = useState(0);
+  const [incomes, setIncomes] = useState(0);
+  const [balance, setBalance] = useState(0);
 
-    return incomes - expenses;
-  };
+  useEffect(() => {
+    const expenses = list
+      .filter((item) => item.type === 'Wydatek')
+      .reduce((acc, item) => (acc += item.amount), 0);
+    setExpenses((prevState) => prevState + expenses);
+
+    const incomes = list
+      .filter((item) => item.type === 'Przychód')
+      .reduce((acc, item) => (acc += item.amount), 0);
+    setIncomes((prevState) => prevState + incomes);
+
+    setBalance(() => incomes - expenses);
+  }, [list]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'accountBalance',
+      JSON.stringify({ balance, expenses, incomes }),
+    );
+  }, [balance, expenses, incomes]);
 
   return (
     <StyledTable>
       <thead>
         <tr>
           <td>Saldo</td>
-          <td>
-            {expenses && incomes ? calculateBalance(expenses, incomes) : 0} zł
-          </td>
+          <td>{balance} zł</td>
         </tr>
         <tr>
           <td>Wydatki</td>

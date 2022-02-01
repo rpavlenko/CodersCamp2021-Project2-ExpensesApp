@@ -51,7 +51,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Table expenses={300} incomes={800} />
+      <Table />
       {showAlert ? null : <Limit category={'remont'} />}
       {showAlert ? (
         <Alert category={'remont'} onSetShowAlert={onSetShowAlert} />
