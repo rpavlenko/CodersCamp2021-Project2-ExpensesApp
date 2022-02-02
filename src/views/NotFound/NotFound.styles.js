@@ -6,7 +6,7 @@ export const StyledNotFoundView = styled.div`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  padding-top: 30px;
+  padding-top: 35px;
 `;
 
 export const StyledHeader = styled.h1`
