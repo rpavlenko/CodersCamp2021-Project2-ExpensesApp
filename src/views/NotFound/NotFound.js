@@ -7,7 +7,6 @@ import {
   StyledText,
 } from '../NotFound/NotFound.styles';
 import { Link } from 'react-router-dom';
-// import MainPage from '../MainPage/MainPage';
 
 export default function NotFound() {
   return (
