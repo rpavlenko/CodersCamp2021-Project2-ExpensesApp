@@ -21,7 +21,7 @@ export const NewPosition = () => {
   return (
     <>
       <IconButton type="arrow" />
-      <AccountForm handleSubmit={handleSubmit} />
+      <AccountForm handleSubmit={handleSubmit} buttonText={'Dodaj'} />
     </>
   );
 };

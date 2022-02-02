@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 export const initialData = [
   {
-    id: "1",
+    id: '1',
     amount: 520,
     category: 'Remont',
     title: 'Farby i kleje',
@@ -11,7 +11,7 @@ export const initialData = [
     type: 'Wydatek',
   },
   {
-    id: "2",
+    id: '2',
     amount: 1000,
     category: 'Prezent',
     title: 'Prezent urodzinowy z okazji czterdziestych urodzin w restauracji',
@@ -20,7 +20,7 @@ export const initialData = [
     type: 'Przychód',
   },
   {
-    id: "3",
+    id: '3',
     amount: 350,
     category: 'Ubrania',
     title: 'Spodnie i buty zimowe',
@@ -29,7 +29,7 @@ export const initialData = [
     type: 'Wydatek',
   },
   {
-    id: "4",
+    id: '4',
     amount: 2000,
     category: 'Prezent',
     title: 'Wynagrodzenie za pracę - miesiąc styczeń',
@@ -38,7 +38,7 @@ export const initialData = [
     type: 'Przychód',
   },
   {
-    id: "5",
+    id: '5',
     amount: 120,
     category: 'Leczenie',
     title: 'Wizyta u alergologa',
@@ -47,7 +47,7 @@ export const initialData = [
     type: 'Wydatek',
   },
   {
-    id: "6",
+    id: '6',
     amount: 200,
     category: 'Remont',
     title: '(lastone) Panele',
@@ -68,15 +68,22 @@ export const users = [
 export const AccountsContext = createContext();
 
 export const accountsReducer = (state, action) => {
+  let newValue;
+
   switch (action.type) {
     case 'addNewAccount':
-      // eslint-disable-next-line no-case-declarations
-      const newValue = [...state, action.payload];
+      newValue = [...state, action.payload];
       //   In order to save the data between the sessions, we save it temporary in LocalStorage.
       localStorage.setItem('accountsList', JSON.stringify(newValue));
       return newValue;
-    // case 'edit':
-    //   return {};
+    case 'editAccount':
+      // eslint-disable-next-line no-case-declarations
+      const filteredList = state.filter(
+        (item) => item.id !== action.payload.id,
+      );
+      newValue = [...filteredList, action.payload];
+      localStorage.setItem('accountsList', JSON.stringify(newValue));
+      return newValue;
     case 'deleteAccount':
       // TODO I will add save to local storage only after we have functionality adding new accounts
       return state.filter((item) => item.id !== action.payload.id);

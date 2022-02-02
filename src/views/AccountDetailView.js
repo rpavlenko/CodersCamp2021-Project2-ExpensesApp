@@ -9,7 +9,7 @@ export const AccountDetailView = () => {
   const { id } = useParams();
   const { accountsState } = useContext(AccountsContext);
   const [list, dispatch] = accountsState;
-  const account = list.find((item) => item.id == id);
+  const account = list.find((item) => item.id === id);
   const navigate = useNavigate();
 
   return (
@@ -21,7 +21,7 @@ export const AccountDetailView = () => {
           dispatch({ type: 'deleteAccount', payload: { id } });
           navigate(`/main`);
         }}
-        onEditClick={() => console.log('edit')}
+        onEditClick={() => navigate(`/detail/${id}/edit`)}
       />
     </>
   );

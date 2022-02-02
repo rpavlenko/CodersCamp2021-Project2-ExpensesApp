@@ -17,7 +17,7 @@ export const AccountsList = ({ list, dispatch }) => {
             e.stopPropagation();
           }}
           onEditClick={(e) => {
-            console.log('edit');
+            navigate(`/detail/${item.id}/edit`);
             e.stopPropagation();
           }}
           onClick={() => navigate(`/detail/${item.id}`)}
