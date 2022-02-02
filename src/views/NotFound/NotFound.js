@@ -6,6 +6,8 @@ import {
   StyledCalculator,
   StyledText,
 } from '../NotFound/NotFound.styles';
+import { Link } from 'react-router-dom';
+// import MainPage from '../MainPage/MainPage';
 
 export default function NotFound() {
   return (
@@ -16,11 +18,13 @@ export default function NotFound() {
         alt="szary martwy kalkulator"
       ></StyledCalculator>
       <StyledText>Podana strona nie istnieje!</StyledText>
-      <PrimaryButton
-        className="xxx"
-        text="Przejdź do strony głównej"
-        isActive={true}
-      ></PrimaryButton>
+      <Link to="/main">
+        <PrimaryButton
+          className="xxx"
+          text="Przejdź do strony głównej"
+          isActive={true}
+        ></PrimaryButton>
+      </Link>
     </StyledNotFoundView>
   );
 }
