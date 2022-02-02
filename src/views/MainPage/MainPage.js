@@ -25,8 +25,6 @@ const MainPage = () => {
 
   let filteredList;
 
-  // let filteredCategory;
-
   const filterList = () => {
     if (name)
       filteredList = list.filter((item) =>
@@ -44,35 +42,29 @@ const MainPage = () => {
             (item) => new Date(item.date) <= new Date(dateEnd),
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
-    if (chosenCategory) {
-      console.log('Filter by Category ', typeof chosenCategory);
-      filteredList = list.filter((item) => {
-        item.category === chosenCategory;
-      });
-      console.log(filteredList);
-    }
     if (filteredList) setListToShow(filteredList);
   };
-  // const filterByCat = () => {
-  //   console.log('Item list', list);
-  //   if (chosenCategory) {
-  //     console.log('Filter by Category ', typeof chosenCategory);
 
-  //     filteredList = list.filter((item) => {
-  //       item.category === chosenCategory;
-  //     });
-  //     console.log(filteredList);
-  // filteredCategory = list.filter((chosenCategory) =>
-  //   chosenCategory !== 'Wszystkie'
-  //     ? filteredCategory.filter((item) =>
-  //         item.category.includes(chosenCategory),
-  //       )
-  //     : (filteredCategory = list),
-  // );
-  // }
+  const filterByCat = () => {
+    console.log('Item list');
+    // if (chosenCategory) {
+    //   console.log('Filter by Category ', typeof chosenCategory);
 
-  //   if (filteredList) setListToShow(filteredList);
-  // };
+    //   filteredList = list.filter((item) => {
+    //     item.category === chosenCategory;
+    //   });
+    //   console.log(filteredList);
+    //   filteredCategory = list.filter((chosenCategory) =>
+    //     chosenCategory !== 'Wszystkie'
+    //       ? filteredCategory.filter((item) =>
+    //           item.category.includes(chosenCategory),
+    //         )
+    //       : (filteredCategory = list),
+    //   );
+    // }
+    // if (filteredList) setListToShow(filteredList);
+  };
+
   return (
     <>
       <Table expenses={300} incomes={800} />
@@ -108,7 +100,11 @@ const MainPage = () => {
           />
         </StyledDate>
       </StyledDateWrap>
-      <CategoryList setFilter={setchosenCategory} filter={chosenCategory} />
+      <CategoryList
+        setFilter={setchosenCategory}
+        filter={chosenCategory}
+        onClick={filterByCat}
+      />
       <AccountsList list={listToShow} />
     </>
   );
