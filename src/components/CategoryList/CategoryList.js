@@ -1,8 +1,9 @@
 import { StyledList } from './CategoryList.styles';
 import ListItem from './ListItem/ListItem';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
-const CategoryList = ({ handleClick, setFilter }) => {
+const CategoryList = ({ handleClick }) => {
   const categories = [
     {
       id: 0,
@@ -31,10 +32,12 @@ const CategoryList = ({ handleClick, setFilter }) => {
     },
   ];
 
-  handleClick = (e) => {
-    // let val = e.target.value;
-    console.log(e.target.innerText);
-  };
+  useEffect(() => {
+    handleClick = (e) => {
+      // let val = e.target.value;
+      console.log(e.target.innerText);
+    };
+  }, [handleClick]);
 
   return (
     <StyledList>
@@ -43,8 +46,7 @@ const CategoryList = ({ handleClick, setFilter }) => {
           key={category.id}
           item={category}
           handleClick={handleClick}
-          value={(e) => e.target.innerText}
-          onChange={(e) => setFilter(e.target.value)}
+          filter={category.name}
         />
       ))}
     </StyledList>
