@@ -1,16 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledChart = styled.div`
-  min-width: 240px;
+  min-width: 150px;
   max-width: 500px;
-  margin-top: 27px;
+  margin-top: 30px;
   margin-bottom: 26px;
-`;
-
-export const StyledTitle = styled.h2`
-  margin-bottom: 26px;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 600;
-  color: #6a5f5f;
 `;

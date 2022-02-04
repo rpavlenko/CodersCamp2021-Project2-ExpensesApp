@@ -1,29 +1,24 @@
 import { AccountsItem } from './AccountsItem';
 import { useNavigate } from 'react-router-dom';
-import { AccountsContext } from '../../reducers/accounts.reducer';
-import { useContext } from 'react';
-import { useState } from 'react/cjs/react.development';
 import { StyledButton } from './AccountsList.styles';
+import PropTypes from 'prop-types';
 
-export const AccountsList = () => {
-  const [list] = useContext(AccountsContext);
+export const AccountsList = ({ list, dispatch }) => {
   const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
   const navigate = useNavigate();
 
-  const [accountList, setAccountList] = useState(lastFive);
-
   return (
     <div>
-      {accountList.map((item) => (
+      {lastFive.map((item) => (
         <AccountsItem
           key={item.id}
           item={item}
           odDeleteClick={(e) => {
-            console.log('delete');
+            dispatch({ type: 'deleteAccount', payload: { id: item.id } });
             e.stopPropagation();
           }}
           onEditClick={(e) => {
-            console.log('edit');
+            navigate(`/detail/${item.id}/edit`);
             e.stopPropagation();
           }}
           onClick={() => navigate(`/detail/${item.id}`)}
@@ -44,4 +39,9 @@ export const AccountsList = () => {
       )}
     </div>
   );
+};
+
+AccountsList.propTypes = {
+  list: PropTypes.array.isRequired,
+  dispatch: PropTypes.func,
 };

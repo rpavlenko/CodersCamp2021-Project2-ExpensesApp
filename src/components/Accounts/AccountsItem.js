@@ -29,7 +29,7 @@ export const AccountsItem = (props) => {
 
 AccountsItem.propTypes = {
     item: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         date: PropTypes.string,
         title: PropTypes.string,
         category: PropTypes.string,

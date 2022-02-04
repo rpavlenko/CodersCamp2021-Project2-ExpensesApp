@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-export const StyledLoginPage = styled.main`
+export const StyledRegisterPage = styled.main`
   display: flex;
   flex-direction: column;
 
   & button {
-    margin: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 45px;
   }
 `;
 
@@ -36,4 +38,15 @@ export const StyledText = styled.h3`
   font-weight: 600;
   font-size: 30px;
   color: #6a5f5f;
+`;
+
+export const StyledMessage = styled.span`
+  position: absolute;
+  bottom: -20px;
+  font-size: 16px;
+  color: tomato;
+`;
+
+export const StyledValidation = styled.div`
+  position: relative;
 `;
