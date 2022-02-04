@@ -24,7 +24,7 @@ const MainPage = () => {
   const [list, dispatch] = accountsState;
   const [listToShow, setListToShow] = useState(list);
   useEffect(() => {
-    setListToShow(list);
+    filterList();
   }, [list]);
   let filteredList;
 
