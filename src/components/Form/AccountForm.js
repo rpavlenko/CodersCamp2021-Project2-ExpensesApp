@@ -15,21 +15,26 @@ const initialData = [
   { value: 'ubrania', label: 'Ubrania' },
   { value: 'leczenie', label: 'Leczenie' },
 ];
+const initialCategories = localStorage.getItem('categories')
+  ? JSON.parse(localStorage.getItem('categories'))
+  : initialData;
 
-export const AccountForm = (props) => {
+export const AccountForm = ({ handleSubmit, account, buttonText }) => {
   const today = new Date().toISOString().slice(0, 10);
 
-  const [date, setDate] = useState(today);
-  const [type, setType] = useState('Wydatki');
-  const [category, setCategory] = useState({ label: '', value: '' });
-  const [title, setTitle] = useState('');
+  const initialCategory = initialCategories.find(
+    (item) => item.label === account?.category,
+  );
+  const [date, setDate] = useState(account?.date || today);
+  const [type, setType] = useState(account?.type || 'Wydatki');
+  const [category, setCategory] = useState(
+    initialCategory || { label: '', value: '' },
+  );
+  const [title, setTitle] = useState(account?.title || '');
   // TODO think how to remove console warning
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState(account?.amount || null);
   // const [attachment, setAttachment] = useState(null);
 
-  const initialCategories = localStorage.getItem('categories')
-    ? JSON.parse(localStorage.getItem('categories'))
-    : initialData;
   const [categoryOptions, setCategoryOptions] = useState(initialCategories);
 
   const handleCreate = useCallback(
@@ -43,7 +48,7 @@ export const AccountForm = (props) => {
     [categoryOptions],
   );
 
-  const handleSubmit = () => {
+  const onSubmit = () => {
     const data = {
       date,
       type,
@@ -51,7 +56,7 @@ export const AccountForm = (props) => {
       title,
       amount,
     };
-    props.handleSubmit(data);
+    handleSubmit(data);
   };
 
   return (
@@ -107,9 +112,9 @@ export const AccountForm = (props) => {
         </InputGroupStyled>
         <PrimaryButton
           className="xxx"
-          text="Dodaj"
+          text={buttonText}
           isActive={true}
-          onClick={handleSubmit}
+          onClick={onSubmit}
         />
       </StyledNewPosition>
     </>
@@ -118,4 +123,6 @@ export const AccountForm = (props) => {
 
 AccountForm.propTypes = {
   handleSubmit: PropTypes.func,
+  account: PropTypes.object,
+  buttonText: PropTypes.string,
 };

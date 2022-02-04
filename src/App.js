@@ -19,6 +19,7 @@ import {
   users,
 } from './reducers/accounts.reducer';
 import { Container } from './components/styles/Container.styled';
+import { EditView } from './views/EditView';
 
 function App() {
   const initialList = localStorage.getItem('accountsList')
@@ -36,6 +37,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/chart" element={<ChartView />} />
           <Route path="/detail/:id" element={<AccountDetailView />} />
+          <Route path="/detail/:id/edit" element={<EditView />} />
           <Route path="/limit" element={<LimitPage />} />
           <Route path="/new" element={<NewPosition />} />
           <Route path="/register" element={<RegisterPage />} />
