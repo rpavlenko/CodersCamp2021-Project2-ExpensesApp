@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledList = styled.ul`
+export const StyledList = styled.div`
   display: flex;
   padding: 20px 0;
   overflow-x: scroll;

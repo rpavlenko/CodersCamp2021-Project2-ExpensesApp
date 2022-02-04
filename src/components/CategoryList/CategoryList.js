@@ -1,30 +1,36 @@
 import { StyledList } from './CategoryList.styles';
+import PropTypes from 'prop-types';
 import ListItem from './ListItem/ListItem';
 
-const CategoryList = () => {
+const CategoryList = ({ categoryFilter }) => {
   const categories = [
     {
       id: 0,
       name: 'Wszystkie',
-      color: 'red',
+      color: '#F4600C',
     },
     {
       id: 1,
       name: 'Ubrania',
-      color: 'salmon',
+      color: '#EEA67E',
     },
     {
       id: 2,
       name: 'Remont',
-      color: 'green',
+      color: '#83BEF5',
     },
     {
       id: 3,
       name: 'Leczenie',
-      color: 'orange',
+      color: '#EFB82B',
     },
     {
       id: 4,
+      name: 'Prezent',
+      color: '#8088CC',
+    },
+    {
+      id: 5,
       name: 'Inne',
       color: 'gray',
     },
@@ -33,10 +39,20 @@ const CategoryList = () => {
   return (
     <StyledList>
       {categories.map((category) => (
-        <ListItem key={category.id} item={category} />
+        <ListItem
+          key={category.id}
+          item={category}
+          value={category.name}
+          categoryFilter={categoryFilter}
+        />
       ))}
     </StyledList>
   );
+};
+
+CategoryList.propTypes = {
+  value: PropTypes.string,
+  categoryFilter: PropTypes.func,
 };
 
 export default CategoryList;

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledItem = styled.li`
+export const StyledItem = styled.button`
   margin: 0 4px;
   padding: 6px 18px;
   font-size: 14px;
