@@ -23,6 +23,8 @@ const MainPage = () => {
 
   const [list, dispatch] = accountsState;
   const [listToShow, setListToShow] = useState(list);
+  const [chosenCategory] = useState();
+
   useEffect(() => {
     filterList();
   }, [list]);
@@ -46,6 +48,13 @@ const MainPage = () => {
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
 
+    if (filteredList) setListToShow(filteredList);
+  };
+
+  const categoryFilter = (chosenCategory) => {
+    if (chosenCategory)
+      filteredList = list.filter((item) => item.category === chosenCategory);
+    if (chosenCategory === 'Wszystkie') filteredList = list;
     if (filteredList) setListToShow(filteredList);
   };
 
@@ -84,7 +93,7 @@ const MainPage = () => {
           />
         </StyledDate>
       </StyledDateWrap>
-      <CategoryList />
+      <CategoryList value={chosenCategory} categoryFilter={categoryFilter} />
       <AccountsList list={listToShow} dispatch={dispatch} />
     </>
   );
