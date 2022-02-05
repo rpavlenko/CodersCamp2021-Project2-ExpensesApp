@@ -1,6 +1,9 @@
 import { StyledList } from './CategoryList.styles';
 import PropTypes from 'prop-types';
 import ListItem from './ListItem/ListItem';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
 
 const CategoryList = ({ categoryFilter }) => {
   const categories = [
@@ -36,6 +39,13 @@ const CategoryList = ({ categoryFilter }) => {
     },
   ];
 
+  useEffect(() => {
+    handleClick = (e) => {
+      // let val = e.target.value;
+      console.log(e.target.innerText);
+    };
+  }, [handleClick]);
+
   return (
     <StyledList>
       {categories.map((category) => (
@@ -44,6 +54,7 @@ const CategoryList = ({ categoryFilter }) => {
           item={category}
           value={category.name}
           categoryFilter={categoryFilter}
+
         />
       ))}
     </StyledList>

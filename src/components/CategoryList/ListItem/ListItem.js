@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { StyledItem } from './ListItem.styles';
 
+
 const ListItem = ({ item, value, categoryFilter }) => {
   return (
     <StyledItem
@@ -21,4 +22,5 @@ ListItem.propTypes = {
   name: PropTypes.string,
   categoryFilter: PropTypes.func,
   value: PropTypes.string,
+
 };

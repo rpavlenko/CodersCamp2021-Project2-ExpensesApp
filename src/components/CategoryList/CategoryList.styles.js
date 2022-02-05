@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledList = styled.div`
   display: flex;
@@ -6,7 +6,8 @@ export const StyledList = styled.div`
   overflow-x: scroll;
   scrollbar-width: none; //FF browser
 
-  &::-webkit-scrollbar { //other browsers
+  &::-webkit-scrollbar {
+    //other browsers
     display: none;
   }
 `;

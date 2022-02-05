@@ -47,7 +47,6 @@ const MainPage = () => {
             (item) => new Date(item.date) <= new Date(dateEnd),
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
-
     if (filteredList) setListToShow(filteredList);
   };
 
