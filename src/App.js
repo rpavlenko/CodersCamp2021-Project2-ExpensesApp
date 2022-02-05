@@ -5,7 +5,7 @@ import GlobalStyles from './components/styles/Global';
 import Header from './components/Header/Header';
 import LimitPage from './views/Limit/LimitPage';
 
-import NotFound from './views/NotFound';
+import NotFound from './views/NotFound/NotFound';
 import { AccountDetailView } from './views/AccountDetailView';
 import ChartView from './views/ChartView/ChartView';
 import Homepage from './views/Homepage/Homepage';
@@ -21,7 +21,6 @@ import {
 } from './reducers/accounts.reducer';
 import { Container } from './components/styles/Container.styled';
 import { EditView } from './views/EditView';
-
 
 function App() {
   const initialList = localStorage.getItem('accountsList')
