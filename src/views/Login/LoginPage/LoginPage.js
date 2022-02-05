@@ -14,6 +14,7 @@ import {
   StyledMessage,
   StyledValidation,
   StyledUserNotExists,
+  StyledResetText,
 } from './LoginPage.styles';
 import icon from '../../../assets/Icon.png';
 
@@ -46,7 +47,7 @@ export default function LoginPage() {
       navigate('/main');
     }
 
-    setUserMessage('Użytkownik nie istnieje');
+    setUserMessage('E-mail lub hasło są nieprawidłowe');
     form.reset();
   };
 
@@ -60,14 +61,14 @@ export default function LoginPage() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <StyledValidation>
           <Input
-            type="e-mail"
+            type="email"
             name="email"
             inputLabel="e-mail:"
             {...register('email', {
               required: 'Adres e-mail jest wymagany',
               pattern: {
                 value: EMAIL_VERIFICATION_REGEX,
-                message: 'Adres e-mail jest wymagany',
+                message: 'Adres e-mail nie poprawny',
               },
             })}
           />
@@ -97,6 +98,9 @@ export default function LoginPage() {
       </form>
       {userMessage && (
         <>
+          <Link to="/reset-password">
+            <StyledResetText>Nie pamiętam hasła</StyledResetText>
+          </Link>
           <StyledUserNotExists>{userMessage}</StyledUserNotExists>
           <Link to="/register">
             <PrimaryButton className="xxx" text="Rejestracja" isActive={true} />

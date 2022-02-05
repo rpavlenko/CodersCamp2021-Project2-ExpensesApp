@@ -47,6 +47,15 @@ export const StyledMessage = styled.span`
   color: tomato;
 `;
 
+export const StyledResetText = styled.span`
+  display: block;
+  margin-top: 22px;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #6a5f5f;
+`;
 export const StyledValidation = styled.div`
   position: relative;
 `;

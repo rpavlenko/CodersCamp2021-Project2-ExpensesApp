@@ -10,6 +10,7 @@ import ChartView from './views/ChartView/ChartView';
 import Homepage from './views/Homepage/Homepage';
 import LoginPage from './views/Login/LoginPage/LoginPage';
 import RegisterPage from './views/Login/RegisterPage/RegisterPage';
+import ResetPasswordPage from './views/ResetPasswordPage/ResetPasswordPage';
 import MainPage from './views/MainPage/MainPage';
 import { NewPosition } from './views/NewPosition/NewPosition';
 import {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/new" element={<NewPosition />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/main" element={<MainPage />} />
         </Routes>
