@@ -24,7 +24,7 @@ const MainPage = () => {
   const [list, dispatch] = accountsState;
   const [listToShow, setListToShow] = useState(list);
   useEffect(() => {
-    setListToShow(list);
+    filterList();
   }, [list]);
   let filteredList;
 
@@ -71,16 +71,16 @@ const MainPage = () => {
           <Input
             type="date"
             inputLabel="początek zakresu"
-            filter={dateStart}
-            setFilter={setDateStart}
+            value={dateStart}
+            onChange={(e) => setDateStart(e.target.value)}
           />
         </StyledDate>
-        <StyledDate onClick={() => setShowAlert(false)}>
+        <StyledDate>
           <Input
             type="date"
             inputLabel="koniec zakresu"
-            filter={dateEnd}
-            setFilter={setDateEnd}
+            value={dateEnd}
+            onChange={(e) => setDateEnd(e.target.value)}
           />
         </StyledDate>
       </StyledDateWrap>
