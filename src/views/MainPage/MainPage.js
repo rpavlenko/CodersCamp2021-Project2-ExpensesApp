@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import Table from '../../components/Table/Table';
 import { Input } from '../../components/Input/Input';
@@ -18,11 +18,16 @@ const MainPage = () => {
   const [name, setName] = useState('');
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
-  const [chosenCategory, setchosenCategory] = useState('Wszystkie');
 
-  const [list] = useContext(AccountsContext);
+  const { accountsState } = useContext(AccountsContext);
+
+  const [list, dispatch] = accountsState;
   const [listToShow, setListToShow] = useState(list);
+  const [chosenCategory] = useState();
 
+  useEffect(() => {
+    filterList();
+  }, [list]);
   let filteredList;
 
   const filterList = () => {
@@ -45,29 +50,16 @@ const MainPage = () => {
     if (filteredList) setListToShow(filteredList);
   };
 
-  const filterByCat = () => {
-    console.log('Item list');
-    // if (chosenCategory) {
-    //   console.log('Filter by Category ', typeof chosenCategory);
-
-    //   filteredList = list.filter((item) => {
-    //     item.category === chosenCategory;
-    //   });
-    //   console.log(filteredList);
-    //   filteredCategory = list.filter((chosenCategory) =>
-    //     chosenCategory !== 'Wszystkie'
-    //       ? filteredCategory.filter((item) =>
-    //           item.category.includes(chosenCategory),
-    //         )
-    //       : (filteredCategory = list),
-    //   );
-    // }
-    // if (filteredList) setListToShow(filteredList);
+  const categoryFilter = (chosenCategory) => {
+    if (chosenCategory)
+      filteredList = list.filter((item) => item.category === chosenCategory);
+    if (chosenCategory === 'Wszystkie') filteredList = list;
+    if (filteredList) setListToShow(filteredList);
   };
 
   return (
     <>
-      <Table expenses={300} incomes={800} />
+      <Table />
       {showAlert ? null : <Limit category={'remont'} />}
       {showAlert ? (
         <Alert category={'remont'} onSetShowAlert={onSetShowAlert} />
@@ -78,34 +70,30 @@ const MainPage = () => {
         placeholder="Wyszukaj"
         icon={'glass'}
         inputLabel="nazwa pozycji"
-        filter={name}
-        setFilter={setName}
-        filterList={filterList}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        onSearchClick={filterList}
       />
       <StyledDateWrap>
         <StyledDate>
           <Input
             type="date"
             inputLabel="początek zakresu"
-            filter={dateStart}
-            setFilter={setDateStart}
+            value={dateStart}
+            onChange={(e) => setDateStart(e.target.value)}
           />
         </StyledDate>
-        <StyledDate onClick={() => setShowAlert(false)}>
+        <StyledDate>
           <Input
             type="date"
             inputLabel="koniec zakresu"
-            filter={dateEnd}
-            setFilter={setDateEnd}
+            value={dateEnd}
+            onChange={(e) => setDateEnd(e.target.value)}
           />
         </StyledDate>
       </StyledDateWrap>
-      <CategoryList
-        setFilter={setchosenCategory}
-        filter={chosenCategory}
-        onClick={filterByCat}
-      />
-      <AccountsList list={listToShow} />
+      <CategoryList value={chosenCategory} categoryFilter={categoryFilter} />
+      <AccountsList list={listToShow} dispatch={dispatch} />
     </>
   );
 };

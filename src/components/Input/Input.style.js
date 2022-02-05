@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import glass from '../../assets/magnifying-glass.png';
 import ArrowD from '../../assets/arrowd.png';
 import Attach from '../../assets/attach.png';
+import CreatableSelect from 'react-select/creatable';
 
 export const StyledInput = styled.input`
   width: 100%;
   font-family: inherit;
   font-style: normal;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 36px;
   color: #6a5f5f;
 
   ${({ type }) =>
@@ -23,9 +24,9 @@ export const StyledInput = styled.input`
       }
     `}
 
-  &::-webkit-calendar-picker-indicator{
+  &::-webkit-calendar-picker-indicator {
     margin: 0;
-  };
+  } ;
 `;
 
 export const StyledLabel = styled.label`
@@ -43,6 +44,7 @@ export const StyledInputGroup = styled.div`
   padding: 5px 10px;
   border: 2px solid #6a5f5f;
   border-radius: 15px;
+  color: #6a5f5f;
 
   ${({ icon }) =>
     icon &&
@@ -58,10 +60,6 @@ export const StyledInputGroup = styled.div`
       height: 22px;
     }
   `};
-
-  &:last-of-type {
-    margin-bottom: 45px;
-  }
 `;
 
 export const StyledInputGroupCategory = styled.div`
@@ -100,7 +98,7 @@ export const StyledInputAttachment = styled.input`
 `;
 export const StyledInputGroupAttachment = styled.div`
   min-width: 158px;
-  min-height: 44px;
+  min-height: 50px;
   border: 2px solid #6a5f5f;
   border-radius: 15px;
   background-color: #e5e5e5;
@@ -114,4 +112,13 @@ export const StyledInputGroupAttachment = styled.div`
     background-repeat: no-repeat;
     background-position:center;
   `};
+`;
+
+export const StyledInputSelect = styled(CreatableSelect)`
+  min-width: 158px;
+  padding: 5px 10px;
+  border: 2px solid #6a5f5f;
+  border-radius: 15px;
+  margin-bottom: 22px;
+  color: #6a5f5f;
 `;

@@ -18,6 +18,7 @@ export const PrimaryStyledButton = styled.button`
   font-family: 'Baloo 2', sans-serif;
   font-weight: 800;
   font-size: 26px;
+  margin-bottom: 30px;
 `;
 
 export const ExpensesStyledButton = styled.button.attrs((props) => ({

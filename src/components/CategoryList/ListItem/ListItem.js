@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import { StyledItem } from './ListItem.styles';
 
-const ListItem = ({ item, filter, setFilter, handleClick }) => {
+
+const ListItem = ({ item, value, categoryFilter }) => {
   return (
     <StyledItem
       bgcolor={item.color}
-      onClick={handleClick}
-      value={filter}
-      onChange={(e) => setFilter(e.target.value)}
+      value={value}
+      onClick={() => categoryFilter(item.name)}
     >
       {item.name}
     </StyledItem>
@@ -20,7 +20,7 @@ ListItem.propTypes = {
   item: PropTypes.object,
   color: PropTypes.string,
   name: PropTypes.string,
-  filter: PropTypes.string,
-  setFilter: PropTypes.func,
-  handleClick: PropTypes.func,
+  categoryFilter: PropTypes.func,
+  value: PropTypes.string,
+
 };
