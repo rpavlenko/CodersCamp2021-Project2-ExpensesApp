@@ -1,5 +1,6 @@
 import { AccountsItem } from './AccountsItem';
 import { useNavigate } from 'react-router-dom';
+import { StyledButton } from './AccountsList.styles';
 import PropTypes from 'prop-types';
 
 export const AccountsList = ({ list, dispatch }) => {
@@ -23,6 +24,19 @@ export const AccountsList = ({ list, dispatch }) => {
           onClick={() => navigate(`/detail/${item.id}`)}
         />
       ))}
+      {accountList.length === list.length ? null : (
+        <StyledButton
+          onClick={() =>
+            setAccountList(
+              list
+                .slice(Math.max(list.length - (accountList.length + 5), 0))
+                .reverse(),
+            )
+          }
+        >
+          Pokaż więcej
+        </StyledButton>
+      )}
     </div>
   );
 };
