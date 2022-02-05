@@ -29,8 +29,8 @@ export default function LoginPage() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: 'admin@gmail.com',
-      password: 'AwD,H6s\\cWFJ73?f',
+      email: 'admin@scrooge.com',
+      password: 'pass',
     },
   });
 

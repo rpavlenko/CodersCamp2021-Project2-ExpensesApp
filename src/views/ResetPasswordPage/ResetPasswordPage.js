@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../components/Input/Input';
 import { PrimaryButton } from '../../components/Button/Button';
+import { IconButton } from '../../components/Button/Button';
 import { EMAIL_VERIFICATION_REGEX } from '../../utils/helpers/validation.helpers';
 import {
   StyledReset,
@@ -17,6 +18,7 @@ export default function ResetPasswordPage() {
   const [messageTitle, setMessageTitle] = useState('Zapomniałeś hasła?');
   const [showLoginButton, setShowLoginButton] = useState(false);
   const [showResetButton, setShowResetButton] = useState(true);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -41,6 +43,7 @@ export default function ResetPasswordPage() {
 
   return (
     <StyledReset>
+      <IconButton type="arrow" onClick={() => navigate(-1)} />
       <StyledTitle>{messageTitle}</StyledTitle>
       {!userEmail ? (
         <StyledText>

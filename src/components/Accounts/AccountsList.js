@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { AccountsItem } from './AccountsItem';
 import { useNavigate } from 'react-router-dom';
 import { StyledButton } from './AccountsList.styles';
@@ -6,6 +7,11 @@ import PropTypes from 'prop-types';
 export const AccountsList = ({ list, dispatch }) => {
   const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
   const navigate = useNavigate();
+
+  const [accountList, setAccountList] = useState(lastFive);
+  useEffect(() => {
+    setAccountList(lastFive);
+  }, [list]);
 
   return (
     <div>
