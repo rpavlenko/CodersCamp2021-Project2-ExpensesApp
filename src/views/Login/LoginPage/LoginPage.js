@@ -38,12 +38,11 @@ export default function LoginPage() {
     const form = event.target;
 
     let filteredUsers = users.filter((user) => {
-      console.log(user.email === data.email);
-      console.log(user.password === data.password);
       return user.email === data.email && user.password === data.password;
     });
 
     if (filteredUsers.length) {
+      localStorage.setItem('userLogged', 'true');
       navigate('/main');
     }
 

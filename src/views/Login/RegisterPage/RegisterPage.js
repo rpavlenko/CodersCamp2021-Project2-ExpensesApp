@@ -41,12 +41,11 @@ export default function LoginPage() {
         password: data.password,
       });
 
+      localStorage.setItem('userLogged', 'true');
       navigate('/main');
     } else {
       setUserMessage('Podane hasła muszą być identyczne');
     }
-
-    console.log(users);
   };
 
   return (
