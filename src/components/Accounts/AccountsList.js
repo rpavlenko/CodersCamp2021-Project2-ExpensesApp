@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { AccountsItem } from './AccountsItem';
 import { useNavigate } from 'react-router-dom';
 import { StyledButton } from './AccountsList.styles';
@@ -7,9 +8,14 @@ export const AccountsList = ({ list, dispatch }) => {
   const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
   const navigate = useNavigate();
 
+  const [accountList, setAccountList] = useState(lastFive);
+  useEffect(() => {
+    setAccountList(lastFive);
+  }, [list]);
+
   return (
     <div>
-      {lastFive.map((item) => (
+      {accountList.map((item) => (
         <AccountsItem
           key={item.id}
           item={item}
