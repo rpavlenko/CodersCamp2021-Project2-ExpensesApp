@@ -31,7 +31,11 @@ export const StyledIcon = styled.svg`
   right: 20px;
   cursor: pointer;
 
-  //TODO: adjust right/left
+  @media screen and (min-width: 918px){
+    left: auto;
+    right: auto;
+    transform: translateX(830px);
+  }
 
   @media screen and (min-width: 1280px){
     top: 210px;
