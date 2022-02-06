@@ -18,12 +18,12 @@ export default function Table() {
 
     const expenses = list
       .filter((item) => item.type === 'Wydatek')
-      .reduce((acc, item) => (acc += item.amount), 0);
+      .reduce((acc, item) => (acc += +item.amount), 0);
     setExpenses((prevState) => prevState + expenses);
 
     const incomes = list
       .filter((item) => item.type === 'Przychód')
-      .reduce((acc, item) => (acc += item.amount), 0);
+      .reduce((acc, item) => (acc += +item.amount), 0);
     setIncomes((prevState) => prevState + incomes);
 
     setBalance(() => incomes - expenses);
