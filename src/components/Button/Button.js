@@ -5,6 +5,7 @@ import {
   IncomeStyledButton,
   StyledIconButtonWrap,
   StyledIconButtonText,
+  StyledIconAddButton,
 } from './../Button/Button.styles';
 import PropTypes from 'prop-types';
 
@@ -17,6 +18,7 @@ export const PrimaryButton = (props) => {
       text={props.text}
       isActive={props.isActive}
       onClick={props.onClick}
+      alert={props.alert}
     >
       {props.text}
     </PrimaryStyledButton>
@@ -28,6 +30,7 @@ PrimaryButton.propTypes = {
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func,
+  alert: PropTypes.bool,
 };
 
 PrimaryButton.defaultProps = {
@@ -95,7 +98,7 @@ export const AddButton = (props) => {
   return (
     <StyledIconButtonWrap>
       <StyledIconButtonText>{props.text}</StyledIconButtonText>
-      <StyledIconButton src={props.imageName} alt="" isSmall={props.isSmall} />
+      <StyledIconAddButton src={props.imageName} alt="" isSmall={props.isSmall} />
     </StyledIconButtonWrap>
   );
 };

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Arrow from '../../assets/arrow.png';
 import ArrowD from '../../assets/arrowd.png';
 import Add from '../../assets/add.png';
@@ -6,7 +6,6 @@ import Glass from '../../assets/mglass.png';
 import Edit from '../../assets/edit.png';
 import Delete from '../../assets/delete.png';
 export const PrimaryStyledButton = styled.button`
-  ${'' /* position: absolute; */}
   padding: 12px 10px;
   margin: 10px 20px 10px 20px;
   min-width: 271px;
@@ -19,6 +18,16 @@ export const PrimaryStyledButton = styled.button`
   font-weight: 800;
   font-size: 26px;
   margin-bottom: 30px;
+
+  ${(props) => props.alert && css`
+    margin: 0;
+    min-width: unset;
+    width: 100%;
+
+    @media screen and (min-width: 1280px){
+      max-width: 271px;
+    }
+  `}
 `;
 
 export const ExpensesStyledButton = styled.button.attrs((props) => ({
@@ -106,4 +115,9 @@ export const StyledIconButtonText = styled.p`
   font-size: 30px;
   font-family: 'Baloo 2', sans-serif;
   font-weight: 600;
+`;
+
+export const StyledIconAddButton = styled.img`
+  width: 36px;
+  height: 36px;
 `;

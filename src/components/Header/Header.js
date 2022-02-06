@@ -11,6 +11,11 @@ import {
 import Navigation from './Navigation/Navigation';
 
 const Header = () => {
+  const [mobile, setMobile] = useState(() => {
+    if(window.innerWidth <= 1280) return true;
+    else return false;
+  });
+
   const [active, setActive] = useState(false);
 
   const showNav = () => setActive((active) => !active);
@@ -20,6 +25,11 @@ const Header = () => {
     setActive(false);
   }, [location]);
 
+  window.addEventListener('resize', () => {
+    if(window.innerWidth <= 1280) setMobile(true);
+    else setMobile(false);
+  });
+
   return (
     <StyledHeader>
       <Link to={'/'}>
@@ -28,7 +38,7 @@ const Header = () => {
           <StyledName>Scrooge</StyledName>
         </StyledLogo>
       </Link>
-      <Hamburger onShowNav={showNav} menuActive={active} />
+      {mobile ? <Hamburger onShowNav={showNav} menuActive={active} /> : <Navigation />}
       {active ? <Navigation /> : null}
     </StyledHeader>
   );
