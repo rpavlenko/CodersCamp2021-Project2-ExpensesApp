@@ -26,6 +26,7 @@ const MainPage = () => {
   const [chosenCategory] = useState();
 
   useEffect(() => {
+    setListToShow(list);
     filterList();
   }, [list]);
   let filteredList;
