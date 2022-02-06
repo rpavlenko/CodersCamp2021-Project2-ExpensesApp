@@ -8,6 +8,12 @@ export const StyledNav = styled.nav`
   padding: 0 36px;
   background-color: #F8D478;
   z-index: 6;
+
+  @media screen and (min-width: 1280px){
+    position: static;
+    padding: 0;
+    width: auto;
+  }
 `;
 
 export const StyledLine = styled.div`
@@ -15,12 +21,22 @@ export const StyledLine = styled.div`
   height: 4px;
   background-color: #6A5F5F;
   border-radius: 25px;
+
+  @media screen and (min-width: 1280px){
+    display: none;
+  }
 `;
 
 export const StyledList = styled.ul`
   display: flex;
   padding: 10px 0 26px;
   flex-direction: column;
+
+  @media screen and (min-width: 1280px){
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0;
+  }
 `;
 
 export const StyledItem = styled.li`
@@ -38,8 +54,18 @@ export const StyledIcon = styled.img`
   display: block;
   margin-right: 24px;
   width: 45px;
+
+  @media screen and (min-width: 1280px){
+    width: 38px;
+    margin-right: 18px;
+  }
 `;
 
 export const StyledName = styled.p`
   font-size: 30px;
+
+  @media screen and (min-width: 1280px){
+    font-size: 24px;
+    /* display: none; */
+  }
 `;
