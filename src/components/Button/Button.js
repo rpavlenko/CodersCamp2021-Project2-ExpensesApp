@@ -5,6 +5,7 @@ import {
   IncomeStyledButton,
   StyledIconButtonWrap,
   StyledIconButtonText,
+  StyledIconAddButton,
 } from './../Button/Button.styles';
 import PropTypes from 'prop-types';
 
@@ -97,7 +98,7 @@ export const AddButton = (props) => {
   return (
     <StyledIconButtonWrap>
       <StyledIconButtonText>{props.text}</StyledIconButtonText>
-      <StyledIconButton src={props.imageName} alt="" isSmall={props.isSmall} />
+      <StyledIconAddButton src={props.imageName} alt="" isSmall={props.isSmall} />
     </StyledIconButtonWrap>
   );
 };

@@ -116,3 +116,8 @@ export const StyledIconButtonText = styled.p`
   font-family: 'Baloo 2', sans-serif;
   font-weight: 600;
 `;
+
+export const StyledIconAddButton = styled.img`
+  width: 36px;
+  height: 36px;
+`;
