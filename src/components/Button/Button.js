@@ -17,6 +17,7 @@ export const PrimaryButton = (props) => {
       text={props.text}
       isActive={props.isActive}
       onClick={props.onClick}
+      alert={props.alert}
     >
       {props.text}
     </PrimaryStyledButton>
@@ -28,6 +29,7 @@ PrimaryButton.propTypes = {
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func,
+  alert: PropTypes.bool,
 };
 
 PrimaryButton.defaultProps = {
