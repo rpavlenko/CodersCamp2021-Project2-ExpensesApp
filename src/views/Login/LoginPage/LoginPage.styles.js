@@ -9,6 +9,10 @@ export const StyledLoginPage = styled.main`
     margin: 0 auto;
     margin-top: 45px;
   }
+
+  & button:nth-child(2n) {
+    margin-top: 0;
+  }
 `;
 
 export const StyledLogo = styled.div`
@@ -63,6 +67,6 @@ export const StyledValidation = styled.div`
 export const StyledUserNotExists = styled.span`
   text-align: center;
   margin-top: 50px;
-  margin-bottom: -25px;
+  margin-bottom: 10px;
   color: tomato;
 `;

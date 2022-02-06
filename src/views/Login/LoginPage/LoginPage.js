@@ -34,6 +34,10 @@ export default function LoginPage() {
     },
   });
 
+  const onClick = (page) => {
+    navigate(`/${page}`);
+  };
+
   const onSubmit = (data, event) => {
     const form = event.target;
 
@@ -101,9 +105,12 @@ export default function LoginPage() {
             <StyledResetText>Nie pamiętam hasła</StyledResetText>
           </Link>
           <StyledUserNotExists>{userMessage}</StyledUserNotExists>
-          <Link to="/register">
-            <PrimaryButton className="xxx" text="Rejestracja" isActive={true} />
-          </Link>
+          <PrimaryButton
+            className="xxx"
+            text="Rejestracja"
+            isActive={true}
+            onClick={() => onClick('register')}
+          />
         </>
       )}
     </StyledLoginPage>
