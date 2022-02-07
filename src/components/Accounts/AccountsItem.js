@@ -26,7 +26,7 @@ export const AccountsItem = (props) => {
         </FirstColumn>
         <SecondColumn>
           <StyledText2>Kwota: </StyledText2>
-          <StyledAmount isExpense={type === 'Wydatki'}>
+          <StyledAmount isExpense={type === 'Wydatek'}>
             {amount} zł
           </StyledAmount>
         </SecondColumn>

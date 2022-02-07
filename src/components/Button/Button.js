@@ -51,7 +51,7 @@ export const ButtonExpenses = (props) => {
 };
 
 ButtonExpenses.propTypes = {
-  className: PropTypes.oneOf(['Wydatki']),
+  className: PropTypes.oneOf(['Wydatek']),
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func,
