@@ -43,10 +43,9 @@ function App() {
       <Container>
         <Routes>
           <Route path="*" element={<NotFound />} />
-          <Route path="/chart" element={<ChartView />} />
+          <Route path="/charts" element={<ChartView />} />
           <Route path="/detail/:id" element={<AccountDetailView />} />
           <Route path="/detail/:id/edit" element={<EditView />} />
-
           <Route path="/limit" element={<LimitPage />} />
           <Route path="/new" element={<NewPosition />} />
           <Route path="/register" element={<RegisterPage />} />

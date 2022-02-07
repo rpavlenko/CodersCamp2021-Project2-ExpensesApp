@@ -10,12 +10,14 @@ import { AddButton } from '../../components/Button/Button';
 import Add from '../../assets/add.png';
 import { StyledDate, StyledDateWrap } from './MainPage.styles';
 import { AccountsContext } from '../../reducers/accounts.reducer';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('Wszystkie');
 
   const { accountsState, limitsState } = useContext(AccountsContext);
   const [limits, limitsDispatch] = limitsState;
@@ -27,7 +29,7 @@ const MainPage = () => {
     setListToShow(list);
     filterList();
   }, [list, category]);
-  let filteredList;
+  let filteredList = list;
 
   const filterList = () => {
     if (name)
@@ -47,9 +49,9 @@ const MainPage = () => {
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
 
-    if (category && category !== 'Wszystkie') {
-        filteredList = filteredList.filter((item) => item.category === category);
-      }
+    if (category !== 'Wszystkie') {
+      filteredList = filteredList.filter((item) => item.category === category);
+    }
     if (filteredList) setListToShow(filteredList);
   };
 
@@ -63,7 +65,11 @@ const MainPage = () => {
           onSetShowAlert={onSetShowAlert}
         />
       ) : null}
-      <AddButton text="Dodaj" imageName={Add} />
+      <AddButton
+        text="Dodaj"
+        imageName={Add}
+        onClick={() => navigate(`/new`)}
+      />
       <Input
         type="search"
         placeholder="Wyszukaj"
