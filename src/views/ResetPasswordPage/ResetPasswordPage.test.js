@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
+import ResetPasswordPage from './ResetPasswordPage';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Homepage from './Homepage';
 
 describe('Check if view is rendered', () => {
-  it('Should render Homepage view without crashing', () => {
+  it('Should render LoginPage view without crashing', () => {
     render(
       <Router>
-        <Homepage />
+        <ResetPasswordPage />
       </Router>,
     );
-    screen.getByRole('heading', { name: 'Odzyskaj kontrolę nad wydatkami!' });
+    screen.getByRole('heading', { name: 'Zapomniałeś hasła?' });
   });
 });

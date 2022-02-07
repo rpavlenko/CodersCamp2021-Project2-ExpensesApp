@@ -11,7 +11,7 @@ export default function Alert({ category, onSetShowAlert }) {
       </StyledText>
 
       <div onClick={onSetShowAlert}>
-        <PrimaryButton className='xxx' text="Potwierdź" isActive={true} />
+        <PrimaryButton className='xxx' text="Potwierdź" isActive={true} alert={true}/>
       </div>
       
     </StyledAlert>

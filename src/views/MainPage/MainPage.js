@@ -25,7 +25,8 @@ const MainPage = () => {
   const [listToShow, setListToShow] = useState(list);
   useEffect(() => {
     setListToShow(list);
-  }, [list]);
+    filterList();
+  }, [list, category]);
   let filteredList;
 
   const filterList = () => {
@@ -46,6 +47,9 @@ const MainPage = () => {
           )
         : list.filter((item) => new Date(item.date) <= new Date(dateEnd));
 
+    if (category && category !== 'Wszystkie') {
+        filteredList = filteredList.filter((item) => item.category === category);
+      }
     if (filteredList) setListToShow(filteredList);
   };
 
@@ -74,16 +78,16 @@ const MainPage = () => {
           <Input
             type="date"
             inputLabel="początek zakresu"
-            filter={dateStart}
-            setFilter={setDateStart}
+            value={dateStart}
+            onChange={(e) => setDateStart(e.target.value)}
           />
         </StyledDate>
         <StyledDate>
           <Input
             type="date"
             inputLabel="koniec zakresu"
-            filter={dateEnd}
-            setFilter={setDateEnd}
+            value={dateEnd}
+            onChange={(e) => setDateEnd(e.target.value)}
           />
         </StyledDate>
       </StyledDateWrap>

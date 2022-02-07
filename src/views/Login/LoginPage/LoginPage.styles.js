@@ -9,6 +9,10 @@ export const StyledLoginPage = styled.main`
     margin: 0 auto;
     margin-top: 45px;
   }
+
+  & button:nth-child(2n) {
+    margin-top: 0;
+  }
 `;
 
 export const StyledLogo = styled.div`
@@ -47,6 +51,15 @@ export const StyledMessage = styled.span`
   color: tomato;
 `;
 
+export const StyledResetText = styled.span`
+  display: block;
+  margin-top: 22px;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #6a5f5f;
+`;
 export const StyledValidation = styled.div`
   position: relative;
 `;
@@ -54,6 +67,6 @@ export const StyledValidation = styled.div`
 export const StyledUserNotExists = styled.span`
   text-align: center;
   margin-top: 50px;
-  margin-bottom: -25px;
+  margin-bottom: 10px;
   color: tomato;
 `;

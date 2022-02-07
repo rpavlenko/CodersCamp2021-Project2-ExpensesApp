@@ -1,14 +1,21 @@
+import { useState, useEffect } from 'react';
 import { AccountsItem } from './AccountsItem';
 import { useNavigate } from 'react-router-dom';
+import { StyledButton } from './AccountsList.styles';
 import PropTypes from 'prop-types';
 
 export const AccountsList = ({ list, dispatch }) => {
   const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
   const navigate = useNavigate();
 
+  const [accountList, setAccountList] = useState(lastFive);
+  useEffect(() => {
+    setAccountList(lastFive);
+  }, [list]);
+
   return (
     <div>
-      {lastFive.map((item) => (
+      {accountList.map((item) => (
         <AccountsItem
           key={item.id}
           item={item}
@@ -23,6 +30,19 @@ export const AccountsList = ({ list, dispatch }) => {
           onClick={() => navigate(`/detail/${item.id}`)}
         />
       ))}
+      {accountList.length === list.length ? null : (
+        <StyledButton
+          onClick={() =>
+            setAccountList(
+              list
+                .slice(Math.max(list.length - (accountList.length + 5), 0))
+                .reverse(),
+            )
+          }
+        >
+          Pokaż więcej
+        </StyledButton>
+      )}
     </div>
   );
 };

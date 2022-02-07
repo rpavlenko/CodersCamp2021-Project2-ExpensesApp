@@ -14,6 +14,7 @@ import {
   StyledMessage,
   StyledValidation,
   StyledUserNotExists,
+  StyledResetText,
 } from './LoginPage.styles';
 import icon from '../../../assets/Icon.png';
 
@@ -28,25 +29,28 @@ export default function LoginPage() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: 'admin@gmail.com',
-      password: 'AwD,H6s\\cWFJ73?f',
+      email: 'admin@scrooge.com',
+      password: 'pass',
     },
   });
+
+  const onClick = (page) => {
+    navigate(`/${page}`);
+  };
 
   const onSubmit = (data, event) => {
     const form = event.target;
 
     let filteredUsers = users.filter((user) => {
-      console.log(user.email === data.email);
-      console.log(user.password === data.password);
       return user.email === data.email && user.password === data.password;
     });
 
     if (filteredUsers.length) {
+      localStorage.setItem('userLogged', 'true');
       navigate('/main');
     }
 
-    setUserMessage('Użytkownik nie istnieje');
+    setUserMessage('E-mail lub hasło są nieprawidłowe');
     form.reset();
   };
 
@@ -60,14 +64,14 @@ export default function LoginPage() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <StyledValidation>
           <Input
-            type="e-mail"
+            type="email"
             name="email"
             inputLabel="e-mail:"
             {...register('email', {
               required: 'Adres e-mail jest wymagany',
               pattern: {
                 value: EMAIL_VERIFICATION_REGEX,
-                message: 'Adres e-mail jest wymagany',
+                message: 'Adres e-mail nie poprawny',
               },
             })}
           />
@@ -97,10 +101,16 @@ export default function LoginPage() {
       </form>
       {userMessage && (
         <>
-          <StyledUserNotExists>{userMessage}</StyledUserNotExists>
-          <Link to="/register">
-            <PrimaryButton className="xxx" text="Rejestracja" isActive={true} />
+          <Link to="/reset-password">
+            <StyledResetText>Nie pamiętam hasła</StyledResetText>
           </Link>
+          <StyledUserNotExists>{userMessage}</StyledUserNotExists>
+          <PrimaryButton
+            className="xxx"
+            text="Rejestracja"
+            isActive={true}
+            onClick={() => onClick('register')}
+          />
         </>
       )}
     </StyledLoginPage>

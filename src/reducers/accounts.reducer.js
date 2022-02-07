@@ -60,8 +60,8 @@ export const initialData = [
 export const users = [
   {
     id: 1,
-    email: 'admin@gmail.com',
-    password: 'AwD,H6s\\cWFJ73?f',
+    email: 'admin@scrooge.com',
+    password: 'pass1234',
   },
 ];
 

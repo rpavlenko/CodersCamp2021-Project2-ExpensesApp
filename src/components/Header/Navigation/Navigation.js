@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import plus from '../../../assets/plus.png';
 import settings from '../../../assets/settings.png';
 import alarm from '../../../assets/alarm.png';
@@ -14,6 +14,13 @@ import {
 } from './Navigation.styles';
 
 const Navigation = () => {
+  const navigate = useNavigate();
+
+  const handleLogoff = () => {
+    localStorage.setItem('userLogged', 'false');
+    navigate('/');
+  };
+
   return (
     <StyledNav>
       <StyledLine />
@@ -42,7 +49,7 @@ const Navigation = () => {
             <StyledName>Wykresy</StyledName>
           </StyledItem>
         </Link>
-        <StyledItem>
+        <StyledItem onClick={handleLogoff}>
           <StyledIcon src={poweroff} />
           <StyledName>Wyloguj</StyledName>
         </StyledItem>

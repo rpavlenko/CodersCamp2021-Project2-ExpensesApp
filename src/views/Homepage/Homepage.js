@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { PrimaryButton } from '../../components/Button/Button';
 import {
   StyledHomepage,
@@ -12,6 +13,13 @@ import calculatorImage from '../../assets/budget-calculator.png';
 import icon from '../../assets/Icon.png';
 
 export default function Homepage() {
+  const logged = localStorage.getItem('userLogged');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    logged === 'true' ? navigate('/main') : navigate('/');
+  }, []);
+
   return (
     <StyledHomepage>
       <StyledHeader>

@@ -11,6 +11,17 @@ export const StyledLimit = styled.div`
   border-radius: 20px;
   background-color: #fff;
   z-index: 1;
+
+  @media screen and (min-width: 911px){
+    left: auto;
+    right: auto;
+    width: 852px;
+  }
+
+
+  @media screen and (min-width: 1280px){
+    top: 245px;
+  }
 `;
 
 export const StyledIcon = styled.svg`
@@ -19,6 +30,16 @@ export const StyledIcon = styled.svg`
   top: 200px;
   right: 20px;
   cursor: pointer;
+
+  @media screen and (min-width: 918px){
+    left: auto;
+    right: auto;
+    transform: translateX(830px);
+  }
+
+  @media screen and (min-width: 1280px){
+    top: 210px;
+  }
 `;
 
 export const StyledText = styled.p`
