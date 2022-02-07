@@ -18,6 +18,7 @@ import {
   AccountsContext,
   accountsReducer,
   initialData,
+  limitsReducer,
   users,
 } from './reducers/accounts.reducer';
 import { Container } from './components/styles/Container.styled';
@@ -28,19 +29,23 @@ function App() {
     ? JSON.parse(localStorage.getItem('accountsList'))
     : initialData;
 
+  const initialLimit = localStorage.getItem('limits')
+    ? JSON.parse(localStorage.getItem('limits'))
+    : {};
+
   const accountsState = useReducer(accountsReducer, initialList);
+  const limitsState = useReducer(limitsReducer, initialLimit);
 
   return (
-    <AccountsContext.Provider value={{ accountsState, users }}>
+    <AccountsContext.Provider value={{ accountsState, users, limitsState }}>
       <GlobalStyles />
       <Header />
       <Container>
         <Routes>
           <Route path="*" element={<NotFound />} />
-          <Route path="/chart" element={<ChartView />} />
+          <Route path="/charts" element={<ChartView />} />
           <Route path="/detail/:id" element={<AccountDetailView />} />
           <Route path="/detail/:id/edit" element={<EditView />} />
-
           <Route path="/limit" element={<LimitPage />} />
           <Route path="/new" element={<NewPosition />} />
           <Route path="/register" element={<RegisterPage />} />

@@ -2,8 +2,14 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyledLimit, StyledIcon, StyledText } from './Limit.styles';
 
-export default function Limit({ category }) {
+export default function Limit({ limitList }) {
   const [showAlert, setShowAlert] = useState(false);
+
+  const reachedLimits = Object.entries(limitList).map((limit) => {
+    if (limit[1].reached === true) {
+      return limit[0];
+    }
+  });
 
   return (
     <>
@@ -37,7 +43,7 @@ export default function Limit({ category }) {
       {showAlert ? (
         <StyledLimit>
           <StyledText>
-            Przekroczyłeś limit wydatków w kategorii {category}
+            Przekroczyłeś limit wydatków w kategorii {reachedLimits.join(', ')}.
           </StyledText>
         </StyledLimit>
       ) : null}
@@ -46,5 +52,5 @@ export default function Limit({ category }) {
 }
 
 Limit.propTypes = {
-  category: PropTypes.string.isRequired,
+  limitList: PropTypes.array,
 };
