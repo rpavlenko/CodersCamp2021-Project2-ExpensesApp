@@ -1,85 +1,91 @@
-# Getting Started with Create React App
+# Coders Camp 2021 | Project 2 | React - Single Page Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-<<<<<<< HEAD
 &nbsp;
-=======
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
->>>>>>> main
 
-### `yarn test`
+## Table of contents
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Project Team](#project-team)
+- [General Info](#general-info)
+- [Application](#application)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Deployment](#deployment)
+- [Status](#status)
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-<<<<<<< HEAD
 &nbsp;
-=======
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
->>>>>>> main
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Team
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-<<<<<<< HEAD
 &nbsp;
-=======
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
->>>>>>> main
 
-### `yarn build` fails to minify
+The Project was created as part of the course [CodersCamp](https://CodersCamp.pl).\
+by participants of the course, working under supervision of a mentor.
+We encourage you to familiarize yourself with team members's profiles and their portfolio:
 
-<<<<<<< HEAD
+**Mentor**: [Michał Ciborowski](https://github.com/Cidebur)
+
+**Participants of Coders Camp course:**
+
+- [Barbara Korytkowska](https://github.com/korytba)
+- [Magda Zaniewska-Ciecierska](https://github.com/FrontendMagdalena)
+- [Michał Kowalczyk](https://github.com/michakow)
+- [Roman Pavlenko](https://github.com/rpavlenko)
+- [Zuzanna Wypych](https://github.com/zwypych) 
+
+&nbsp;
+
+As part of the project selected team members have been assigned to additional roles:
+&nbsp;
+
+| Name                       | Role in the Project   |
+| -------------------------- | --------------------- |
+| Magda Zaniewska-Ciecierska | Product Owner         |
+| Michał Kowalczyk           | Manager / Team Leader |
+| Roman Pavlenko             | Tech Lead             |
+| Michał Ciborowski          | Client                |
+
+&nbsp;
+
+## General info
+
+&nbsp;
+
+### Application Demo
+
+If you are curious about the results of our work try our application :arrow_right: [Scrooge App](link).
+
+&nbsp;
+
+### About Project
+
+Application "Scrooge" is a budget App which will help potential users make the best decisions with their money. Design of Scrooge was designed to be as simply as possible. Easy navigation and balanced layout make our application accesible for wide range of people with different needs. Please find main features of Scrooge: 
+
+- create/edit/delete incomes and expenses
+- categorization (custom categories)
+- possibility to add attachment (eg. bills) to each input
+- setting alarms for budget limits
+- creating simple chart based on category
+
+&nbsp;
+
+### Design
+
+Scrooge Application logo: &nbsp;
+
+![](./src/assets/readme/Logo.png 'Scrooge logo')
+
+Mockup of the Application was prepared in Figma based on Mobile First Design approach.
+You can check it on [Figma](https://www.figma.com/file/Nymel3JtzFgVOIX0gdHmr3/Scrooge-App?node-id=12%3A358)
+
+&nbsp;
+&nbsp;
+
+## Application
+
+&nbsp;
+
+### Homepage
+
 Main purpose of the Homepage is ability to choose whether user would like to register as a new user or login when account is already created.
 
 ![](./src/assets/readme/homepage.png 'Homepage')
@@ -188,6 +194,3 @@ Application will launch on [http://localhost:3000](http://localhost:3000/) in yo
 
 &nbsp;
 As this part of Scrooge App Project is a frontend only Team is going to implement backend as a part of 3rd project of the Coders Camp course.
-=======
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> main
