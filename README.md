@@ -16,7 +16,6 @@
 
 ## Project Team
 
----
 &nbsp;
 
 The Project was created as part of the course [CodersCamp](https://CodersCamp.pl).\
@@ -49,7 +48,6 @@ As part of the project selected team members have been assigned to additional ro
 
 ## General info
 
----
 &nbsp;
 
 ### Application Demo
@@ -84,7 +82,6 @@ You can check it on [Figma](https://www.figma.com/file/Nymel3JtzFgVOIX0gdHmr3/Sc
 
 ## Application
 
----
 &nbsp;
 
 ### Homepage
@@ -163,7 +160,6 @@ When page cannot be found in our App user will see below view:
 
 ## Technologies
 
----
 
 &nbsp;
 **Technologies used in Project**:
@@ -178,7 +174,6 @@ When page cannot be found in our App user will see below view:
 
 ## Setup
 
----
 &nbsp;
 
 To run this project, install it locally on your machine using yarn:
@@ -196,7 +191,6 @@ Application will launch on [http://localhost:3000](http://localhost:3000/) in yo
 
 ## Status
 
----
 
 &nbsp;
 As this part of Scrooge App Project is a frontend only Team is going to implement backend as a part of 3rd project of the Coders Camp course.
