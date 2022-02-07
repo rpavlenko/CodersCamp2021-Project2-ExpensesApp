@@ -12,6 +12,7 @@ export const InputDateStyledGrouped = styled.div`
   max-width: 330px;
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 `;
 
 export const InputDateStyled = styled.div`
