@@ -101,10 +101,10 @@ export default function LoginPage() {
       </form>
       {userMessage && (
         <>
+          <StyledUserNotExists>{userMessage}</StyledUserNotExists>
           <Link to="/reset-password">
             <StyledResetText>Nie pamiętam hasła</StyledResetText>
           </Link>
-          <StyledUserNotExists>{userMessage}</StyledUserNotExists>
           <PrimaryButton
             className="xxx"
             text="Rejestracja"
