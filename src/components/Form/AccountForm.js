@@ -46,7 +46,7 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
     (item) => item.label === account?.category,
   );
   const [date, setDate] = useState(account?.date || today);
-  const [type, setType] = useState(account?.type || 'Wydatki');
+  const [type, setType] = useState(account?.type || 'Wydatek');
   const [category, setCategory] = useState(
     initialCategory || { label: '', value: '' },
   );
@@ -96,12 +96,12 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
         </InputDateStyled>
         <ExpIncBtnGroup>
           <ButtonExpenses
-            text="Wydatki"
-            isActive={type === 'Wydatki'}
-            onClick={() => setType('Wydatki')}
+            text="Wydatek"
+            isActive={type === 'Wydatek'}
+            onClick={() => setType('Wydatek')}
           />
           <ButtonIncome
-            text="Przychody"
+            text="Przychód"
             isActive={type === 'Przychody'}
             onClick={() => setType('Przychody')}
           />

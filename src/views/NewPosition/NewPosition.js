@@ -17,13 +17,13 @@ export const NewPosition = () => {
       (item) =>
         item.date.includes(currentMonth) &&
         item.category === categoryLabel &&
-        item.type === 'Wydatki',
+        item.type === 'Wydatek',
     );
     const totalAmount = filteredList.reduce((acc, item) => {
       return acc + parseInt(item.amount, 10);
     }, lastAmount);
 
-    const categoryLimit = limits.list[categoryLabel];
+    const categoryLimit = limits.list && limits.list[categoryLabel];
     if (categoryLimit) {
       return totalAmount > categoryLimit.value;
     }
