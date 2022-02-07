@@ -1,42 +1,32 @@
 import { StyledList } from './CategoryList.styles';
 import ListItem from './ListItem/ListItem';
+import PropTypes from 'prop-types';
+import { initialData } from '../Form/AccountForm';
 
-const CategoryList = () => {
-  const categories = [
-    {
-      id: 0,
-      name: 'Wszystkie',
-      color: 'red',
-    },
-    {
-      id: 1,
-      name: 'Ubrania',
-      color: 'salmon',
-    },
-    {
-      id: 2,
-      name: 'Remont',
-      color: 'green',
-    },
-    {
-      id: 3,
-      name: 'Leczenie',
-      color: 'orange',
-    },
-    {
-      id: 4,
-      name: 'Inne',
-      color: 'gray',
-    },
-  ];
+const CategoryList = ({ category, setCategory }) => {
+  const categories = localStorage.getItem('categories')
+    ? JSON.parse(localStorage.getItem('categories'))
+    : initialData;
 
   return (
     <StyledList>
-      {categories.map((category) => (
-        <ListItem key={category.id} item={category} />
+      {categories.map((item) => (
+        <ListItem
+          key={item.label}
+          item={item}
+          onClick={() => setCategory(item.label)}
+          bgColor={item.color}
+          isActive={category === item.label}
+        />
       ))}
     </StyledList>
   );
+};
+
+CategoryList.propTypes = {
+  onSubmit: PropTypes.object,
+  category: PropTypes.object,
+  setCategory: PropTypes.func,
 };
 
 export default CategoryList;

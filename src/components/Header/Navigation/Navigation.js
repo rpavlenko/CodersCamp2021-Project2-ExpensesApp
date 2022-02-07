@@ -30,7 +30,7 @@ const Navigation = () => {
             <StyledName>Ustawienia</StyledName>
           </StyledItem>
         </Link>
-        <Link to="/alerts">
+        <Link to="/limit">
           <StyledItem>
             <StyledIcon src={alarm} />
             <StyledName>Powiadomienia</StyledName>

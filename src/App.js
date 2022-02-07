@@ -16,6 +16,7 @@ import {
   AccountsContext,
   accountsReducer,
   initialData,
+  limitsReducer,
   users,
 } from './reducers/accounts.reducer';
 import { Container } from './components/styles/Container.styled';
@@ -26,10 +27,15 @@ function App() {
     ? JSON.parse(localStorage.getItem('accountsList'))
     : initialData;
 
+  const initialLimit = localStorage.getItem('limits')
+    ? JSON.parse(localStorage.getItem('limits'))
+    : {};
+
   const accountsState = useReducer(accountsReducer, initialList);
+  const limitsState = useReducer(limitsReducer, initialLimit);
 
   return (
-    <AccountsContext.Provider value={{ accountsState, users }}>
+    <AccountsContext.Provider value={{ accountsState, users, limitsState }}>
       <GlobalStyles />
       <Header />
       <Container>

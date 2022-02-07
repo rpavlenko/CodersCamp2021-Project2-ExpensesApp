@@ -2,13 +2,19 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyledLimit, StyledIcon, StyledText } from './Limit.styles';
 
-export default function Limit({ category }) {
+export default function Limit({ limitList }) {
   const [showAlert, setShowAlert] = useState(false);
+
+  const reachedLimits = Object.entries(limitList).map((limit) => {
+    if (limit[1].reached === true) {
+      return limit[0];
+    }
+  });
 
   return (
     <>
       <StyledIcon
-        onClick={() => setShowAlert(showAlert => !showAlert)}
+        onClick={() => setShowAlert((showAlert) => !showAlert)}
         width="30"
         height="30"
         viewBox="0 0 30 30"
@@ -27,19 +33,17 @@ export default function Limit({ category }) {
           </clipPath>
         </defs>
       </StyledIcon>
-      {
-      showAlert ? (
+      {showAlert ? (
         <StyledLimit>
           <StyledText>
-            Przekroczyłeś limit wydatków w kategorii {category}
+            Przekroczyłeś limit wydatków w kategorii {reachedLimits.join(', ')}.
           </StyledText>
         </StyledLimit>
-      ) : null
-      }
+      ) : null}
     </>
   );
 }
 
 Limit.propTypes = {
-  category: PropTypes.string.isRequired,
+  limitList: PropTypes.array,
 };

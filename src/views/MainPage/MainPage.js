@@ -12,14 +12,14 @@ import { StyledDate, StyledDateWrap } from './MainPage.styles';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 
 const MainPage = () => {
-  const [showAlert, setShowAlert] = useState(true);
-  const onSetShowAlert = () => setShowAlert(false);
-
   const [name, setName] = useState('');
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
+  const [category, setCategory] = useState('');
 
-  const { accountsState } = useContext(AccountsContext);
+  const { accountsState, limitsState } = useContext(AccountsContext);
+  const [limits, limitsDispatch] = limitsState;
+  const onSetShowAlert = () => limitsDispatch({ type: 'closeLastLimit' });
 
   const [list, dispatch] = accountsState;
   const [listToShow, setListToShow] = useState(list);
@@ -52,9 +52,12 @@ const MainPage = () => {
   return (
     <>
       <Table />
-      {showAlert ? null : <Limit category={'remont'} />}
-      {showAlert ? (
-        <Alert category={'remont'} onSetShowAlert={onSetShowAlert} />
+      {limits.lastReachedLimit ? <Limit limitList={limits.list} /> : null}
+      {limits.lastReachedLimit && !limits?.lastReachedLimit?.closed ? (
+        <Alert
+          category={limits?.lastReachedLimit?.label}
+          onSetShowAlert={onSetShowAlert}
+        />
       ) : null}
       <AddButton text="Dodaj" imageName={Add} />
       <Input
@@ -75,7 +78,7 @@ const MainPage = () => {
             setFilter={setDateStart}
           />
         </StyledDate>
-        <StyledDate onClick={() => setShowAlert(false)}>
+        <StyledDate>
           <Input
             type="date"
             inputLabel="koniec zakresu"
@@ -84,10 +87,9 @@ const MainPage = () => {
           />
         </StyledDate>
       </StyledDateWrap>
-      <CategoryList />
+      <CategoryList category={category} setCategory={setCategory} />
       <AccountsList list={listToShow} dispatch={dispatch} />
     </>
   );
 };
-
 export default MainPage;

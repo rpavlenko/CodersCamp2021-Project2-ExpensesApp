@@ -1,14 +1,19 @@
 import PropTypes from 'prop-types';
 import { StyledItem } from './ListItem.styles';
 
-const ListItem = ({ item }) => {
-  return <StyledItem bgcolor={item.color}>{item.name}</StyledItem>;
+const ListItem = ({ item, bgColor, onClick, isActive }) => {
+  return (
+    <StyledItem bgcolor={bgColor} onClick={onClick} isActive={isActive}>
+      {item.label}
+    </StyledItem>
+  );
 };
 
 export default ListItem;
 
 ListItem.propTypes = {
   item: PropTypes.object,
-  color: PropTypes.string,
-  name: PropTypes.string,
+  bgColor: PropTypes.string,
+  onClick: PropTypes.func,
+  isActive: PropTypes.bool,
 };

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledItem = styled.li`
   margin: 0 4px;
@@ -8,4 +8,5 @@ export const StyledItem = styled.li`
   color: white;
   background-color: ${(props) => props.bgcolor};
   border-radius: 15px;
+  border: ${(props) => (props.isActive ? 'solid #6a5f5f 2px' : '')};
 `;
