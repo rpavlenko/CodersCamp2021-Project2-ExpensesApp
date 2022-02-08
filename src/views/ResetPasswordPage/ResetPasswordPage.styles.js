@@ -35,4 +35,5 @@ export const StyledText = styled.p`
   font-weight: 600;
   font-size: 20px;
   color: #6a5f5f;
+  text-align: justify;
 `;

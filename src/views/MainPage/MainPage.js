@@ -74,7 +74,6 @@ const MainPage = () => {
         type="search"
         placeholder="Wyszukaj"
         icon={'glass'}
-        inputLabel="nazwa pozycji"
         value={name}
         onChange={(e) => setName(e.target.value)}
         onSearchClick={filterList}
@@ -83,7 +82,7 @@ const MainPage = () => {
         <StyledDate>
           <Input
             type="date"
-            inputLabel="początek zakresu"
+            inputLabel="Początek zakresu"
             value={dateStart}
             onChange={(e) => setDateStart(e.target.value)}
           />
@@ -91,7 +90,7 @@ const MainPage = () => {
         <StyledDate>
           <Input
             type="date"
-            inputLabel="koniec zakresu"
+            inputLabel="Koniec zakresu"
             value={dateEnd}
             onChange={(e) => setDateEnd(e.target.value)}
           />

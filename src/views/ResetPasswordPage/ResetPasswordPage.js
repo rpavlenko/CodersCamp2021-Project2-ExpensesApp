@@ -47,7 +47,7 @@ export default function ResetPasswordPage() {
       <StyledTitle>{messageTitle}</StyledTitle>
       {!userEmail ? (
         <StyledText>
-          Podaj swój e-mail, a my wyślemy na ten adres email z linkiem do
+          Podaj swój adres e-mail, a my wyślemy na niego e-mail z linkiem do
           ustawienia nowego hasła.
         </StyledText>
       ) : (
