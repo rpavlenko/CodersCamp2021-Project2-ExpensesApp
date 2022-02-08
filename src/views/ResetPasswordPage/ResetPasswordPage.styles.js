@@ -4,6 +4,11 @@ export const StyledReset = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  & form > button {
+    display: block;
+    margin: 0 auto;
+  }
 `;
 
 export const StyledMessage = styled.span`
