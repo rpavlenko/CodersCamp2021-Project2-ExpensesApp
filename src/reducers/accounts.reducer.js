@@ -91,3 +91,52 @@ export const accountsReducer = (state, action) => {
       return state;
   }
 };
+
+export const limitsReducer = (state, action) => {
+  let newValue;
+
+  switch (action.type) {
+    case 'addLimit':
+      newValue = {
+        ...state,
+        list: {
+          ...state.list,
+          [action.payload.category]: {
+            value: parseInt(action.payload.amount, 10),
+            reached: false,
+          },
+        },
+      };
+      localStorage.setItem('limits', JSON.stringify(newValue));
+      return newValue;
+    case 'reachedLimit':
+      newValue = {
+        ...state,
+        list: {
+          ...state.list,
+          [action.payload.category]: {
+            value: state.list[action.payload.category].value,
+            reached: true,
+          },
+        },
+        lastReachedLimit: {
+          label: action.payload.category,
+          closed: false,
+        },
+      };
+      localStorage.setItem('limits', JSON.stringify(newValue));
+      return newValue;
+    case 'closeLastLimit':
+      newValue = {
+        ...state,
+        lastReachedLimit: {
+          label: state.lastReachedLimit.label,
+          closed: true,
+        },
+      };
+      localStorage.setItem('limits', JSON.stringify(newValue));
+      return newValue;
+    default:
+      return state;
+  }
+};

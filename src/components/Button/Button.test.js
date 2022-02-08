@@ -16,7 +16,7 @@ describe('button', () => {
 
 describe('button', () => {
   test('if renders properly in the document', () => {
-    render(<ButtonExpenses text="Wydatki" />);
+    render(<ButtonExpenses text="Wydatek" />);
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();
   });

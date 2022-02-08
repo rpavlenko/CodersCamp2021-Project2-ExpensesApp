@@ -9,24 +9,44 @@ import { Input, InputSelect, InputAttachment } from '../Input/Input';
 import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const initialData = [
-  { value: 'remont', label: 'Remont' },
-  { value: 'prezent', label: 'Prezent' },
-  { value: 'ubrania', label: 'Ubrania' },
-  { value: 'leczenie', label: 'Leczenie' },
+const colors = [
+  '#F4600C',
+  '#EEA67E',
+  '#83BEF5',
+  '#EFB82B',
+  '#8088CC',
+  '#57A14AFF',
 ];
-const initialCategories = localStorage.getItem('categories')
-  ? JSON.parse(localStorage.getItem('categories'))
-  : initialData;
+
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
+export const initialData = [
+  {
+    value: 'remont',
+    label: 'Remont',
+    color: '#F4600C',
+  },
+  { value: 'prezent', label: 'Prezent', color: '#EEA67E' },
+  { value: 'ubrania', label: 'Ubrania', color: '#83BEF5' },
+  { value: 'leczenie', label: 'Leczenie', color: '#EFB82B' },
+];
 
 export const AccountForm = ({ handleSubmit, account, buttonText }) => {
+  const initialCategories = localStorage.getItem('categories')
+    ? JSON.parse(localStorage.getItem('categories'))
+    : initialData;
+
   const today = new Date().toISOString().slice(0, 10);
 
   const initialCategory = initialCategories.find(
     (item) => item.label === account?.category,
   );
   const [date, setDate] = useState(account?.date || today);
-  const [type, setType] = useState(account?.type || 'Wydatki');
+  const [type, setType] = useState(account?.type || 'Wydatek');
   const [category, setCategory] = useState(
     initialCategory || { label: '', value: '' },
   );
@@ -39,7 +59,11 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
 
   const handleCreate = useCallback(
     (inputValue) => {
-      const newValue = { value: inputValue.toLowerCase(), label: inputValue };
+      const newValue = {
+        value: inputValue.toLowerCase(),
+        label: inputValue,
+        color: colors[getRandomInt(0, colors.length)],
+      };
       const newCategories = [...categoryOptions, newValue];
       setCategoryOptions(newCategories);
       setCategory(newValue);
@@ -72,12 +96,12 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
         </InputDateStyled>
         <ExpIncBtnGroup>
           <ButtonExpenses
-            text="Wydatki"
-            isActive={type === 'Wydatki'}
-            onClick={() => setType('Wydatki')}
+            text="Wydatek"
+            isActive={type === 'Wydatek'}
+            onClick={() => setType('Wydatek')}
           />
           <ButtonIncome
-            text="Przychody"
+            text="Przychód"
             isActive={type === 'Przychody'}
             onClick={() => setType('Przychody')}
           />

@@ -51,7 +51,7 @@ export const ButtonExpenses = (props) => {
 };
 
 ButtonExpenses.propTypes = {
-  className: PropTypes.oneOf(['Wydatki']),
+  className: PropTypes.oneOf(['Wydatek']),
   text: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func,
@@ -96,9 +96,13 @@ IconButton.propTypes = {
 
 export const AddButton = (props) => {
   return (
-    <StyledIconButtonWrap>
+    <StyledIconButtonWrap onClick={props.onClick}>
       <StyledIconButtonText>{props.text}</StyledIconButtonText>
-      <StyledIconAddButton src={props.imageName} alt="" isSmall={props.isSmall} />
+      <StyledIconAddButton
+        src={props.imageName}
+        alt=""
+        isSmall={props.isSmall}
+      />
     </StyledIconButtonWrap>
   );
 };
@@ -108,6 +112,7 @@ AddButton.propTypes = {
   imageName: PropTypes.string,
   alt: PropTypes.string,
   isSmall: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 IconButton.defaultProps = {
