@@ -18,8 +18,7 @@
  
 &nbsp;
  
-The Project was created as part of the course [CodersCamp](https://CodersCamp.pl).\
-by participants of the course, working under supervision of a mentor.
+The Project was created as part of the course [CodersCamp](https://CodersCamp.pl) by participants of the course, working under supervision of a mentor.
 We encourage you to familiarize yourself with team members's profiles and their portfolio:
  
 **Mentor**: [Michał Ciborowski](https://github.com/Cidebur)
@@ -52,7 +51,7 @@ As part of the project selected team members have been assigned to additional ro
  
 ### Application Demo
  
-If you are curious about the results of our work try our application :arrow_right: [Scrooge App](link).
+If you are curious about the results of our work just try our application :arrow_right: [Scrooge App](link).
  
 &nbsp;
  
@@ -62,9 +61,9 @@ Application "Scrooge" is a budget App which will help potential users make the b
  
 - create/edit/delete incomes and expenses
 - categorization (custom categories)
-- possibility to add attachment (eg. bills) to each input
+- possibility to add attachment (eg. bills) to the account (not implemented yet)
 - setting alarms for budget limits
-- creating simple chart based on category
+- creating simple chart based on category 
  
 &nbsp;
  
