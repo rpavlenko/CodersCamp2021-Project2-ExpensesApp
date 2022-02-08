@@ -18,8 +18,7 @@
  
 &nbsp;
  
-The Project was created as part of the course [CodersCamp](https://CodersCamp.pl).\
-by participants of the course, working under supervision of a mentor.
+The Project was created as part of the course [CodersCamp](https://CodersCamp.pl) by participants of the course, working under supervision of a mentor.
 We encourage you to familiarize yourself with team members's profiles and their portfolio:
  
 **Mentor**: [Michał Ciborowski](https://github.com/Cidebur)
@@ -52,7 +51,7 @@ As part of the project selected team members have been assigned to additional ro
  
 ### Application Demo
  
-If you are curious about the results of our work try our application :arrow_right: [Scrooge App](link).
+If you are curious about the results of our work just try our application :arrow_right: [Scrooge App](link).
  
 &nbsp;
  
@@ -62,9 +61,9 @@ Application "Scrooge" is a budget App which will help potential users make the b
  
 - create/edit/delete incomes and expenses
 - categorization (custom categories)
-- possibility to add attachment (eg. bills) to each input
+- possibility to add attachment (eg. bills) to the account (not implemented yet)
 - setting alarms for budget limits
-- creating simple chart based on category
+- creating simple chart based on category 
  
 &nbsp;
  
@@ -102,7 +101,7 @@ On login page additionally there is an option to send request when you "Forget p
  
 By this form user can send request for account authentication based on the email you used for registration.
  
-![](./src/assets/readme/forget.png 'Forget Password Page')
+![](./src/assets/readme/forget-password.png 'Forget Password Page')
  
 ### Main Page
  
@@ -113,10 +112,17 @@ Navigation is simplified and icon-based which increase accessability. For mobile
  
 ![](./src/assets/readme/main.png 'Main page')
 ![](./src/assets/readme/navigation.png 'Main page - navigation')
+
+&nbsp;
+
+Navigation on desktop App:
+
+![](./src/assets/readme/navigation-desktop.png 'Main page - desktop navigation')
  
 &nbsp;
  
-This page allows to set limit for user's budget for each category.
+These pages show alerts that appear when budget is over set limit (Please check [Setting Limit Page](#setting-limit-page)). As first notification user receive pop-up with approval button (first screen) that user is aware that budget is over set limit for this category. After approving this form all alerts are visible on click for special button visible below actual budget table (second screen).
+ 
  
 &nbsp;
 ![](./src/assets/readme/main-alert1.png 'Main page - limit alert popup')
@@ -125,10 +131,10 @@ This page allows to set limit for user's budget for each category.
 ### New / Edit Position Page
  
 On this views user can fill/change all details for input.
-- Date
+- date
 - income or expense
 - category (from this view user can create as well new category)
-- value of user's input
+- value of user's amount
 - add attachment (eg. bill)
  
 ![](./src/assets/readme/newposition.png 'New position page')
@@ -142,13 +148,13 @@ User is directed to this page from Main page by clicking on each input. Here the
  
 ### Setting Limit Page
  
-This page gives possibility to set an alarm when budget for category is over budget.
+This page gives possibility to set an alarm when amount for category is over budget.
  
 ![](./src/assets/readme/limit.png 'Limit page')
  
 ### Chart Page
  
-Here simply Pie chart shows visually budget status of the user. Data could be filtered by date and catgeory?
+Here simply Pie chart shows visually budget status of the user. Data could be filtered by date and show compilation of categories created by the user (not implemented yet).
  
 ![](./src/assets/readme/chart.png 'Chart page')
  
@@ -193,6 +199,6 @@ Application will launch on [http://localhost:3000](http://localhost:3000/) in yo
  
  
 &nbsp;
-As this part of Scrooge App Project is a frontend only Team is going to implement backend as a part of 3rd project of the Coders Camp course.
+As this part of Scrooge App Project is a frontend only Team is going to implement backend as a part of 3rd project of the Coders Camp course. Few minor features are not yet implemented like adding attachment and completed chart that show compilation of categories created by the user. These are planned to be added with next release :rocket: :smile:
  
 
