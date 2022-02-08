@@ -5,6 +5,11 @@ export const StyledReset = styled.div`
   flex-direction: column;
   justify-content: center;
 
+  & button:nth-child(2n) {
+    display: block;
+    margin: 0 auto;
+  }
+
   & form > button {
     display: block;
     margin: 0 auto;

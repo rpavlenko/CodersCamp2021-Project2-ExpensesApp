@@ -10,6 +10,12 @@ export const ItemBox = styled.div`
     // TODO Add colors depending on category  
     background-color: #A7C97C; 
     border-radius: 15px;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #91BD59;
+      box-shadow: 0px 0px 6px 1px black;
+    }
 `;
 export const FirstColumn = styled.div`
     display: flex;
@@ -69,5 +75,10 @@ export const StyledAmount = styled.p`
     align-self: center;
 `;
 export const StyledIcon = styled.img`
-    padding-right: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    &:hover{
+      box-shadow: 0px 0px 5px 0px black;
+    }
 `;

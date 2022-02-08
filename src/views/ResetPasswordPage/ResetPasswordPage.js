@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/Input/Input';
 import { PrimaryButton } from '../../components/Button/Button';
 import { IconButton } from '../../components/Button/Button';
@@ -34,11 +34,14 @@ export default function ResetPasswordPage() {
     const form = event.target;
 
     setUserEmail(data.email);
-    console.log(userEmail);
     form.reset();
     setMessageTitle('Sprawdź swój e-mail');
     setShowLoginButton(true);
     setShowResetButton(false);
+  };
+
+  const onClickHandler = () => {
+    navigate('/login');
   };
 
   return (
@@ -83,14 +86,13 @@ export default function ResetPasswordPage() {
         </form>
       )}
       {showLoginButton && (
-        <Link to="/login">
-          <PrimaryButton
-            className="xxx"
-            text="Zaloguj się ponownie"
-            isActive={true}
-            type="submit"
-          />
-        </Link>
+        <PrimaryButton
+          className="xxx"
+          text="Zaloguj się ponownie"
+          isActive={true}
+          type="submit"
+          onClick={onClickHandler}
+        />
       )}
     </StyledReset>
   );
