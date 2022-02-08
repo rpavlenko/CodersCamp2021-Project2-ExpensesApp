@@ -1,4 +1,11 @@
 # Coders Camp 2021 | Project 2 | React - Single Page Application
+
+&nbsp;
+
+## Application Demo
+ 
+If you are curious about the results of our work just try our application :arrow_right: [Scrooge App](https://expenses-app-o7pus.ondigitalocean.app).
+ 
  
 &nbsp;
  
@@ -45,13 +52,7 @@ As a part of the project team members have been assigned to additional roles:
 &nbsp;
  
 ## General info
- 
- 
-### Application Demo
- 
-If you are curious about the results of our work just try our application :arrow_right: [Scrooge App](link).
- 
-&nbsp;
+
  
 ### About Project
  
