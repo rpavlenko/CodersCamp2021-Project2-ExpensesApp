@@ -77,10 +77,10 @@ export default function LoginPage() {
             name="password"
             inputLabel="hasło:"
             {...register('password', {
-              required: 'Wpisz hasło, minimum 7 symbolów',
+              required: 'Wpisz hasło, minimum 7 znaków',
               minLength: {
                 value: 7,
-                message: 'Minimum 7 symbolów',
+                message: 'Minimum 7 znaków',
               },
             })}
           />
@@ -95,7 +95,7 @@ export default function LoginPage() {
               required: 'Powtórz hasło',
               minLength: {
                 value: 7,
-                message: 'Minimum 7 symbolów',
+                message: 'Minimum 7 znaków',
               },
             })}
           />

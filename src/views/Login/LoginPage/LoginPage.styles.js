@@ -54,6 +54,7 @@ export const StyledMessage = styled.span`
 export const StyledResetText = styled.span`
   display: block;
   margin-top: 22px;
+  margin-bottom: 22px;
   font-weight: 800;
   font-size: 18px;
   line-height: 28px;
@@ -66,7 +67,7 @@ export const StyledValidation = styled.div`
 
 export const StyledUserNotExists = styled.span`
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 10px;
   color: tomato;
 `;
