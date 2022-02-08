@@ -96,13 +96,12 @@ IconButton.propTypes = {
 
 export const AddButton = (props) => {
   return (
-    <StyledIconButtonWrap>
+    <StyledIconButtonWrap onClick={props.onClick}>
       <StyledIconButtonText>{props.text}</StyledIconButtonText>
       <StyledIconAddButton
         src={props.imageName}
         alt=""
         isSmall={props.isSmall}
-        onClick={props.onClick}
       />
     </StyledIconButtonWrap>
   );
