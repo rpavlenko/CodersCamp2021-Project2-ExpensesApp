@@ -83,10 +83,10 @@ export default function LoginPage() {
             inputLabel="hasło:"
             name="password"
             {...register('password', {
-              required: 'Wpisz hasło, minimum 7 symbolów',
+              required: 'Wpisz hasło, minimum 7 znaków',
               minLength: {
                 value: 7,
-                message: 'Wpisz hasło, minimum 7 symbolów',
+                message: 'Wpisz hasło, minimum 7 znaków',
               },
             })}
           />
@@ -101,10 +101,10 @@ export default function LoginPage() {
       </form>
       {userMessage && (
         <>
-          <Link to="/reset-password">
-            <StyledResetText>Nie pamiętam hasła</StyledResetText>
-          </Link>
           <StyledUserNotExists>{userMessage}</StyledUserNotExists>
+          <Link to="/reset-password">
+            <StyledResetText>Nie pamiętam hasła.</StyledResetText>
+          </Link>
           <PrimaryButton
             className="xxx"
             text="Rejestracja"

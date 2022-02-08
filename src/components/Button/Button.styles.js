@@ -19,15 +19,17 @@ export const PrimaryStyledButton = styled.button`
   font-size: 26px;
   margin-bottom: 30px;
 
-  ${(props) => props.alert && css`
-    margin: 0;
-    min-width: unset;
-    width: 100%;
+  ${(props) =>
+    props.alert &&
+    css`
+      margin: 0;
+      min-width: unset;
+      width: 100%;
 
-    @media screen and (min-width: 1280px){
-      max-width: 271px;
-    }
-  `}
+      @media screen and (min-width: 1280px) {
+        max-width: 271px;
+      }
+    `}
 `;
 
 export const ExpensesStyledButton = styled.button.attrs((props) => ({
