@@ -192,6 +192,6 @@ Application will launch on [http://localhost:3000](http://localhost:3000/) in yo
 ## Status
  
  
-As this part of Scrooge App Project is a frontend only Team is going to implement backend as a part of 3rd project of the Coders Camp course. Few minor features are not yet implemented like adding attachment and completed chart that show compilation of categories created by the user. These are planned to be added with next release :rocket: :smile:
+As this part of Scrooge App Project is a frontend only Team is going to implement backend as a part of 3rd project of the Coders Camp course. Few minor features are not yet implemented like adding attachment and completed chart that show compilation of categories created by the user. These are planned to be added with next release :rocket:
  
 
