@@ -105,7 +105,7 @@ With this form user can send request for account recovery based on the email you
 Main page is full of features. Table at the top shows your current budget, then you have the possibility to add new income/expense using "+" button. Separate section show the list of user's inputs and few options of filtering user data (by name, date range or category). Categories can be scrolled from left to right.
 At the bottom there are user records (incomes or expenses). Regarding limited space there is possibility to load more records by selecting "Pokaż więcej". Each record can be edited or removed.
  
-Navigation is simplified and icon-based which increase accessability. For mobile version navigation bar changes into hamburger menu.
+Navigation is simplified and icon-based which increase accessability. It is available only after login/registration of the user. For mobile version navigation bar changes into hamburger menu.  
  
 ![](./src/assets/readme/main.png 'Main page')
 ![](./src/assets/readme/navigation.png 'Main page - navigation')
