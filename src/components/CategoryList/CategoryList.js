@@ -31,7 +31,7 @@ const CategoryList = ({ category, setCategory }) => {
 
 CategoryList.propTypes = {
   onSubmit: PropTypes.object,
-  category: PropTypes.object,
+  category: PropTypes.string,
   setCategory: PropTypes.func,
 };
 

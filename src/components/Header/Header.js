@@ -12,11 +12,12 @@ import Navigation from './Navigation/Navigation';
 
 const Header = () => {
   const [mobile, setMobile] = useState(() => {
-    if(window.innerWidth <= 1280) return true;
+    if (window.innerWidth <= 1280) return true;
     else return false;
   });
 
   const [active, setActive] = useState(false);
+  const isLogged = localStorage.getItem('userLogged') === 'true';
 
   const showNav = () => setActive((active) => !active);
   const location = useLocation();
@@ -26,21 +27,29 @@ const Header = () => {
   }, [location]);
 
   window.addEventListener('resize', () => {
-    if(window.innerWidth <= 1280) setMobile(true);
+    if (window.innerWidth <= 1280) setMobile(true);
     else setMobile(false);
   });
 
   return (
-    <StyledHeader>
-      <Link to={'/'}>
-        <StyledLogo>
-          <StyledIcon src={icon} />
-          <StyledName>Scrooge</StyledName>
-        </StyledLogo>
-      </Link>
-      {mobile ? <Hamburger onShowNav={showNav} menuActive={active} /> : <Navigation />}
-      {active ? <Navigation /> : null}
-    </StyledHeader>
+    <>
+      {isLogged && (
+        <StyledHeader>
+          <Link to={'/'}>
+            <StyledLogo>
+              <StyledIcon src={icon} />
+              <StyledName>Scrooge</StyledName>
+            </StyledLogo>
+          </Link>
+          {mobile ? (
+            <Hamburger onShowNav={showNav} menuActive={active} />
+          ) : (
+            <Navigation />
+          )}
+          {active ? <Navigation /> : null}
+        </StyledHeader>
+      )}
+    </>
   );
 };
 

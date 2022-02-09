@@ -52,5 +52,5 @@ export default function Limit({ limitList }) {
 }
 
 Limit.propTypes = {
-  limitList: PropTypes.array,
+  limitList: PropTypes.object,
 };

@@ -56,7 +56,7 @@ export const Input = forwardRef(
 );
 
 Input.propTypes = {
-  inputLabel: PropTypes.string.isRequired,
+  inputLabel: PropTypes.string,
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
