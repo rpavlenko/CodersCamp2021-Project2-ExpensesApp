@@ -4,7 +4,7 @@ import CategoryList from './CategoryList';
 describe('component render', () => {
   test('render CategoryList component', () => {
     render(<CategoryList />);
-    const categories = screen.getByRole('list');
+    const categories = screen.getByText('Wszystkie');
     expect(categories).toBeInTheDocument();
   });
 });
