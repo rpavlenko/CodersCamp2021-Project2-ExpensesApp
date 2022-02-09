@@ -1,8 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Limit from './Limit';
-// import { AccountsContext } from '../../../reducers/accounts.reducer';
 import { AccountsContext } from '../../reducers/accounts.reducer';
-// import { useContext } from 'react';
 
 describe('Check if component is rendered', () => {
   it('Should render Limit component without crashing', () => {

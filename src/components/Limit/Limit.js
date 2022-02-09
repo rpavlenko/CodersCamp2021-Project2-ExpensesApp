@@ -19,6 +19,7 @@ export default function Limit({ limitList }) {
         height="30"
         viewBox="0 0 30 30"
         xmlns="http://www.w3.org/2000/svg"
+        aria-label="limit-icon"
       >
         <g>
           <rect width="30" height="30" fill="white" />
