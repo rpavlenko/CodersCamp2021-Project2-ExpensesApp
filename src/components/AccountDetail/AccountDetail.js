@@ -8,6 +8,7 @@ import {
   PropsRow,
   IconsContainer,
   ConfirmationStyle,
+  StyledImg,
 } from './AccountDetail.styles.js';
 import penBig from './penBig.png';
 import trashBig from './trashBig.png';
@@ -35,8 +36,8 @@ export const AccountDetail = (props) => {
         <ConfirmationStyle>Potwierdzenie.jpg</ConfirmationStyle>
       </ColumnContainer>
       <IconsContainer>
-        <img src={penBig} onClick={onEditClick} />
-        <img src={trashBig} onClick={odDeleteClick} />
+        <StyledImg src={penBig} onClick={onEditClick} />
+        <StyledImg src={trashBig} onClick={odDeleteClick} />
       </IconsContainer>
     </DetailContainer>
   );

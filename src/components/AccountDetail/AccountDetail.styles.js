@@ -52,5 +52,7 @@ export const IconsContainer = styled.div`
     padding-top: 20px;
 `;
 
-
+export const StyledImg = styled.img`
+  cursor: pointer;
+`;
 
