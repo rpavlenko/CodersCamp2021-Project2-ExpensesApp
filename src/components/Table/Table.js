@@ -22,7 +22,7 @@ export default function Table() {
     setExpenses((prevState) => prevState + expenses);
 
     const incomes = list
-      .filter((item) => item.type === 'Przychód')
+      .filter((item) => item.type === 'Przychód' || 'Przychody')
       .reduce((acc, item) => (acc += +item.amount), 0);
     setIncomes((prevState) => prevState + incomes);
 
