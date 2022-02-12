@@ -1,7 +1,7 @@
-import { AccountForm } from '../../components/Form/AccountForm';
-import { IconButton } from '../../components/Button/Button';
+import { AccountForm } from 'components/Form/AccountForm';
+import { IconButton } from 'components/Button/Button';
 import { useContext } from 'react';
-import { AccountsContext } from '../../reducers/accounts.reducer';
+import { AccountsContext } from 'reducers/accounts.reducer';
 import { useNavigate } from 'react-router-dom';
 
 export const NewPosition = () => {

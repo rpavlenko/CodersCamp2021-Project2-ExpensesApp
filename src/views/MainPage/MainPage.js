@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import Table from '../../components/Table/Table';
-import { Input } from '../../components/Input/Input';
-import Alert from '../../components/Alert/Alert';
-import Limit from '../../components/Limit/Limit';
-import CategoryList from '../../components/CategoryList/CategoryList';
-import { AccountsList } from '../../components/Accounts/AccountsList';
-import { AddButton } from '../../components/Button/Button';
-import Add from '../../assets/add.png';
+import Table from 'components/Table/Table';
+import { Input } from 'components/Input/Input';
+import Alert from 'components/Alert/Alert';
+import Limit from 'components/Limit/Limit';
+import CategoryList from 'components/CategoryList/CategoryList';
+import { AccountsList } from 'components/Accounts/AccountsList';
+import { AddButton } from 'components/Button/Button';
+import Add from 'assets/add.png';
 import { StyledDate, StyledDateWrap } from './MainPage.styles';
-import { AccountsContext } from '../../reducers/accounts.reducer';
+import { AccountsContext } from 'reducers/accounts.reducer';
 import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {

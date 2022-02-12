@@ -1,5 +1,5 @@
-import icon from '../../assets/calculatorx.png';
-import { PrimaryButton } from '../../components/Button/Button';
+import icon from 'assets/calculatorx.png';
+import { PrimaryButton } from 'components/Button/Button';
 import {
   StyledNotFoundView,
   StyledHeader,

@@ -1,9 +1,9 @@
 /* eslint-disable */
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { AccountsContext } from '../../../reducers/accounts.reducer';
-import { PrimaryButton } from '../../../components/Button/Button';
-import { Input } from '../../../components/Input/Input';
+import { AccountsContext } from 'reducers/accounts.reducer';
+import { PrimaryButton } from 'components/Button/Button';
+import { Input } from 'components/Input/Input';
 import {
   StyledRegisterPage,
   StyledLogo,

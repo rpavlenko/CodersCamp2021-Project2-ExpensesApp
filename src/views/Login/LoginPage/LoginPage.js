@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { AccountsContext } from '../../../reducers/accounts.reducer';
-import { EMAIL_VERIFICATION_REGEX } from '../../../utils/helpers/validation.helpers';
-import { Input } from '../../../components/Input/Input';
-import { PrimaryButton } from '../../../components/Button/Button';
+import { AccountsContext } from 'reducers/accounts.reducer';
+import { EMAIL_VERIFICATION_REGEX } from 'utils/helpers/validation.helpers';
+import { Input } from 'components/Input/Input';
+import { PrimaryButton } from 'components/Button/Button';
 import {
   StyledLoginPage,
   StyledLogo,

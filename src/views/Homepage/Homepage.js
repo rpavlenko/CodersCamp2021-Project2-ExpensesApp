@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { PrimaryButton } from '../../components/Button/Button';
+import { PrimaryButton } from 'components/Button/Button';
 import {
   StyledHomepage,
   StyledIcon,
@@ -9,8 +9,8 @@ import {
   ButtonsGroup,
   StyledHeader,
 } from './Homepage.styles';
-import calculatorImage from '../../assets/budget-calculator.png';
-import icon from '../../assets/Icon.png';
+import calculatorImage from 'assets/budget-calculator.png';
+import icon from 'assets/Icon.png';
 
 export default function Homepage() {
   const logged = localStorage.getItem('userLogged');

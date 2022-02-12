@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { Input } from '../../components/Input/Input';
-import { PrimaryButton } from '../../components/Button/Button';
-import { IconButton } from '../../components/Button/Button';
-import { EMAIL_VERIFICATION_REGEX } from '../../utils/helpers/validation.helpers';
+import { Input } from 'components/Input/Input';
+import { PrimaryButton } from 'components/Button/Button';
+import { IconButton } from 'components/Button/Button';
+import { EMAIL_VERIFICATION_REGEX } from 'utils/helpers/validation.helpers';
 import {
   StyledReset,
   StyledMessage,

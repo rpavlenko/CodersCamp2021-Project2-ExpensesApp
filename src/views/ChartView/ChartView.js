@@ -1,14 +1,14 @@
-import { IconButton, PrimaryButton } from '../../components/Button/Button';
-import { Input } from '../../components/Input/Input';
-import Arrow from '../../assets/arrow.png';
+import { IconButton, PrimaryButton } from 'components/Button/Button';
+import { Input } from 'components/Input/Input';
+import Arrow from 'assets/arrow.png';
 import {
   StyledChartView,
   InputDateStyled,
   ArrowButtonStyled,
   StyledTitle,
   InputDateStyledGrouped,
-} from '../../views/ChartView/ChartView.styles';
-import Chart from '../../components/Chart/Chart';
+} from 'views/ChartView/ChartView.styles';
+import Chart from 'components/Chart/Chart';
 
 export default function ChartView() {
   return (

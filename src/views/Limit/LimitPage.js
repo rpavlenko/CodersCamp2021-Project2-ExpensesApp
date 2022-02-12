@@ -1,6 +1,6 @@
-import CategoryList from '../../components/CategoryList/CategoryList';
-import { Input } from '../../components/Input/Input';
-import { PrimaryButton, IconButton } from '../../components/Button/Button';
+import CategoryList from 'components/CategoryList/CategoryList';
+import { Input } from 'components/Input/Input';
+import { PrimaryButton, IconButton } from 'components/Button/Button';
 
 import {
   StyledLimitPage,
@@ -10,7 +10,7 @@ import {
 } from './LimitPage.styles';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import { AccountsContext } from '../../reducers/accounts.reducer';
+import { AccountsContext } from 'reducers/accounts.reducer';
 
 export default function LimitPage() {
   const { limitsState } = useContext(AccountsContext);
