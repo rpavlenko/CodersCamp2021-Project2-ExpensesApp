@@ -23,6 +23,7 @@ import {
 } from './reducers/accounts.reducer';
 import { Container } from './components/styles/Container.styled';
 import { EditView } from './views/EditView';
+import Settings from './views/Settings/Settings';
 
 function App() {
   const initialList = localStorage.getItem('accountsList')
@@ -53,6 +54,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/main" element={<MainPage />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </Container>
     </AccountsContext.Provider>
