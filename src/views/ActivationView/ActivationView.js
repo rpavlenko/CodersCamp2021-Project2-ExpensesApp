@@ -4,6 +4,7 @@ import {
   StyledDiv,
   StyledHeading,
   StyledParagraph,
+  StyledWaitingHeading,
 } from './ActivationView.styles';
 import { serverURL } from '../../utils/serverURL';
 import { useEffect, useState } from 'react';
@@ -11,48 +12,57 @@ import { useEffect, useState } from 'react';
 const ActivationView = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log(id);
-  const [activationState, setActivationState] = useState('');
+  const [activationState, setActivationState] = useState('loading');
 
   useEffect(() => {
-    setActivationState('success');
+    setActivationState('loading');
 
-    try {
-      fetch(`${serverURL}/api/v1/users/verify`, {
-        method: 'POST',
-        body: JSON.stringify({ userID: id }),
-        headers: {
-          'Content-type': 'application/json',
-        },
+    fetch(`${serverURL}/api/v1/users/verify`, {
+      method: 'POST',
+      body: JSON.stringify({ userID: id }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.code) setActivationState('success');
+        else setActivationState('error');
       })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.code) setActivationState('success');
-          else setActivationState('error');
-        });
-    } catch (error) {
-      setActivationState('error');
-    }
-  });
+      .catch((error) => {
+        console.log('Error:', error);
+        setActivationState('serverError');
+      });
+  }, []);
 
   return (
     <StyledDiv>
-      <StyledHeading success={activationState}>
-        {activationState === 'success'
-          ? 'Konto zostało aktywowane!'
-          : 'Brak konta wymagającego aktywacji'}
-      </StyledHeading>
-      <StyledParagraph>
-        {activationState === 'success'
-          ? 'Teraz już możesz zalogować się na swoje konto i zacząć kontrolować wydatki.'
-          : 'Takie konto nie istnieje lub zostało już aktywowane.'}
-      </StyledParagraph>
-      <PrimaryButton
-        className="xxx"
-        text="Przejdź do logowania"
-        isActive={true}
-        onClick={() => navigate(`/login`)}
-      />
+      {activationState === 'loading' ? (
+        <StyledWaitingHeading>Weryfikowanie..</StyledWaitingHeading>
+      ) : (
+        <>
+          <StyledHeading success={activationState}>
+            {activationState === 'success'
+              ? 'Konto zostało aktywowane!'
+              : activationState === 'error'
+              ? 'Brak konta wymagającego aktywacji'
+              : 'Problem z serwerem :('}
+          </StyledHeading>
+          <StyledParagraph>
+            {activationState === 'success'
+              ? 'Teraz już możesz zalogować się na swoje konto i zacząć kontrolować wydatki.'
+              : activationState === 'error'
+              ? 'Takie konto nie istnieje lub zostało już aktywowane.'
+              : 'Wykryto problem podczas łączenia z serwerem, sprobój ponownie później.'}
+          </StyledParagraph>
+          <PrimaryButton
+            className="xxx"
+            text="Przejdź do logowania"
+            isActive={true}
+            onClick={() => navigate(`/login`)}
+          />
+        </>
+      )}
     </StyledDiv>
   );
 };

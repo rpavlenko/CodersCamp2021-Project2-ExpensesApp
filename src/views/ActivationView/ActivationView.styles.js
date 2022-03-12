@@ -13,9 +13,15 @@ export const StyledHeading = styled.h3`
   color: green;
   text-transform: uppercase;
 
-  ${props => props.success === 'loading' && css`
-    color: red
+  ${props => (props.success === 'error' || props.success === 'serverError') && css`
+    color: red;
   `}
+`;
+
+export const StyledWaitingHeading = styled.h3`
+  padding-bottom: 30px;
+  font-size: 40px;
+  text-transform: uppercase;
 `;
 
 export const StyledParagraph = styled.p`
