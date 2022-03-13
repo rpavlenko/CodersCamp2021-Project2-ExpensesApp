@@ -55,8 +55,6 @@ export default function LoginPage() {
 
     setUserMessage('E-mail lub hasło są nieprawidłowe');
     form.reset();
-
-    console.log(data);
   };
 
   return (
