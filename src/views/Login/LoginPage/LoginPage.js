@@ -47,11 +47,16 @@ export default function LoginPage() {
 
     if (filteredUsers.length) {
       localStorage.setItem('userLogged', 'true');
+      // TODO
+      // obtain token from POST /login request
+      localStorage.setItem('token', 'TODO');
       navigate('/main');
     }
 
     setUserMessage('E-mail lub hasło są nieprawidłowe');
     form.reset();
+
+    console.log(data);
   };
 
   return (
