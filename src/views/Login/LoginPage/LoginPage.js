@@ -47,6 +47,9 @@ export default function LoginPage() {
 
     if (filteredUsers.length) {
       localStorage.setItem('userLogged', 'true');
+      // TODO
+      // obtain token from POST /login request
+      localStorage.setItem('token', 'TODO');
       navigate('/main');
     }
 
