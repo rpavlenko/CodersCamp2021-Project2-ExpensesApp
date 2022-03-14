@@ -23,6 +23,7 @@ import {
 } from './reducers/accounts.reducer';
 import { Container } from './components/styles/Container.styled';
 import { EditView } from './views/EditView';
+import Settings from './views/Settings/Settings';
 import ActivationView from './views/ActivationView/ActivationView';
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/main" element={<MainPage />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/verify/:id" element={<ActivationView />} />
         </Routes>
       </Container>
