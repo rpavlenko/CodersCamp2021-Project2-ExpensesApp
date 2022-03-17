@@ -1,40 +1,26 @@
-import { useContext, useEffect, useState } from 'react';
-import { AccountsContext } from '../../reducers/accounts.reducer';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { apiUrl } from '../../utils/serverURL';
 import { StyledTable } from './Table.styles';
 
 export default function Table() {
-  const { accountsState } = useContext(AccountsContext);
-  const [list] = accountsState;
-
   const [expenses, setExpenses] = useState(0);
   const [incomes, setIncomes] = useState(0);
   const [balance, setBalance] = useState(0);
+  let response;
+
+  async function getBalance() {
+    response = await axios.get(`${apiUrl.balance}`);
+
+    setExpenses(response.data.expenses);
+    setIncomes(response.data.incomes);
+    setBalance(response.data.total);
+  }
 
   useEffect(() => {
-    setExpenses(0);
-    setIncomes(0);
-    setBalance(0);
-
-    const expenses = list
-      .filter((item) => item.type === 'Wydatek')
-      .reduce((acc, item) => (acc += +item.amount), 0);
-    setExpenses((prevState) => prevState + expenses);
-
-    const incomes = list
-      .filter((item) => item.type === 'Przychód' || 'Przychody')
-      .reduce((acc, item) => (acc += +item.amount), 0);
-    setIncomes((prevState) => prevState + incomes);
-
-    setBalance(() => incomes - expenses);
-  }, [list]);
-
-  useEffect(() => {
-    localStorage.setItem(
-      'accountBalance',
-      JSON.stringify({ balance, expenses, incomes }),
-    );
-  }, [balance, expenses, incomes]);
+    getBalance();
+  }, []);
 
   return (
     <StyledTable>
