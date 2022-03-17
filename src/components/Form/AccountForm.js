@@ -40,6 +40,7 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
     ? JSON.parse(localStorage.getItem('categories'))
     : initialData;
 
+  console.log({ account });
   const today = new Date().toISOString().slice(0, 10);
 
   const initialCategory = initialCategories.find(

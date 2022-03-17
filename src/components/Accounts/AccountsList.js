@@ -17,17 +17,17 @@ export const AccountsList = ({ list, dispatch }) => {
     <div>
       {accountList.map((item) => (
         <AccountsItem
-          key={item.id}
+          key={item._id}
           item={item}
           odDeleteClick={(e) => {
-            dispatch({ type: 'deleteAccount', payload: { id: item.id } });
+            dispatch({ type: 'deleteAccount', payload: { id: item._id } });
             e.stopPropagation();
           }}
           onEditClick={(e) => {
-            navigate(`/detail/${item.id}/edit`);
+            navigate(`/detail/${item._id}/edit`);
             e.stopPropagation();
           }}
-          onClick={() => navigate(`/detail/${item.id}`)}
+          onClick={() => navigate(`/detail/${item._id}`)}
         />
       ))}
       {accountList.length === list.length ? null : (

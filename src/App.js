@@ -17,7 +17,6 @@ import { NewPosition } from './views/NewPosition/NewPosition';
 import {
   AccountsContext,
   accountsReducer,
-  initialData,
   limitsReducer,
   users,
 } from './reducers/accounts.reducer';
@@ -27,17 +26,14 @@ import Settings from './views/Settings/Settings';
 import ActivationView from './views/ActivationView/ActivationView';
 
 function App() {
-  const initialList = localStorage.getItem('accountsList')
-    ? JSON.parse(localStorage.getItem('accountsList'))
-    : initialData;
-
   const initialLimit = localStorage.getItem('limits')
     ? JSON.parse(localStorage.getItem('limits'))
     : {};
 
-  const accountsState = useReducer(accountsReducer, initialList);
+  const accountsState = useReducer(accountsReducer, []);
   const limitsState = useReducer(limitsReducer, initialLimit);
 
+  console.log('List', accountsState[0]);
   return (
     <AccountsContext.Provider value={{ accountsState, users, limitsState }}>
       <GlobalStyles />

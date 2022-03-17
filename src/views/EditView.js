@@ -1,15 +1,26 @@
 import { AccountForm } from '../components/Form/AccountForm';
 import { IconButton } from '../components/Button/Button';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AccountsContext } from '../reducers/accounts.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
+import { apiUrl } from '../utils/serverURL';
 
 export const EditView = () => {
   const { id } = useParams();
   const { accountsState } = useContext(AccountsContext);
-  const [list, dispatch] = accountsState;
-  const account = list.find((item) => item.id === id);
+  const [, dispatch] = accountsState;
   const navigate = useNavigate();
+  const [account, setAccount] = useState(null);
+
+  useEffect(() => {
+    getAccountDetail();
+  }, []);
+
+  const getAccountDetail = async () => {
+    const response = await fetch(`${apiUrl.transactions}/${id}`);
+    const data = await response.json();
+    setAccount(data);
+  };
 
   const handleSubmit = (data) => {
     dispatch({
@@ -19,14 +30,17 @@ export const EditView = () => {
     navigate(`/detail/${id}`);
   };
 
-  return (
-    <>
-      <IconButton type="arrow" onClick={() => navigate(`/detail/${id}`)} />
-      <AccountForm
-        account={account}
-        handleSubmit={handleSubmit}
-        buttonText={'Zapisz'}
-      />
-    </>
-  );
+  if (account) {
+    return (
+      <>
+        <IconButton type="arrow" onClick={() => navigate(`/detail/${id}`)} />
+        <AccountForm
+          account={account}
+          handleSubmit={handleSubmit}
+          buttonText={'Zapisz'}
+        />
+      </>
+    );
+  }
+  return null;
 };
