@@ -87,8 +87,7 @@ export const accountsReducer = (state, action) => {
       localStorage.setItem('accountsList', JSON.stringify(newValue));
       return newValue;
     case 'deleteAccount':
-      // TODO I will add save to local storage only after we have functionality adding new accounts
-      return state.filter((item) => item.id !== action.payload.id);
+      return state.filter((item) => item._id !== action.payload.id);
     default:
       return state;
   }

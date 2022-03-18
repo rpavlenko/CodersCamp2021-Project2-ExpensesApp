@@ -3,11 +3,11 @@ import { AccountsItem } from './AccountsItem';
 import { useNavigate } from 'react-router-dom';
 import { StyledButton } from './AccountsList.styles';
 import PropTypes from 'prop-types';
+import { deleteAccountDetail } from '../../utils/helpers/deleteAccountDetail';
 
 export const AccountsList = ({ list, dispatch }) => {
   const lastFive = list.slice(Math.max(list.length - 5, 0)).reverse();
   const navigate = useNavigate();
-
   const [accountList, setAccountList] = useState(lastFive);
   useEffect(() => {
     setAccountList(lastFive);
@@ -20,7 +20,9 @@ export const AccountsList = ({ list, dispatch }) => {
           key={item._id}
           item={item}
           odDeleteClick={(e) => {
-            dispatch({ type: 'deleteAccount', payload: { id: item._id } });
+            deleteAccountDetail(item._id).then(() =>
+              dispatch({ type: 'deleteAccount', payload: { id: item._id } }),
+            );
             e.stopPropagation();
           }}
           onEditClick={(e) => {

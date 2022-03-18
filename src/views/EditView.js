@@ -1,26 +1,17 @@
 import { AccountForm } from '../components/Form/AccountForm';
 import { IconButton } from '../components/Button/Button';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { AccountsContext } from '../reducers/accounts.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
-import { apiUrl } from '../utils/serverURL';
+import { useFetchDetail } from '../utils/hooks/useFetchDetail';
 
 export const EditView = () => {
   const { id } = useParams();
   const { accountsState } = useContext(AccountsContext);
   const [, dispatch] = accountsState;
   const navigate = useNavigate();
-  const [account, setAccount] = useState(null);
 
-  useEffect(() => {
-    getAccountDetail();
-  }, []);
-
-  const getAccountDetail = async () => {
-    const response = await fetch(`${apiUrl.transactions}/${id}`);
-    const data = await response.json();
-    setAccount(data);
-  };
+  const account = useFetchDetail(id);
 
   const handleSubmit = (data) => {
     dispatch({

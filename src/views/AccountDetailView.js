@@ -1,27 +1,14 @@
 import { AccountDetail } from '../components/AccountDetail/AccountDetail';
 import { useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
 import { IconButton } from '../components/Button/Button';
 import { useNavigate } from 'react-router-dom';
-import { apiUrl } from '../utils/serverURL';
-import { AccountsContext } from '../reducers/accounts.reducer';
+import { useFetchDetail } from '../utils/hooks/useFetchDetail';
+import { deleteAccountDetail } from '../utils/helpers/deleteAccountDetail';
 
 export const AccountDetailView = () => {
   const { id } = useParams();
-  const { accountsState } = useContext(AccountsContext);
-  const [, dispatch] = accountsState;
   const navigate = useNavigate();
-  const [account, setAccount] = useState(null);
-
-  useEffect(() => {
-    getAccountDetail();
-  }, []);
-
-  const getAccountDetail = async () => {
-    const response = await fetch(`${apiUrl.transactions}/${id}`);
-    const data = await response.json();
-    setAccount(data);
-  };
+  const account = useFetchDetail(id);
 
   if (account) {
     return (
@@ -29,8 +16,8 @@ export const AccountDetailView = () => {
         <IconButton type="arrow" onClick={() => navigate(`/main`)} />
         <AccountDetail
           item={account}
-          odDeleteClick={() => {
-            dispatch({ type: 'deleteAccount', payload: { id } });
+          odDeleteClick={async () => {
+            await deleteAccountDetail(id);
             navigate(`/main`);
           }}
           onEditClick={() => navigate(`/detail/${id}/edit`)}
