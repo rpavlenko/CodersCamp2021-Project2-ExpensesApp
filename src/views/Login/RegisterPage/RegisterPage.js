@@ -30,12 +30,12 @@ export default function LoginPage() {
   });
   const {
     register,
-    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (userData) => {
+  const onSubmit = (userData, event) => {
+    const form = event.target;
     if (userData.password === userData.passwordSecond) {
       fetch(`${serverURL}/api/v1/users/register`, {
         method: 'POST',
@@ -47,12 +47,14 @@ export default function LoginPage() {
         .then((res) => res.json())
         .then((data) => {
           if (data.code) {
+            form.reset()
             setRegisterState({
               show: true,
               state: true,
               msg: 'Na podany adres email został wysłany link do aktywacji konta.',
             });
           } else {
+            form.reset()
             setRegisterState({
               show: true,
               state: false,
@@ -61,6 +63,7 @@ export default function LoginPage() {
           }
         })
         .catch((error) => {
+          form.reset()
           console.log('Error:', error);
           setRegisterState({
             show: true,
