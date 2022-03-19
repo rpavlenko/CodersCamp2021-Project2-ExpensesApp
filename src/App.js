@@ -25,6 +25,7 @@ import { Container } from './components/styles/Container.styled';
 import { EditView } from './views/EditView';
 import Settings from './views/Settings/Settings';
 import ActivationView from './views/ActivationView/ActivationView';
+import ResetPasswordByIDPage from './views/ResetPasswordByIDPage/ResetPasswordByIDPage';
 
 function App() {
   const initialList = localStorage.getItem('accountsList')
@@ -53,6 +54,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/reset-password/:id" element={<ResetPasswordByIDPage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/settings" element={<Settings />} />
