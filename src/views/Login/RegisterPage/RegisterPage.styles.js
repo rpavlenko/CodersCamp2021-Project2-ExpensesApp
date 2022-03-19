@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const StyledRegisterPage = styled.main`
   display: flex;
@@ -34,10 +34,25 @@ export const StyledTitle = styled.h2`
 `;
 
 export const StyledText = styled.h3`
+  position: relative;
   margin-bottom: 25px;
   font-weight: 600;
   font-size: 30px;
   color: #6a5f5f;
+`;
+
+export const StyledTextSpan = styled.span`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-weight: normal;
+  font-size: 20px;
+  color: red;
+
+  ${props => props.state === true && css`
+    color: green;
+  `}
 `;
 
 export const StyledMessage = styled.span`
