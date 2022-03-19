@@ -1,7 +1,6 @@
-import { useState, useContext } from 'react';
+import { useState} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { AccountsContext } from '../../../reducers/accounts.reducer';
 import { EMAIL_VERIFICATION_REGEX } from '../../../utils/helpers/validation.helpers';
 import { Input } from '../../../components/Input/Input';
 import { PrimaryButton } from '../../../components/Button/Button';
@@ -17,9 +16,9 @@ import {
   StyledResetText,
 } from './LoginPage.styles';
 import icon from '../../../assets/Icon.png';
+import { serverURL } from '../../../utils/serverURL';
 
 export default function LoginPage() {
-  const { users } = useContext(AccountsContext);
   const navigate = useNavigate();
   const [userMessage, setUserMessage] = useState('');
 
@@ -27,31 +26,44 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: 'admin@scrooge.com',
-      password: 'pass',
-    },
-  });
+  } = useForm();
 
   const onClick = (page) => {
     navigate(`/${page}`);
   };
 
-  const onSubmit = (data, event) => {
+  const onSubmit = (userData, event) => {
     const form = event.target;
 
-    let filteredUsers = users.filter((user) => {
-      return user.email === data.email && user.password === data.password;
-    });
-
-    if (filteredUsers.length) {
-      localStorage.setItem('userLogged', 'true');
-      navigate('/main');
-    }
-
-    setUserMessage('E-mail lub hasło są nieprawidłowe');
-    form.reset();
+    fetch(`${serverURL}/api/v1/users/login`, {
+      method: 'POST',
+      body: JSON.stringify(userData),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.code) {
+          const user = {
+            email: data.userExist.email,
+            id: data.userExist._id,
+            token: data.token
+          };
+          localStorage.setItem('userLogged', true);
+          localStorage.setItem('user', JSON.stringify(user));
+          navigate('/main');
+        } else {
+          setUserMessage('E-mail lub hasło są nieprawidłowe.');
+          form.reset();
+        }
+      })
+      .catch((error) => {
+        form.reset();
+        console.log('Error:', error);
+        setUserMessage('Wykryto problem podczas łączenia z serwerem. Spróbuj ponownie później.');
+        form.reset();
+      });
   };
 
   return (
