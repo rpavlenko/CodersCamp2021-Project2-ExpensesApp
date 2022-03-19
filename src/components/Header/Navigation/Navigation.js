@@ -17,6 +17,7 @@ const Navigation = () => {
   const navigate = useNavigate();
 
   const handleLogoff = () => {
+    localStorage.clear();
     localStorage.setItem('userLogged', 'false');
     navigate('/');
   };
