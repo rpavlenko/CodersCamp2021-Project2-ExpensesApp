@@ -41,12 +41,14 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
     : initialData;
 
   console.log({ account });
-  const today = new Date().toISOString().slice(0, 10);
+  const formattedDate = account?.date
+    ? new Date(account?.date).toISOString().slice(0, 10)
+    : new Date().toISOString().slice(0, 10);
 
   const initialCategory = initialCategories.find(
     (item) => item.label === account?.category,
   );
-  const [date, setDate] = useState(account?.date || today);
+  const [date, setDate] = useState(formattedDate);
   const [type, setType] = useState(account?.type || 'Wydatek');
   const [category, setCategory] = useState(
     initialCategory || { label: '', value: '' },
