@@ -1,23 +1,21 @@
 import { AccountForm } from '../components/Form/AccountForm';
 import { IconButton } from '../components/Button/Button';
-import { useContext } from 'react';
-import { AccountsContext } from '../reducers/accounts.reducer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFetchDetail } from '../utils/hooks/useFetchDetail';
+import { updateAccountDetail } from '../utils/helpers/updateAccountView';
 
 export const EditView = () => {
   const { id } = useParams();
-  const { accountsState } = useContext(AccountsContext);
-  const [, dispatch] = accountsState;
   const navigate = useNavigate();
 
   const account = useFetchDetail(id);
 
   const handleSubmit = (data) => {
-    dispatch({
-      type: 'editAccount',
-      payload: { ...data, category: data.category.label, id },
-    });
+    const payload = {
+      ...data,
+      category: data.category.label,
+    };
+    updateAccountDetail(id, payload);
     navigate(`/detail/${id}`);
   };
 
