@@ -1,27 +1,7 @@
-import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import { apiUrl } from '../../utils/serverURL';
 import { StyledTable } from './Table.styles';
 
-export default function Table() {
-  const [expenses, setExpenses] = useState(0);
-  const [incomes, setIncomes] = useState(0);
-  const [balance, setBalance] = useState(0);
-  let response;
-
-  async function getBalance() {
-    response = await axios.get(`${apiUrl.balance}`);
-
-    setExpenses(response.data.expenses);
-    setIncomes(response.data.incomes);
-    setBalance(response.data.total);
-  }
-
-  useEffect(() => {
-    getBalance();
-  }, []);
-
+export default function Table({ expenses, incomes, balance }) {
   return (
     <StyledTable>
       <thead>
@@ -45,4 +25,7 @@ export default function Table() {
 Table.propTypes = {
   expenses: PropTypes.number,
   incomes: PropTypes.number,
+  balance: PropTypes.number,
+  getBalance: PropTypes.func,
+  response: PropTypes.object,
 };
