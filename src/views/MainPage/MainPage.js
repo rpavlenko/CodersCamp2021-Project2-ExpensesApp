@@ -11,6 +11,7 @@ import Add from '../../assets/add.png';
 import { StyledDate, StyledDateWrap } from './MainPage.styles';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 import { useNavigate } from 'react-router-dom';
+import { getCategories } from '../../utils/helpers/api/categories/categories';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -25,6 +26,19 @@ const MainPage = () => {
 
   const [list, dispatch] = accountsState;
   const [listToShow, setListToShow] = useState(list);
+  const [categories, setCategories] = useState([]);
+  
+  useEffect(() => {
+    getCategories()
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCategories(data);
+      });
+  }, []);
+  console.log('Categories', categories);
+
   useEffect(() => {
     setListToShow(list);
     filterList();
