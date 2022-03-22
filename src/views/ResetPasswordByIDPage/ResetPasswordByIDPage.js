@@ -19,6 +19,7 @@ const ResetPasswordByIDPage = () => {
   const [messageTitle, setMessageTitle] = useState('Ustaw nowe hasło');
   const [showLoginButton, setShowLoginButton] = useState(false);
   const [showResetButton, setShowResetButton] = useState(true);
+  const [userMessage, setUserMessage] = useState('');
   const navigate = useNavigate();
 
   const {
@@ -28,20 +29,22 @@ const ResetPasswordByIDPage = () => {
   } = useForm();
 
   const onSubmit = (data, event) => {
-    const form = event.target;
+    if (data.password === data.passwordSecond) {
+      const form = event.target;
 
-    setPassword(data.password);
-    fetch(`${serverURL}/api/v1/users/reset-password/${id}`, {
-      method: 'POST',
-      body: JSON.stringify({ password: data.password }),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
-    form.reset();
-    setMessageTitle('Hasło zmienione');
-    setShowLoginButton(true);
-    setShowResetButton(false);
+      setPassword(data.password);
+      fetch(`${serverURL}/api/v1/users/reset-password/${id}`, {
+        method: 'POST',
+        body: JSON.stringify({ password: data.password }),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      });
+      form.reset();
+      setMessageTitle('Hasło zmienione');
+      setShowLoginButton(true);
+      setShowResetButton(false);
+    } else setUserMessage('Podane hasła muszą być identyczne');
   };
 
   const onClickHandler = () => {
@@ -78,7 +81,22 @@ const ResetPasswordByIDPage = () => {
             />
             <StyledMessage>{errors.password?.message}</StyledMessage>
           </StyledValidation>
-
+          <StyledValidation>
+            <Input
+              name="passwordSecond"
+              type="password"
+              inputLabel="powtórz hasło:"
+              {...register('passwordSecond', {
+                required: 'Powtórz hasło',
+                minLength: {
+                  value: 7,
+                  message: 'Minimum 7 znaków',
+                },
+              })}
+            />
+            <StyledMessage>{errors.passwordSecond?.message}</StyledMessage>
+            <StyledMessage>{userMessage}</StyledMessage>
+          </StyledValidation>
           <PrimaryButton
             className="xxx"
             text="Zresetuj"
