@@ -44,7 +44,6 @@ export const NewPosition = () => {
   };
 
   const handleSubmit = async (data) => {
-    // const id = 'id' + new Date().getTime();
     const payload = {
       ...data,
       category: data.category.label,
