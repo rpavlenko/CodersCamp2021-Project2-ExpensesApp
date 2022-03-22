@@ -16,13 +16,14 @@ import trashBig from './trashBig.png';
 export const AccountDetail = (props) => {
   const { onEditClick, odDeleteClick, item } = props;
   const { date, title, amount, type, category } = item;
-
+  const formattedDate = new Date(date).toISOString().slice(0, 10);
+  const formatDate = formattedDate.split('-').reverse().join('-');
   return (
     <DetailContainer>
       <NameOfExpense>{type}</NameOfExpense>
       <ColumnContainer>
         <BoldText>Data: </BoldText>
-        <PropsRow> {date} </PropsRow>
+        <PropsRow> {formatDate} </PropsRow>
         <BoldText>Kategoria: </BoldText>
         <PropsRow> {category} </PropsRow>
         <BoldText>Nazwa: </BoldText>

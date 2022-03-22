@@ -3,6 +3,7 @@ import { IconButton } from '../../components/Button/Button';
 import { useContext } from 'react';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../utils/serverURL';
 
 export const NewPosition = () => {
   const { accountsState, limitsState } = useContext(AccountsContext);
@@ -29,11 +30,29 @@ export const NewPosition = () => {
     }
     return false;
   };
-  const handleSubmit = (data) => {
-    const id = 'id' + new Date().getTime();
+
+  const addTransaction = async (data) => {
+    const response = await fetch(apiUrl.transactions, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const { _id } = await response.json();
+    return _id;
+  };
+
+  const handleSubmit = async (data) => {
+    const payload = {
+      ...data,
+      category: data.category.label,
+    };
+    const id = await addTransaction(payload);
+    console.log({ id });
     dispatch({
       type: 'addNewAccount',
-      payload: { ...data, category: data.category.label, id },
+      payload: { ...payload, id },
     });
     const reachedLimit = validateLimit(
       data.category.label,

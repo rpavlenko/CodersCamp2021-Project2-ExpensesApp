@@ -40,12 +40,15 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
     ? JSON.parse(localStorage.getItem('categories'))
     : initialData;
 
-  const today = new Date().toISOString().slice(0, 10);
+  console.log({ account });
+  const formattedDate = account?.date
+    ? new Date(account?.date).toISOString().slice(0, 10)
+    : new Date().toISOString().slice(0, 10);
 
   const initialCategory = initialCategories.find(
     (item) => item.label === account?.category,
   );
-  const [date, setDate] = useState(account?.date || today);
+  const [date, setDate] = useState(formattedDate);
   const [type, setType] = useState(account?.type || 'Wydatek');
   const [category, setCategory] = useState(
     initialCategory || { label: '', value: '' },

@@ -11,6 +11,7 @@ import Add from '../../assets/add.png';
 import { StyledDate, StyledDateWrap } from './MainPage.styles';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 import { useNavigate } from 'react-router-dom';
+import { apiUrl } from '../../utils/serverURL';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,22 @@ const MainPage = () => {
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
   const [category, setCategory] = useState('Wszystkie');
+
+  useEffect(() => {
+    getInitialList();
+  }, []);
+
+  const getInitialList = async () => {
+    const response = await fetch(apiUrl.transactions);
+    const data = await response.json();
+    console.log({ accountsState });
+    const [, dispatch] = accountsState;
+    data &&
+      dispatch({
+        type: 'setInitialAccount',
+        payload: data,
+      });
+  };
 
   const { accountsState, limitsState } = useContext(AccountsContext);
   const [limits, limitsDispatch] = limitsState;

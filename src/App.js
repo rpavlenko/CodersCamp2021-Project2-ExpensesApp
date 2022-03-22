@@ -17,26 +17,24 @@ import { NewPosition } from './views/NewPosition/NewPosition';
 import {
   AccountsContext,
   accountsReducer,
-  initialData,
   limitsReducer,
   users,
 } from './reducers/accounts.reducer';
 import { Container } from './components/styles/Container.styled';
 import { EditView } from './views/EditView';
+import Settings from './views/Settings/Settings';
 import ActivationView from './views/ActivationView/ActivationView';
+import ResetPasswordByIDPage from './views/ResetPasswordByIDPage/ResetPasswordByIDPage';
 
 function App() {
-  const initialList = localStorage.getItem('accountsList')
-    ? JSON.parse(localStorage.getItem('accountsList'))
-    : initialData;
-
   const initialLimit = localStorage.getItem('limits')
     ? JSON.parse(localStorage.getItem('limits'))
     : {};
 
-  const accountsState = useReducer(accountsReducer, initialList);
+  const accountsState = useReducer(accountsReducer, []);
   const limitsState = useReducer(limitsReducer, initialLimit);
 
+  console.log('List', accountsState[0]);
   return (
     <AccountsContext.Provider value={{ accountsState, users, limitsState }}>
       <GlobalStyles />
@@ -52,8 +50,10 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/reset-password/:id" element={<ResetPasswordByIDPage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/main" element={<MainPage />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/verify/:id" element={<ActivationView />} />
         </Routes>
       </Container>
