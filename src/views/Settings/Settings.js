@@ -7,30 +7,30 @@ import {
   StyledMessage,
 } from './Settings.styles';
 import { Input } from '../../components/Input/Input';
-import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { AccountsContext } from '../../reducers/accounts.reducer';
+import { serverURL } from '../../utils/serverURL';
+import { useState } from 'react';
 
 export default function Settings() {
-  const { users } = useContext(AccountsContext);
   const navigate = useNavigate();
   const {
     register,
+    reset,
     handleSubmit,
     setError,
     formState: { errors },
   } = useForm({});
+  const [title, setTitle] = useState('Zmień hasło:');
 
   const onSubmit = (data) => {
-    const [user] = users;
-
-    if (user.password !== data.lastPassword) {
-      setError('lastPassword', {
+    if (data.newPassword === data.lastPassword) {
+      setError('newPassword', {
         type: 'manual',
-        message: 'Hasło niepoprawne!',
+        message: 'Nowe hasło musi być inne niż stare',
       });
       return;
     }
+
     if (data.newPassword !== data.repeatedPassword) {
       setError('newPassword', {
         type: 'manual',
@@ -42,13 +42,39 @@ export default function Settings() {
       });
       return;
     }
-    navigate('/main');
+
+    const userID = JSON.parse(localStorage.getItem('user')).id;
+
+    fetch(`${serverURL}/api/v1/users/update-password`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        userID: userID,
+        password: data.lastPassword,
+        newPassword: data.newPassword,
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((userData) => {
+        console.log(userData.code);
+        if (userData.code === 0) {
+          setError('lastPassword', {
+            type: 'manual',
+            message: 'Nieprawidłowe hasło',
+          });
+        } else if (userData.code === 1) {
+          setTitle('Hasło zmienione!');
+          reset();
+        }
+      });
   };
 
   return (
     <StyledSettingsPage>
       <IconButton type="arrow" onClick={() => navigate(`/main`)} />
-      <StyledChangePassword>Zmień hasło:</StyledChangePassword>
+      <StyledChangePassword>{title}</StyledChangePassword>
       <form>
         <StyledValidation>
           <Input
