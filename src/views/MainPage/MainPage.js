@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { apiUrl } from '../../utils/serverURL';
 import Table from '../../components/Table/Table';
-import { Input } from '../../components/Input/Input';
 import Alert from '../../components/Alert/Alert';
 import Limit from '../../components/Limit/Limit';
 import CategoryList from '../../components/CategoryList/CategoryList';
+import { Input } from '../../components/Input/Input';
 import { AccountsList } from '../../components/Accounts/AccountsList';
 import { AddButton } from '../../components/Button/Button';
-import Add from '../../assets/add.png';
-import { StyledDate, StyledDateWrap } from './MainPage.styles';
 import { AccountsContext } from '../../reducers/accounts.reducer';
-import { useNavigate } from 'react-router-dom';
-import { apiUrl } from '../../utils/serverURL';
+import { StyledDate, StyledDateWrap } from './MainPage.styles';
+import Add from '../../assets/add.png';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -19,9 +19,13 @@ const MainPage = () => {
   const [dateStart, setDateStart] = useState('');
   const [dateEnd, setDateEnd] = useState('');
   const [category, setCategory] = useState('Wszystkie');
+  const [expenses, setExpenses] = useState(0);
+  const [incomes, setIncomes] = useState(0);
+  const [balance, setBalance] = useState(0);
 
   useEffect(() => {
     getInitialList();
+    getBalance();
   }, []);
 
   const getInitialList = async () => {
@@ -36,6 +40,14 @@ const MainPage = () => {
       });
   };
 
+  const getBalance = async () => {
+    const response = await axios.get(`${apiUrl.balance}`);
+
+    setExpenses(response.data.expenses);
+    setIncomes(response.data.incomes);
+    setBalance(response.data.total);
+  };
+
   const { accountsState, limitsState } = useContext(AccountsContext);
   const [limits, limitsDispatch] = limitsState;
   const onSetShowAlert = () => limitsDispatch({ type: 'closeLastLimit' });
@@ -45,6 +57,7 @@ const MainPage = () => {
   useEffect(() => {
     setListToShow(list);
     filterList();
+    getBalance();
   }, [list, category]);
   let filteredList = list;
 
@@ -74,7 +87,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Table />
+      <Table expenses={expenses} incomes={incomes} balance={balance} />
       {limits.lastReachedLimit ? <Limit limitList={limits.list} /> : null}
       {limits.lastReachedLimit && !limits?.lastReachedLimit?.closed ? (
         <Alert
