@@ -16,12 +16,13 @@ import trash from './trash.png';
 export const AccountsItem = (props) => {
   const { onEditClick, odDeleteClick, item, onClick } = props;
   const { date, title, amount, type } = item;
-
+  const formattedDate = new Date(date).toISOString().slice(0, 10);
+  const formatDate = formattedDate.split('-').reverse().join('-');
   return (
     <>
       <ItemBox onClick={onClick}>
         <FirstColumn>
-          <StyledText>{date}</StyledText>
+          <StyledText>{formatDate}</StyledText>
           <StyledTitle>{title}</StyledTitle>
         </FirstColumn>
         <SecondColumn>

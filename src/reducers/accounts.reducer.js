@@ -71,10 +71,12 @@ export const accountsReducer = (state, action) => {
   let newValue;
 
   switch (action.type) {
+    case 'setInitialAccount':
+      return action.payload;
     case 'addNewAccount':
       newValue = [...state, action.payload];
       //   In order to save the data between the sessions, we save it temporary in LocalStorage.
-      localStorage.setItem('accountsList', JSON.stringify(newValue));
+      // localStorage.setItem('accountsList', JSON.stringify(newValue));
       return newValue;
     case 'editAccount':
       // eslint-disable-next-line no-case-declarations
@@ -85,8 +87,7 @@ export const accountsReducer = (state, action) => {
       localStorage.setItem('accountsList', JSON.stringify(newValue));
       return newValue;
     case 'deleteAccount':
-      // TODO I will add save to local storage only after we have functionality adding new accounts
-      return state.filter((item) => item.id !== action.payload.id);
+      return state.filter((item) => item._id !== action.payload.id);
     default:
       return state;
   }
