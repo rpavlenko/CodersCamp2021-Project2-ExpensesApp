@@ -42,9 +42,10 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
   const [categoryList, setCategoryList] = useState([]);
 
   const addNewCategory = async (data) => {
+    const userID = JSON.parse(localStorage.getItem('user')).id;
     const response = await fetch(apiUrl.categories, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({ ...data, userID }),
       headers: {
         'Content-Type': 'application/json',
       },

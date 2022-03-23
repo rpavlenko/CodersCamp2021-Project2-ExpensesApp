@@ -11,7 +11,13 @@ const allCategories = {
 
 const CategoryList = ({ category, setCategory }) => {
   const getInitialCategories = async () => {
-    const response = await fetch(apiUrl.categories);
+    const userToken = JSON.parse(localStorage.getItem('user')).token;
+    const response = await fetch(apiUrl.categories, {
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization-token': userToken,
+      },
+    });
     const data = await response.json();
     setCategoryList(data);
   };

@@ -32,9 +32,11 @@ export const NewPosition = () => {
   };
 
   const addTransaction = async (data) => {
+    const userID = JSON.parse(localStorage.getItem('user')).id;
+
     const response = await fetch(apiUrl.transactions, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({ ...data, userID }),
       headers: {
         'Content-Type': 'application/json',
       },

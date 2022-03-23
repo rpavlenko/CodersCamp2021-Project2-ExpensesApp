@@ -29,9 +29,14 @@ const MainPage = () => {
   }, []);
 
   const getInitialList = async () => {
-    const response = await fetch(apiUrl.transactions);
+    const userToken = JSON.parse(localStorage.getItem('user')).token;
+    const response = await fetch(apiUrl.transactions, {
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization-token': userToken,
+      },
+    });
     const data = await response.json();
-    console.log({ accountsState });
     const [, dispatch] = accountsState;
     data &&
       dispatch({
