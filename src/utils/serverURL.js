@@ -1,9 +1,5 @@
 export const serverURL =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:3000'
-    : 'https://expenses-app-backend-lpfoa.ondigitalocean.app';
-console.log(`${process.env.NODE_ENV}`);
-console.log(`Server URL: ${serverURL}`);
+  'https://expenses-app-backend-lpfoa.ondigitalocean.app';
 
 export const apiUrl = {
   balance: `${serverURL}/api/v1/balance`,
