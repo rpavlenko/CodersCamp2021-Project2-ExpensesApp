@@ -4,4 +4,5 @@ export const serverURL =
 export const apiUrl = {
   balance: `${serverURL}/api/v1/balance`,
   transactions: `${serverURL}/api/v1/transactions`,
+  categories: `${serverURL}/api/v1/categories`,
 };
