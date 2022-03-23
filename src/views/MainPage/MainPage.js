@@ -11,6 +11,7 @@ import { AccountsList } from '../../components/Accounts/AccountsList';
 import { AddButton } from '../../components/Button/Button';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 import { StyledDate, StyledDateWrap } from './MainPage.styles';
+import { token } from '../../utils/serverURL';
 import Add from '../../assets/add.png';
 
 const MainPage = () => {
@@ -29,7 +30,12 @@ const MainPage = () => {
   }, []);
 
   const getInitialList = async () => {
-    const response = await fetch(apiUrl.transactions);
+    const response = await fetch(apiUrl.transactions, {
+      method: 'GET',
+      headers: {
+        'authorization-token': token,
+      },
+    });
     const data = await response.json();
     console.log({ accountsState });
     const [, dispatch] = accountsState;
@@ -41,7 +47,11 @@ const MainPage = () => {
   };
 
   const getBalance = async () => {
-    const response = await axios.get(`${apiUrl.balance}`);
+    const response = await axios.get(`${apiUrl.balance}`, {
+      headers: {
+        'authorization-token': token,
+      },
+    });
 
     setExpenses(response.data.expenses);
     setIncomes(response.data.incomes);
