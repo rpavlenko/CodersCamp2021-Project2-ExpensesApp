@@ -132,7 +132,7 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
           />
           <ButtonIncome
             text="Przychód"
-            isActive={type === 'Przychody'}
+            isActive={type === 'Przychód'}
             onClick={() => setType('Przychód')}
           />
         </ExpIncBtnGroup>
