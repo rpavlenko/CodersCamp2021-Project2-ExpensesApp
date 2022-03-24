@@ -42,6 +42,10 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
         value: item.name,
       };
     });
+    const initialCategory = translatedData.find(
+      (item) => item.label === account?.category,
+    );
+    initialCategory && setCategory(initialCategory);
     setCategoryList(translatedData);
   };
 
@@ -70,14 +74,9 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
     ? new Date(account?.date).toISOString().slice(0, 10)
     : new Date().toISOString().slice(0, 10);
 
-  const initialCategory = categoryList.find(
-    (item) => item.label === account?.category,
-  );
   const [date, setDate] = useState(formattedDate);
   const [type, setType] = useState(account?.type || 'Wydatek');
-  const [category, setCategory] = useState(
-    initialCategory || { label: '', value: '' },
-  );
+  const [category, setCategory] = useState({ label: '', value: '' });
   const [title, setTitle] = useState(account?.title || '');
   // TODO think how to remove console warning
   const [amount, setAmount] = useState(account?.amount || null);
@@ -134,7 +133,7 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
           <ButtonIncome
             text="Przychód"
             isActive={type === 'Przychody'}
-            onClick={() => setType('Przychód')}
+            onClick={() => setType('Przychody')}
           />
         </ExpIncBtnGroup>
         <InputGroupStyled>
