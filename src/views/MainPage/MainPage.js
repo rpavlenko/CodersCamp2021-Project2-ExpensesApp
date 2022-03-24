@@ -136,11 +136,7 @@ const MainPage = () => {
           />
         </StyledDate>
       </StyledDateWrap>
-      <CategoryList
-        category={category}
-        setCategory={setCategory}
-        token={token}
-      />
+      <CategoryList category={category} setCategory={setCategory} />
       <AccountsList list={listToShow} dispatch={dispatch} />
     </>
   );

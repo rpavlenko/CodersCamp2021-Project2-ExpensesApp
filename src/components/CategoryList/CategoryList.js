@@ -9,7 +9,8 @@ const allCategories = {
   color: '#8b796e',
 };
 
-const CategoryList = ({ category, setCategory, token }) => {
+const CategoryList = ({ category, setCategory }) => {
+  const token = JSON.parse(localStorage.getItem('user'))?.token;
   const getInitialCategories = async () => {
     const response = await fetch(apiUrl.categories, {
       headers: {
