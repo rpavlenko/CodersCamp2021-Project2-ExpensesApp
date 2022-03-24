@@ -1,7 +1,7 @@
 import { apiUrl } from '../serverURL';
-import { token } from '../../utils/serverURL';
 
 export const deleteAccountDetail = async (id) => {
+  const token = JSON.parse(localStorage.getItem('user'))?.token;
   await fetch(`${apiUrl.transactions}/${id}`, {
     method: 'DELETE',
     headers: {
