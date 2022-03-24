@@ -11,7 +11,6 @@ import { AccountsList } from '../../components/Accounts/AccountsList';
 import { AddButton } from '../../components/Button/Button';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 import { StyledDate, StyledDateWrap } from './MainPage.styles';
-import { token } from '../../utils/serverURL';
 import Add from '../../assets/add.png';
 
 const MainPage = () => {
@@ -23,6 +22,7 @@ const MainPage = () => {
   const [expenses, setExpenses] = useState(0);
   const [incomes, setIncomes] = useState(0);
   const [balance, setBalance] = useState(0);
+  const token = JSON.parse(localStorage.getItem('user'))?.token;
 
   useEffect(() => {
     getInitialList();
@@ -136,7 +136,11 @@ const MainPage = () => {
           />
         </StyledDate>
       </StyledDateWrap>
-      <CategoryList category={category} setCategory={setCategory} />
+      <CategoryList
+        category={category}
+        setCategory={setCategory}
+        token={token}
+      />
       <AccountsList list={listToShow} dispatch={dispatch} />
     </>
   );

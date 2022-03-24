@@ -1,7 +1,7 @@
 import { StyledList } from './CategoryList.styles';
 import ListItem from './ListItem/ListItem';
 import PropTypes from 'prop-types';
-import { apiUrl, token } from '../../utils/serverURL';
+import { apiUrl } from '../../utils/serverURL';
 import { useEffect, useState } from 'react';
 
 const allCategories = {
@@ -9,7 +9,7 @@ const allCategories = {
   color: '#8b796e',
 };
 
-const CategoryList = ({ category, setCategory }) => {
+const CategoryList = ({ category, setCategory, token }) => {
   const getInitialCategories = async () => {
     const response = await fetch(apiUrl.categories, {
       headers: {
@@ -47,6 +47,7 @@ CategoryList.propTypes = {
   onSubmit: PropTypes.object,
   category: PropTypes.string,
   setCategory: PropTypes.func,
+  token: PropTypes.string,
 };
 
 export default CategoryList;
