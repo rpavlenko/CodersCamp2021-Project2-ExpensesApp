@@ -27,7 +27,13 @@ const getRandomInt = (min, max) => {
 
 export const AccountForm = ({ handleSubmit, account, buttonText }) => {
   const getInitialCategories = async () => {
-    const response = await fetch(apiUrl.categories);
+    const response = await fetch(apiUrl.categories, {
+      headers: {
+        Method: 'GET',
+        'Content-Type': 'application/json',
+        'authorization-token': token,
+      },
+    });
     const data = await response.json();
     const translatedData = data.map((item) => {
       return {

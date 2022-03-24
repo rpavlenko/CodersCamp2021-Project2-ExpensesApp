@@ -1,7 +1,7 @@
 import { StyledList } from './CategoryList.styles';
 import ListItem from './ListItem/ListItem';
 import PropTypes from 'prop-types';
-import { apiUrl } from '../../utils/serverURL';
+import { apiUrl, token } from '../../utils/serverURL';
 import { useEffect, useState } from 'react';
 
 const allCategories = {
@@ -11,11 +11,11 @@ const allCategories = {
 
 const CategoryList = ({ category, setCategory }) => {
   const getInitialCategories = async () => {
-    const userToken = JSON.parse(localStorage.getItem('user')).token;
     const response = await fetch(apiUrl.categories, {
       headers: {
+        Method: 'GET',
         'Content-Type': 'application/json',
-        'authorization-token': userToken,
+        'authorization-token': token,
       },
     });
     const data = await response.json();
