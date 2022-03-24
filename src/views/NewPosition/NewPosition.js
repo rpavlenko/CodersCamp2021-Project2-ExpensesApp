@@ -3,7 +3,7 @@ import { IconButton } from '../../components/Button/Button';
 import { useContext } from 'react';
 import { AccountsContext } from '../../reducers/accounts.reducer';
 import { useNavigate } from 'react-router-dom';
-import { apiUrl } from '../../utils/serverURL';
+import { apiUrl, token } from '../../utils/serverURL';
 
 export const NewPosition = () => {
   const { accountsState, limitsState } = useContext(AccountsContext);
@@ -39,6 +39,7 @@ export const NewPosition = () => {
       body: JSON.stringify({ ...data, userID }),
       headers: {
         'Content-Type': 'application/json',
+        'authorization-token': token,
       },
     });
     const { _id } = await response.json();

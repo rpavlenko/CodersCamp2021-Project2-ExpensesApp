@@ -8,7 +8,7 @@ import {
 import { Input, InputSelect, InputAttachment } from '../Input/Input';
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { apiUrl } from '../../utils/serverURL';
+import { apiUrl, token } from '../../utils/serverURL';
 
 const colors = [
   '#F4600C',
@@ -48,6 +48,7 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
       body: JSON.stringify({ ...data, userID }),
       headers: {
         'Content-Type': 'application/json',
+        'authorization-token': token,
       },
     });
     const result = await response.json();
