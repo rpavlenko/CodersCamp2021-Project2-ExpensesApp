@@ -8,7 +8,7 @@ import {
 import { Input, InputSelect, InputAttachment } from '../Input/Input';
 import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { apiUrl, token } from '../../utils/serverURL';
+import { apiUrl } from '../../utils/serverURL';
 
 const colors = [
   '#F4600C',
@@ -27,6 +27,7 @@ const getRandomInt = (min, max) => {
 
 export const AccountForm = ({ handleSubmit, account, buttonText }) => {
   const getInitialCategories = async () => {
+    const token = JSON.parse(localStorage.getItem('user'))?.token;
     const response = await fetch(apiUrl.categories, {
       headers: {
         Method: 'GET',
