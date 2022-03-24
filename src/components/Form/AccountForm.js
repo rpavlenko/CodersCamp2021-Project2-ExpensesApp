@@ -24,10 +24,10 @@ const getRandomInt = (min, max) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 };
+const token = JSON.parse(localStorage.getItem('user'))?.token;
 
 export const AccountForm = ({ handleSubmit, account, buttonText }) => {
   const getInitialCategories = async () => {
-    const token = JSON.parse(localStorage.getItem('user'))?.token;
     const response = await fetch(apiUrl.categories, {
       headers: {
         Method: 'GET',
