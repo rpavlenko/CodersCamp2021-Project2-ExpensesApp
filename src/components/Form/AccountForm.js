@@ -6,8 +6,9 @@ import {
   InputGroupStyled,
 } from '../../views/NewPosition/NewPosition.styles';
 import { Input, InputSelect, InputAttachment } from '../Input/Input';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { apiUrl, token } from '../../utils/serverURL';
 
 const colors = [
   '#F4600C',
@@ -24,28 +25,52 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-export const initialData = [
-  {
-    value: 'remont',
-    label: 'Remont',
-    color: '#F4600C',
-  },
-  { value: 'prezent', label: 'Prezent', color: '#EEA67E' },
-  { value: 'ubrania', label: 'Ubrania', color: '#83BEF5' },
-  { value: 'leczenie', label: 'Leczenie', color: '#EFB82B' },
-];
-
 export const AccountForm = ({ handleSubmit, account, buttonText }) => {
-  const initialCategories = localStorage.getItem('categories')
-    ? JSON.parse(localStorage.getItem('categories'))
-    : initialData;
+  const getInitialCategories = async () => {
+    const response = await fetch(apiUrl.categories, {
+      headers: {
+        Method: 'GET',
+        'Content-Type': 'application/json',
+        'authorization-token': token,
+      },
+    });
+    const data = await response.json();
+    const translatedData = data.map((item) => {
+      return {
+        ...item,
+        label: item.name,
+        value: item.name,
+      };
+    });
+    setCategoryList(translatedData);
+  };
+
+  const [categoryList, setCategoryList] = useState([]);
+
+  const addNewCategory = async (data) => {
+    const userID = JSON.parse(localStorage.getItem('user')).id;
+    const response = await fetch(apiUrl.categories, {
+      method: 'POST',
+      body: JSON.stringify({ ...data, userID }),
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization-token': token,
+      },
+    });
+    const result = await response.json();
+    return result._id;
+  };
+
+  useEffect(() => {
+    getInitialCategories();
+  }, []);
 
   console.log({ account });
   const formattedDate = account?.date
     ? new Date(account?.date).toISOString().slice(0, 10)
     : new Date().toISOString().slice(0, 10);
 
-  const initialCategory = initialCategories.find(
+  const initialCategory = categoryList.find(
     (item) => item.label === account?.category,
   );
   const [date, setDate] = useState(formattedDate);
@@ -58,8 +83,6 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
   const [amount, setAmount] = useState(account?.amount || null);
   // const [attachment, setAttachment] = useState(null);
 
-  const [categoryOptions, setCategoryOptions] = useState(initialCategories);
-
   const handleCreate = useCallback(
     (inputValue) => {
       const newValue = {
@@ -67,12 +90,17 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
         label: inputValue,
         color: colors[getRandomInt(0, colors.length)],
       };
-      const newCategories = [...categoryOptions, newValue];
-      setCategoryOptions(newCategories);
+      const payload = {
+        name: inputValue,
+        color: colors[getRandomInt(0, colors.length)],
+      };
+
+      addNewCategory(payload);
+      const newCategories = [...categoryList, newValue];
+      setCategoryList(newCategories);
       setCategory(newValue);
-      localStorage.setItem('categories', JSON.stringify(newCategories));
     },
-    [categoryOptions],
+    [categoryList],
   );
 
   const onSubmit = () => {
@@ -114,7 +142,7 @@ export const AccountForm = ({ handleSubmit, account, buttonText }) => {
             isClearable
             inputLabel="Kategoria"
             value={category}
-            options={categoryOptions}
+            options={categoryList}
             onChange={(option) => setCategory(option)}
             onCreateOption={handleCreate}
           />

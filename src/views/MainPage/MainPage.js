@@ -33,11 +33,11 @@ const MainPage = () => {
     const response = await fetch(apiUrl.transactions, {
       method: 'GET',
       headers: {
+        'Content-Type': 'application/json',
         'authorization-token': token,
       },
     });
     const data = await response.json();
-    console.log({ accountsState });
     const [, dispatch] = accountsState;
     data &&
       dispatch({

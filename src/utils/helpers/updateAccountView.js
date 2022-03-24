@@ -1,4 +1,4 @@
-import { apiUrl } from '../serverURL';
+import { apiUrl, token } from '../serverURL';
 
 export const updateAccountDetail = async (id, data) => {
   await fetch(`${apiUrl.transactions}/${id}`, {
@@ -6,6 +6,7 @@ export const updateAccountDetail = async (id, data) => {
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json',
+      'authorization-token': token,
     },
   });
 };

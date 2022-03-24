@@ -1,28 +1,42 @@
 import { StyledList } from './CategoryList.styles';
 import ListItem from './ListItem/ListItem';
 import PropTypes from 'prop-types';
-import { initialData } from '../Form/AccountForm';
+import { apiUrl, token } from '../../utils/serverURL';
+import { useEffect, useState } from 'react';
 
 const allCategories = {
-  value: 'wszystkie',
-  label: 'Wszystkie',
+  name: 'Wszystkie',
   color: '#8b796e',
 };
-const CategoryList = ({ category, setCategory }) => {
-  const categories = localStorage.getItem('categories')
-    ? JSON.parse(localStorage.getItem('categories'))
-    : initialData;
 
-  const categoriesWithAll = [allCategories, ...categories];
+const CategoryList = ({ category, setCategory }) => {
+  const getInitialCategories = async () => {
+    const response = await fetch(apiUrl.categories, {
+      headers: {
+        Method: 'GET',
+        'Content-Type': 'application/json',
+        'authorization-token': token,
+      },
+    });
+    const data = await response.json();
+    setCategoryList(data);
+  };
+  const [categoryList, setCategoryList] = useState([]);
+
+  useEffect(() => {
+    getInitialCategories();
+  }, []);
+
+  const categoriesWithAll = [allCategories, ...categoryList];
   return (
     <StyledList>
       {categoriesWithAll.map((item) => (
         <ListItem
-          key={item.label}
+          key={item.name}
           item={item}
-          onClick={() => setCategory(item.label)}
-          bgColor={item.color}
-          isActive={category === item.label}
+          onClick={() => setCategory(item.name)}
+          bgColor={item.color || '#8b796e'}
+          isActive={category === item.name}
         />
       ))}
     </StyledList>

@@ -4,7 +4,7 @@ import { StyledItem } from './ListItem.styles';
 const ListItem = ({ item, bgColor, onClick, isActive }) => {
   return (
     <StyledItem bgcolor={bgColor} onClick={onClick} isActive={isActive}>
-      {item.label}
+      {item.name}
     </StyledItem>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { apiUrl } from '../serverURL';
+import { apiUrl, token } from '../serverURL';
 
 export const useFetchDetail = (id) => {
   const [account, setAccount] = useState(null);
@@ -9,7 +9,11 @@ export const useFetchDetail = (id) => {
   }, []);
 
   const getAccountDetail = async () => {
-    const response = await fetch(`${apiUrl.transactions}/${id}`);
+    const response = await fetch(`${apiUrl.transactions}/${id}`, {
+      headers: {
+        'authorization-token': token,
+      },
+    });
     const data = await response.json();
     setAccount(data);
   };
